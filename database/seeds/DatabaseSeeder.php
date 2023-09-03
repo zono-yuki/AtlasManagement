@@ -11,6 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
+        //初期設定を登録する。
+        $this->call(UsersTableSeeder::class);
+        $this->call(SubjectsTableSeeder::class);
     }
 }
