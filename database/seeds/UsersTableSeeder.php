@@ -12,21 +12,21 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $date = DateTime::createFromFormat('Y年m月d日', '1989年01月10日');
+        // $date = DateTime::createFromFormat('Y年m月d日', '1989年01月10日');
 
         //初期ユーザー
         DB::table('users')->insert([
             [
-                'over_name' => '前薗',
+                'over_name' => '前園',
                 'under_name' => '良彦',
                 'over_name_kana' => 'マエゾノ',
                 'under_name_kana' => 'ヨシヒコ',
                 'mail_address' => 'zono@gmail.com',
-                'sex' => '1',
-                'birthday'=> $date->format('Y-m-d'),
-                'role' => '1',
                 'password' => bcrypt('zono4649'),
-                'created_at' => now(),
+                'birth_day' => '1989-01-10',
+                'sex' => '1',
+                'role' => '1',
+                'updated_at' => now(),
             ],
         ]);
     }
