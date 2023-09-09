@@ -70,7 +70,7 @@
             <div class="register_form">
 
             <!--  セイ,メイ-->
-            <div class="d-flex mt-5" style="justify-content:space-between">
+            <div class="d-flex mt-3" style="justify-content:space-between">
 
                 <!-- セイ -->
                 <div class="" style="width:140px">
@@ -98,7 +98,7 @@
                 @enderror
 
                 <!-- メールアドレス -->
-                <div class="mt-5">
+                <div class="mt-3">
                   <label class="m-0 d-block" style="font-size:15px">メールアドレス</label>
                   <div class="border-bottom  border-primary">
                     <input type="mail" class="w-100  border-0 mail_address" name="mail_address">
@@ -324,17 +324,20 @@
           <div class="mt-3">
             <label class="d-block m-0" style="font-size:13px">確認用パスワード</label>
             <div class="border-bottom border-primary">
-              <input type="password" class="border-0 w-100 password_confirmation" name="password">
+              <input type="password" class="border-0 w-100 password_confirmation" name="password_confirmation">
             </div>
           </div>
 
-<!------------------------------------------------------------------------------------->
+<!------------------登録ボタン---------------------------------------------------->
           <div class="mt-3 text-right">
             <input type="submit" class="btn btn-primary register_btn" disabled value="新規登録" onclick="return confirm('登録してよろしいですか？')">
           </div>
 
+<!------------------ログイン画面へ戻る---------------------------------------------->
+
           <div class="text-center mt-1 mr-5">
             <a href="{{ route('loginView') }}">ログインはこちら</a>
+            <!-- ログイン画面へ戻る処理 -->
           </div>
 
         </div>

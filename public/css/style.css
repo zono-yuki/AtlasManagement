@@ -5,6 +5,7 @@
     padding: 0;
 }
 /* body */
+
 body{
  width:100%;
  min-height: 100vh;
@@ -12,6 +13,9 @@ body{
 
 .all_content{
   background:#ECF1F6;
+}
+p{
+  margin: 0;
 }
 ul,
 li{
@@ -28,6 +32,8 @@ li{
 /* エラーメッセージ赤字 */
 .error-message{
   color:red;
+  margin-bottom: 0;
+
 }
 
 /* 新規登録 ボーダー */

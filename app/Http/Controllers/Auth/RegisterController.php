@@ -55,7 +55,8 @@ class RegisterController extends Controller
      */
     public function registerView()
     {
-        $subjects = Subjects::all();
+        $subjects = Subjects::all();//科目名を全部取得する処理
+
         return view('auth.register.register', compact('subjects'));
     }
 

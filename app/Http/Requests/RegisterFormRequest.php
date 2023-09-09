@@ -76,19 +76,19 @@ class RegisterFormRequest extends FormRequest
     {
         return [
             //'項目名.検証ルール' => 'メッセージ',
-            'over_name.required' => '姓は入力必須です。',
-            'over_name.max' => '姓は10文字以下で入力して下さい。',
+            'over_name.required' => '名前（姓）は必ず入力してください。',
+            'over_name.max' => '名前（姓）は10文字以下で入力して下さい。',
 
-            'under_name.required' => '名は入力必須です。',
-            'under_name.max' => '名は10文字以下で入力して下さい。',
+            'under_name.required' => '名前（名）は必ず入力してください。',
+            'under_name.max' => '名前（名）は10文字以下で入力して下さい。',
 
-            'over_name_kana.required' => 'セイは入力必須です。',
-            'over_name_kana.max' => 'セイは30文字以下で入力して下さい。',
-            'over_name_kana.regex' => 'セイはカタカナで入力して下さい。',
+            'over_name_kana.required' => 'フリガナ（姓）は入力必須です。',
+            'over_name_kana.max' => 'フリガナ（姓）は30文字以下で入力して下さい。',
+            'over_name_kana.regex' => 'フリガナ（姓）はカタカナで入力して下さい。',
 
-            'under_name_kana.required' => 'メイは入力必須です。',
-            'under_name_kana.max' => 'メイは30文字以下で入力して下さい。',
-            'under_name_kana.regex' => 'メイはカタカナで入力して下さい。',
+            'under_name_kana.required' => 'フリガナ（名）は入力必須です。',
+            'under_name_kana.max' => 'フリガナ（名）は30文字以下で入力して下さい。',
+            'under_name_kana.regex' => 'フリガナ（名）はカタカナで入力して下さい。',
 
             'mail_address.required' => 'メールアドレスは入力必須です。',
             'mail_address.max' => 'メールアドレスは100文字以下で入力して下さい。',
