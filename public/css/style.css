@@ -5,6 +5,11 @@
     padding: 0;
 }
 /* body */
+body{
+ width:100%;
+ min-height: 100vh;
+}
+
 .all_content{
   background:#ECF1F6;
 }
@@ -12,6 +17,49 @@ ul,
 li{
   list-style:none;
 }
+
+/* ログインページ */
+
+.atlas_logo{
+  width: 15%;
+  height: auto;
+}
+
+/* エラーメッセージ赤字 */
+.error-message{
+  color:red;
+}
+
+/* 新規登録 ボーダー */
+.border{
+  border-radius: 13px;
+  box-shadow: 3px 3px 2px 1px #bbb;   /* 影指定 */
+}
+
+.border-mail{
+  border-width: 3px;
+  border-color: #3399FF;
+}
+/* 新規登録 性別 ラジオボタン */
+.sex-flex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sex-box{
+  display: inline-block;
+  width: 30%;
+  height: auto;
+  margin-right: 10%;
+}
+
+/* 新規登録 役職 ラジオボタン */
+.role{
+
+}
+
+
 
 /* サイドバー */
 .sidebar{
