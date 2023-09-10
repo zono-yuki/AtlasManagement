@@ -25,50 +25,50 @@ class RegisterFormRequest extends FormRequest
      *
      * @return array
      */
+
+    //バリデーションをかける前に,バラバラに渡された変数を,日付の形にして,rules()に送る処理
+    public function getValidatorInstance(){
+    //生年月日をまとめて直に渡す
+    $old_year = $this->input('old_year');
+    $old_month = $this->input('old_month');
+    $old_day = $this->input('old_day');
+
+
+    $datetime = $old_year .'-'. $old_month .'-'. $old_day;
+    //ハイフンをつけて日付を作る処理(2023-09-10)
+
+    //rules()に渡す処理
+    $this->merge([
+        'datetime_validation' => $datetime,
+    ]);
+
+    return parent::getValidatorInstance();
+    //ここで定義した変数はここでしか使えないようにしている(parentで返しているのがこのメソッドなので)
+
+    }
+
     public function rules()
     {
         return [
             //'項目名' => '検証ルール｜検証ルール｜検証ルール',
             'over_name' => 'required|string|max:10',
-
             'under_name' => 'required|string|max:10',
 
-            //カタカナのみ（検索したらこれだった）
-            'over_name_kana' => 'required|string|max:30|regex:/^[ ア-ン゛゜ァ-ォャ-ョー]+$/u',
-
-            'under_name_kana' => 'required|string|max:30|regex:/^[ ア-ン゛゜ァ-ォャ-ョー]+$/u',
+            'over_name_kana' =>'required|string|max:30|regex:/^[ ア-ン゛゜ァ-ォャ-ョー]+$/u',
+            'under_name_kana' =>'required|string|max:30|regex:/^[ ア-ン゛゜ァ-ォャ-ョー]+$/u',
 
             'mail_address' => 'required|string|max:100|unique:users,mail_address|email',
 
-            /////////////////
-            // 'sex' => 'exclude_unless:check,true|required|string',
-            //繋げ方がわからないが2行にする
-            //男性、女性、その他、意外は無効 valueの数字を入れる。
-            //   ^・は・・先頭一致
-            //   $  は   終端一致
+            // 'sex' => 'required|string|regex:/^[1-3]+$/',
+            'sex' => 'required|in:1,2,3',
 
-            'sex' => 'required|string|regex:/^[1-3]+$/', //この中に1,2,3しか受け付けないのを書く。
-            // 'sex' => 'required|string|between:1,3',
+            'datetime_validation' => 'required|date|after:1999-12-31|before:tomorrow',
 
-
-
-            //ここわからない
-            'old_year' => 'required|',
-            //2000年1月1日から今日まで、正しい日付かどうか（例:2/31や6/31はNG）
-            'old_month' => 'required|',
-            'old_day' => 'required|',
-
-            // 'role' => 'exclude_unless:check,true|required|string',
-            //繋げ方がわからないが2行にする
-            //・講師(国語)、講師(数学)、教師(英語)、生徒、以外は無効 valueの数字を入れる。
-            'role' => 'required|string|regex:/^[1-4]+$/',
-
-
+            // 'role' => 'required|string|regex:/^[1-4]+$/',
+            'role' => 'required|in:1,2,3,4',
 
             'password' => 'required|regex:/^[a-zA-Z0-9]+$/|min:8|max:30|confirmed:password',
-
             'password_confirmation' => 'required|regex:/^[a-zA-Z0-9]+$/|min:8|max:30',
-            //確認用のパスワードのnameをpassword_confirmationに変える？
         ];
     }
 
@@ -96,16 +96,14 @@ class RegisterFormRequest extends FormRequest
             'mail_address.email' => 'メールアドレスの形式で入力して下さい。',
 
             'sex.required' => '性別は入力必須です。',
+            'sex.regex' => '性別は"男性" "女性" "その他" から選んでください。',
 
-            'old_year.required' => '年は入力必須です',
-            //2000年1月1日から今日まで、正しい日付かどうか
-
-            'old_month.required' => '月は入力必須です',
-
-
-            'old_day.required' => '日は入力必須です',
+            'datetime_validation.date' => "有効な日付に直してください。",
+            'datetime_validation.after' => "2000年1月1日から今日までの日付を入力してください。",
+            'datetime_validation.before' => "2000年1月1日から今日までの日付を入力してください。",
 
             'role.required' => '役職は入力必須です',
+            'role.regex' => '役職は "教師(国語)" "教師(数学)" "教師(英語)" から選んでください。',
 
 
 
