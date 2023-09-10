@@ -167,6 +167,21 @@
             <!-- 年 -->
             <select class="old_year" name="old_year" style="border: none; width:25%; border-bottom: 2px solid #33CCFF;">
               <option value="none">-----</option>
+              <option value="1985">1985</option>
+              <option value="1986">1986</option>
+              <option value="1987">1987</option>
+              <option value="1988">1988</option>
+              <option value="1989">1989</option>
+              <option value="1990">1990</option>
+              <option value="1991">1991</option>
+              <option value="1992">1992</option>
+              <option value="1993">1993</option>
+              <option value="1994">1994</option>
+              <option value="1995">1995</option>
+              <option value="1996">1996</option>
+              <option value="1997">1997</option>
+              <option value="1998">1998</option>
+              <option value="1999">1999</option>
               <option value="2000">2000</option>
               <option value="2001">2001</option>
               <option value="2002">2002</option>
@@ -288,10 +303,12 @@
 
             <label class="d-block m-0" style="font-size:13px">選択科目</label>
 
+            <!-- 全ての科目名を表示する処理 -->
             @foreach($subjects as $subject)
               <div class="mt-1">
                 <input type="checkbox" name="subject[]" value="{{ $subject->id }}">
                 <label>{{ $subject->subject }}</label>
+                <!-- 科目名を表示する処理 -->
               </div>
             @endforeach
           </div>

@@ -26,26 +26,30 @@ class RegisterFormRequest extends FormRequest
      * @return array
      */
 
-    //バリデーションをかける前に,バラバラに渡された変数を,日付の形にして,rules()に送る処理
+
+
+     //バリデーションをかける前に,バラバラに渡された変数を,日付の形にして,rules()に送る処理
     public function getValidatorInstance(){
     //生年月日をまとめて直に渡す
-    $old_year = $this->input('old_year');
-    $old_month = $this->input('old_month');
-    $old_day = $this->input('old_day');
+        $old_year = $this->input('old_year');
+        $old_month = $this->input('old_month');
+        $old_day = $this->input('old_day');
 
 
-    $datetime = $old_year .'-'. $old_month .'-'. $old_day;
-    //ハイフンをつけて日付を作る処理(2023-09-10)
+        $datetime = $old_year .'-'. $old_month .'-'. $old_day;
+        //ハイフンをつけて日付を作る処理(2023-09-10)
 
-    //rules()に渡す処理
-    $this->merge([
-        'datetime_validation' => $datetime,
-    ]);
+        //rules()に渡す処理
+        $this->merge([
+            'datetime_validation' => $datetime,
+        ]);
 
-    return parent::getValidatorInstance();
-    //ここで定義した変数はここでしか使えないようにしている(parentで返しているのがこのメソッドなので)
+        return parent::getValidatorInstance();
+        //ここで定義した変数はここでしか使えないようにしている(parentで返しているのがこのメソッドなので)
 
     }
+
+
 
     public function rules()
     {

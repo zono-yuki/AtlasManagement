@@ -64,51 +64,31 @@ class RegisterController extends Controller
 
     //新規登録ボタンを押した時の処理
     public function registerPost(RegisterFormRequest $request)
-    //フォームリクエストから受け取る。バリデーション
+    //フォームリクエストから受け取る。バリデーション処理
+
     //【Laravelのトランザクション】
     // クロージャーの中の処理で例外が発生すると自動でロールバックされクロージャーの中で返した値がtransactionメソッドの返り値にできる
     {
         DB::beginTransaction();
         try{
-            //参考サイトから引用
-            // $date = $request->date;
-
-            // list($year, $month, $day) = explode('-', $date);ハイフンを取り除く
-
-            // if (checkdate($month, $day, $year)) {
-            //     echo "true";
-            // } else {
-            //     echo "false";
-            // }
-
 
             //生年月日のvalueを受け取る処理
             $old_year = $request->old_year;
             $old_month = $request->old_month;
             $old_day = $request->old_day;
 
-            //ハイフンをつける処理
+            //日付をまとめて、ハイフンをつける処理
             $data = $old_year . '-' . $old_month . '-' . $old_day;
-
-            //ハイフンを取り除く処理  (今回ハイフンは$old_yearなどに、はいっていないからいらないかも？？？)
-            list($year, $month, $day) = explode('-', $data);
-
-            //日付の妥当性をチェックする処理
-            if (checkdate($old_month, $old_day, $old_year)) {
-                echo "true";
-            } else {
-                echo "false";
-                return 'NG : 日付が正しくありません。';
-            }
-
 
             $birth_day = date('Y-m-d', strtotime($data));
             //引数2つの時：「第2引数のタイムスタンプ」(上でハイフンをつけた変数$data)を「指定したフォーマット(第1引数)'Y-m-d'」で出力する処理
-
-            //ro
-            $subjects = $request->subject;
+            //strtotime($dataをUNIXタイムスタンプに変換する)
 
 
+            //register.blade.phpの  'name="subject[]'を受け取る。subjectはsubject[]のこと。(valueには'$subject->id'が入っている。)
+            $subjects = $request->subject;//科目を取得する
+
+            //新規登録処理したものを$user_getに入れる処理
             $user_get = User::create([
                 'over_name' => $request->over_name,
                 'under_name' => $request->under_name,
@@ -120,12 +100,33 @@ class RegisterController extends Controller
                 'role' => $request->role,
                 'password' => bcrypt($request->password)
             ]);
+
+            //
             $user = User::findOrFail($user_get->id);
+            //findはidでユーザーを探す
+            //違いとしては、もしidが見つからなかった時に
+            //find()：nullを返す。
+            //findOrFail()：エラー（404HTTPレスポンス）を返す。例外処理。
+
+
+            //$userには、新規登録したユーザー情報が入っている。
+            //$subjectsには、選択科目のidが入っている。
+            //中間テーブルに紐づける処理($userのidをuser_idに,$subjectsのidをsubject_idとして中間テーブルに登録(attach())する処理
+            //$user->subjects()で、中間テーブルにアクセルする。
             $user->subjects()->attach($subjects);
+
+            //トランザクション（一連の処理）で実行した処理を確定（コミット）して終了する記述
             DB::commit();
+
+            //ログイン画面に遷移
             return view('auth.login.login');
+
         }catch(\Exception $e){
+
+            //失敗したら、登録せずにロールバック(トランザクションのすべてを破棄)する処理。
             DB::rollback();
+
+            //ログイン画面へ
             return redirect()->route('loginView');
         }
     }
