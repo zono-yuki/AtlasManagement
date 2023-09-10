@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Posts\Like;
 use Auth;
+use App\Models\Users\subjects;
+
 
 class User extends Authenticatable
 {
@@ -65,10 +67,16 @@ class User extends Authenticatable
     public function reserveSettings(){
         return $this->belongsToMany('App\Models\Calendars\ReserveSettings', 'reserve_setting_users', 'user_id', 'reserve_setting_id')->withPivot('id');
     }
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //多対多のリレーションの定義
     public function subjects(){
-        return ;// リレーションの定義
+        // return $this->belongsToMany('App\Models\Users\Subjects', 'subject_users', 'user_id', 'subject_id');
+        return $this->belongsToMany(Subjects::class, 'subject_users', 'user_id', 'subject_id');
+
     }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // いいねしているかどうか
     public function is_Like($post_id){
