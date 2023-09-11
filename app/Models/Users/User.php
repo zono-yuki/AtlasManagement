@@ -44,7 +44,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password' , 'remember_token', 'user_id' , 'subject_users'
     ];
 
     /**
@@ -71,9 +71,16 @@ class User extends Authenticatable
 
     //多対多のリレーションの定義
     public function subjects(){
-        // return $this->belongsToMany('App\Models\Users\Subjects', 'subject_users', 'user_id', 'subject_id');
-        return $this->belongsToMany(Subjects::class, 'subject_users', 'user_id', 'subject_id');
+        // return $this->belongsToMany(Subjects::class, 'subject_users', 'user_id', 'subject_id');
 
+        return $this->belongsToMany('App\Users\User', 'subject_users', 'user_id', 'subject_id');
+        //ログインユーザーのid,選択科目のid
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\Users\User', 'subject_users', 'subject_id', 'user_id');
+        //選択科目のid,ログインユーザーのid
     }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
