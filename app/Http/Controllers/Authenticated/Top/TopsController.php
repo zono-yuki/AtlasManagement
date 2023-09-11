@@ -8,6 +8,7 @@ use Auth;
 
 class TopsController extends Controller
 {
+    //トップ画面を表示する処理
     public function show(){
         return view('authenticated.top.top');
     }

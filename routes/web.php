@@ -14,12 +14,16 @@
 Route::group(['middleware' => ['guest']], function(){
     Route::namespace('Auth')->group(function(){
 
+        //新規登録画面を表示する
         Route::get('/register', 'RegisterController@registerView')->name('registerView');
 
+        //新規登録ボタンを押した時の登録処理へ
         Route::post('/register/post', 'RegisterController@registerPost')->name('registerPost');
 
+        //ログイン画面を表示する
         Route::get('/login', 'LoginController@loginView')->name('loginView');
-        
+
+        //ログインボタンを押した時の処理
         Route::post('/login/post', 'LoginController@loginPost')->name('loginPost');
     });
 });
@@ -28,6 +32,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::namespace('Authenticated')->group(function(){
         Route::namespace('Top')->group(function(){
             Route::get('/logout', 'TopsController@logout');
+
+            //トップ画面を表示する処理
             Route::get('/top', 'TopsController@show')->name('top.show');
         });
         Route::namespace('Calendar')->group(function(){

@@ -53,6 +53,9 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+
+
+     //新規登録画面の表示
     public function registerView()
     {
         $subjects = Subjects::all();//科目名を全部取得する処理

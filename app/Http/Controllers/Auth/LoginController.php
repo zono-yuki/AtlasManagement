@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
 
 
+
 class LoginController extends Controller
 {
     /*
@@ -47,11 +48,14 @@ class LoginController extends Controller
         return view('auth.login.login');
     }
 
+    //ログインボタンを押した時の処理
     public function loginPost(Request $request)
     {
-        $userdata = $request -> only('mail_address', 'password');
+        $userdata = $request -> only('mail_address', 'password');//only('')入力データの一部を取得する
+
+        //認証処理 attempt()は認証に成功したらtrueを返す。失敗時はfalseを返す。
         if (Auth::attempt($userdata)) {
-            return redirect('/top');
+            return redirect('/top');//成功したらトップページへ遷移
         }else{
             return redirect('/login')->with('flash_message', 'name or password is incorrect');
         }
