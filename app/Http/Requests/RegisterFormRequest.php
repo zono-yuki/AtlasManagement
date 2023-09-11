@@ -63,13 +63,13 @@ class RegisterFormRequest extends FormRequest
 
             'mail_address' => 'required|string|max:100|unique:users,mail_address|email',
 
-            // 'sex' => 'required|string|regex:/^[1-3]+$/',
-            'sex' => 'required|in:1,2,3',
+            'sex' => 'required|string|regex:/^[1-3]+$/',
+            // 'sex' => 'required|in:1,2,3',
 
             'datetime_validation' => 'required|date|after:1999-12-31|before:tomorrow',
 
-            // 'role' => 'required|string|regex:/^[1-4]+$/',
-            'role' => 'required|in:1,2,3,4',
+            'role' => 'required|string|regex:/^[1-4]+$/',
+            // 'role' => 'required|in:1,2,3,4',
 
             'password' => 'required|regex:/^[a-zA-Z0-9]+$/|min:8|max:30|confirmed:password',
             'password_confirmation' => 'required|regex:/^[a-zA-Z0-9]+$/|min:8|max:30',
@@ -107,7 +107,7 @@ class RegisterFormRequest extends FormRequest
             'datetime_validation.before' => "2000年1月1日から今日までの日付を入力してください。",
 
             'role.required' => '役職は入力必須です',
-            'role.regex' => '役職は "教師(国語)" "教師(数学)" "教師(英語)" から選んでください。',
+            'role.regex' => '役職は "教師(国語)" "教師(数学)" "教師(英語)" "生徒" から選んでください。',
 
 
 

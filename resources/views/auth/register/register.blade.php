@@ -19,19 +19,21 @@
   <form action="{{ route('registerPost') }}" method="POST">
     <div class="w-120 vh-100 d-flex" style="align-items:center; justify-content:center;">
       <div class="w-30 vh-60 border p-5 m-2">
-<!-- ----------------------------------------------------------------------------- -->
+        <!-- ----------------------------------------------------------------------------- -->
 
         <!--名前（漢字）のエラーメッセージを表示する-->
-        @error('over_name')
-        <div class="register_error">
-          <p class="error-message">{{ $message }}</p>
-        </div>
-        @enderror
-        @error('under_name')
-        <div class="register_error">
-          <p class="error-message">{{ $message }}</p>
-        </div>
-        @enderror
+        @if ($errors->has('over_name'))
+            @foreach($errors->get('over_name') as $message)
+              <p class="error-message"> {{ $message }} </>
+            @endforeach
+        @endif
+
+        @if ($errors->has('under_name'))
+            @foreach($errors->get('under_name') as $message)
+              <p class="error-message"> {{ $message }} </>
+            @endforeach
+        @endif
+
         <div class="register_form">
 
           <!-- 姓 名 -->
@@ -54,67 +56,70 @@
             </div>
           </div>
 
-<!-------------------------------------------------------------------------------- -->
+          <!-------------------------------------------------------------------------------- -->
 
-            <!--名前（フリガナ）のエラーメッセージを表示する-->
-            @error('over_name_kana')
-            <div class="register_error">
-              <p class="error-message">{{ $message }}</p>
-            </div>
-            @enderror
-            @error('under_name_kana')
-            <div class="register_error">
-              <p class="error-message">{{ $message }}</p>
-            </div>
-            @enderror
-            <div class="register_form">
+          <!--名前（フリガナ）のエラーメッセージを表示する-->
+          @if ($errors->has('over_name_kana'))
+            @foreach($errors->get('over_name_kana') as $message)
+              <p class="error-message"> {{ $message }} </>
+            @endforeach
+          @endif
+
+          @if ($errors->has('under_name_kana'))
+            @foreach($errors->get('under_name_kana') as $message)
+              <p class="error-message"> {{ $message }} </>
+            @endforeach
+          @endif
+
+
+          <div class="register_form">
 
             <!--  セイ,メイ-->
             <div class="d-flex mt-3" style="justify-content:space-between">
 
-                <!-- セイ -->
-                <div class="" style="width:140px">
-                  <label class="d-block m-0" style="font-size:15px">セイ</label>
-                  <div class="border-bottom border-primary" style="width:140px;">
-                    <input type="text" style="width:140px;" class="border-0 over_name_kana" name="over_name_kana">
-                  </div>
+              <!-- セイ -->
+              <div class="" style="width:140px">
+                <label class="d-block m-0" style="font-size:15px">セイ</label>
+                <div class="border-bottom border-primary" style="width:140px;">
+                  <input type="text" style="width:140px;" class="border-0 over_name_kana" name="over_name_kana">
                 </div>
+              </div>
 
-                <!-- メイ -->
-                <div class="" style="width:140px">
-                  <label class="d-block m-0" style="font-size:15px">メイ</label>
-                  <div class="border-bottom border-primary" style="width:140px;">
-                    <input type="text" style="width:140px;" class="border-0 under_name_kana" name="under_name_kana">
-                  </div>
+              <!-- メイ -->
+              <div class="" style="width:140px">
+                <label class="d-block m-0" style="font-size:15px">メイ</label>
+                <div class="border-bottom border-primary" style="width:140px;">
+                  <input type="text" style="width:140px;" class="border-0 under_name_kana" name="under_name_kana">
                 </div>
+              </div>
             </div>
 
 
-                <!--mail_addressのエラーメッセージを表示する-->
-                @error('mail_address')
-                <div class="register_error">
-                  <p class="error-message">{{ $message }}</p>
-                </div>
-                @enderror
+            <!--mail_addressのエラーメッセージを表示する-->
+            @if ($errors->has('mail_address'))
+              @foreach($errors->get('mail_address') as $message)
+                <p class="error-message"> {{ $message }} </p>
+              @endforeach
+            @endif
 
-                <!-- メールアドレス -->
-                <div class="mt-3">
-                  <label class="m-0 d-block" style="font-size:15px">メールアドレス</label>
-                  <div class="border-bottom  border-primary">
-                    <input type="mail" class="w-100  border-0 mail_address" name="mail_address">
-                  </div>
-                </div>
+            <!-- メールアドレス -->
+            <div class="mt-3">
+              <label class="m-0 d-block" style="font-size:15px">メールアドレス</label>
+              <div class="border-bottom  border-primary">
+                <input type="mail" class="w-100  border-0 mail_address" name="mail_address">
+              </div>
+            </div>
 
           </div>
 
-<!-- ------------------------------------------------------------------------------- -->
+          <!-- ------------------------------------------------------------------------------- -->
 
           <!--性別のエラーメッセージを表示する-->
-                @error('sex')
-                <div class="register_error">
-                  <p class="error-message">{{ $message }}</p>
-                </div>
-                @enderror
+          @if ($errors->has('sex'))
+            @foreach($errors->get('sex') as $message)
+             <p class="error-message"> {{ $message }} </p>
+            @endforeach
+          @endif
           <!-- 性別 -->
           <div class="mt-4 sex-flex">
 
@@ -134,32 +139,20 @@
             </div>
           </div>
 
-<!-- ------------------------------------------------------------------------------- -->
+          <!-- ------------------------------------------------------------------------------- -->
 
 
-            <!--生年月日のエラーメッセージを表示する-->
-            @error('old_year')
-                <div class="register_error">
-                  <p class="error-message">{{ $message }}</p>
-                </div>
-            @enderror
-
-            @error('old_month')
-                <div class="register_error">
-                  <p class="error-message">{{ $message }}</p>
-                </div>
-            @enderror
-
-            @error('old_day')
-                <div class="register_error">
-                  <p class="error-message">{{ $message }}</p>
-                </div>
-            @enderror
+          <!--生年月日のエラーメッセージを表示する-->
+          @if ($errors->has('datetime_validation'))
+            @foreach($errors->get('datetime_validation') as $message)
+             <p class="error-message"> {{ $message }} </p>
+            @endforeach
+          @endif
 
 
 
-            <!-- 生年月日 -->
-            <div class="mt-3">
+          <!-- 生年月日 -->
+          <div class="mt-3">
 
             <label class="d-block m-0 aa" style="font-size:13px">生年月日</label>
 
@@ -271,14 +264,14 @@
 
           </div>
 
-<!-- -------------------------------------------------------------------------------- -->
+          <!-- -------------------------------------------------------------------------------- -->
 
           <!--役職のエラーメッセージを表示する-->
-          @error('role')
-                <div class="register_error">
-                  <p class="error-message">{{ $message }}</p>
-                </div>
-          @enderror
+          @if ($errors->has('role'))
+            @foreach($errors->get('role') as $message)
+             <p class="error-message"> {{ $message }} </p>
+            @endforeach
+          @endif
 
           <!-- 役職 -->
           <div class="mt-3">
@@ -305,28 +298,28 @@
 
             <!-- 全ての科目名を表示する処理 -->
             @foreach($subjects as $subject)
-              <div class="mt-1">
-                <input type="checkbox" name="subject[]" value="{{ $subject->id }}">
-                <label>{{ $subject->subject }}</label>
-                <!-- 科目名を表示する処理 -->
-              </div>
+            <div class="mt-1">
+              <input type="checkbox" name="subject[]" value="{{ $subject->id }}">
+              <label>{{ $subject->subject }}</label>
+              <!-- 科目名を表示する処理 -->
+            </div>
             @endforeach
           </div>
 
-<!------------------------------------------------------------------------------------->
+          <!------------------------------------------------------------------------------------->
 
           <!--パスワードのエラーメッセージを表示する-->
-          @error('password')
-                <div class="register_error">
-                  <p class="error-message">{{ $message }}</p>
-                </div>
-          @enderror
+          @if ($errors->has('password'))
+            @foreach($errors->get('password') as $message)
+             <p class="error-message"> {{ $message }} </p>
+            @endforeach
+          @endif
 
-          @error('password_confirmation')
-                <div class="register_error">
-                  <p class="error-message">{{ $message }}</p>
-                </div>
-          @enderror
+          @if ($errors->has('password_confirmation'))
+            @foreach($errors->get('password_confirmation') as $message)
+             <p class="error-message"> {{ $message }} </p>
+            @endforeach
+          @endif
 
           <!-- パスワード -->
 
@@ -345,12 +338,12 @@
             </div>
           </div>
 
-<!------------------登録ボタン---------------------------------------------------->
+          <!------------------登録ボタン---------------------------------------------------->
           <div class="mt-3 text-right">
             <input type="submit" class="btn btn-primary register_btn" disabled value="新規登録" onclick="return confirm('登録してよろしいですか？')">
           </div>
 
-<!------------------ログイン画面へ戻る---------------------------------------------->
+          <!------------------ログイン画面へ戻る---------------------------------------------->
 
           <div class="text-center mt-1 mr-5">
             <a href="{{ route('loginView') }}">ログインはこちら</a>
