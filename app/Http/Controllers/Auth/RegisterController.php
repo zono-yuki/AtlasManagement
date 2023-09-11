@@ -84,9 +84,14 @@ class RegisterController extends Controller
             //引数2つの時：「第2引数のタイムスタンプ」(上でハイフンをつけた変数$data)を「指定したフォーマット(第1引数)'Y-m-d'」で出力する処理
             //strtotime($dataをUNIXタイムスタンプに変換する)
 
+            // dd($birth_day);
+            //2003-01-01 入っている
 
             //register.blade.phpの  'name="subject[]'を受け取る。subjectはsubject[]のこと。(valueには'$subject->id'が入っている。)
             $subjects = $request->subject;//科目を取得する
+
+            // dd($subjects);
+            //0 => "1"
 
             //新規登録処理したものを$user_getに入れる処理
             $user_get = User::create([
@@ -107,6 +112,8 @@ class RegisterController extends Controller
             //違いとしては、もしidが見つからなかった時に
             //find()：nullを返す。
             //findOrFail()：エラー（404HTTPレスポンス）を返す。例外処理。
+
+            // dd($user);
 
 
             //$userには、新規登録したユーザー情報が入っている。

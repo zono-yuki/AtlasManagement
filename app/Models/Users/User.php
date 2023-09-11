@@ -69,17 +69,17 @@ class User extends Authenticatable
     }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //多対多のリレーションの定義
-    public function subjects(){
-        // return $this->belongsToMany(Subjects::class, 'subject_users', 'user_id', 'subject_id');
+    //多対多のリレーションの定義(中間テーブル(subject_usersテーブル)の設定)
 
-        return $this->belongsToMany('App\Users\User', 'subject_users', 'user_id', 'subject_id');
+    public function subjects()
+    {
+        return $this->belongsToMany(User::class, 'subject_users', 'user_id', 'subject_id');
         //ログインユーザーのid,選択科目のid
     }
 
     public function users()
     {
-        return $this->belongsToMany('App\Users\User', 'subject_users', 'subject_id', 'user_id');
+        return $this->belongsToMany(User::class, 'subject_users', 'subject_id', 'user_id');
         //選択科目のid,ログインユーザーのid
     }
 
