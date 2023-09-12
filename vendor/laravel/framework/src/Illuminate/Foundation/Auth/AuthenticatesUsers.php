@@ -17,7 +17,15 @@ trait AuthenticatesUsers
      */
     public function showLoginForm()
     {
+        // return view('auth.login');
+
+        // セッションタイムアウトした時、前回URL情報がセッションに残ってしまう
+        // 別アカウントでログインし直した場合も前回URLを参照してしまうため削除する
+        if (\Session::has('url.intended')){
+            \Session::forget('url.intended');
+        }
         return view('auth.login');
+
     }
 
     /**

@@ -30,18 +30,26 @@ Route::group(['middleware' => ['guest']], function(){
 
 Route::group(['middleware' => 'auth'], function(){
     Route::namespace('Authenticated')->group(function(){
+
         Route::namespace('Top')->group(function(){
+
+            //ログアウトする処理
             Route::get('/logout', 'TopsController@logout');
 
             //トップ画面を表示する処理
             Route::get('/top', 'TopsController@show')->name('top.show');
         });
+
+
         Route::namespace('Calendar')->group(function(){
+            //一般
             Route::namespace('General')->group(function(){
                 Route::get('/calendar/{user_id}', 'CalendarsController@show')->name('calendar.general.show');
                 Route::post('/reserve/calendar', 'CalendarsController@reserve')->name('reserveParts');
                 Route::post('/delete/calendar', 'CalendarsController@delete')->name('deleteParts');
             });
+
+            //管理者
             Route::namespace('Admin')->group(function(){
                 Route::get('/calendar/{user_id}/admin', 'CalendarsController@show')->name('calendar.admin.show');
                 Route::get('/calendar/{date}/{part}', 'CalendarsController@reserveDetail')->name('calendar.admin.detail');
@@ -50,23 +58,40 @@ Route::group(['middleware' => 'auth'], function(){
             });
         });
         Route::namespace('BulletinBoard')->group(function(){
+
             Route::get('/bulletin_board/posts/{keyword?}', 'PostsController@show')->name('post.show');
+
             Route::get('/bulletin_board/input', 'PostsController@postInput')->name('post.input');
+
             Route::get('/bulletin_board/like', 'PostsController@likeBulletinBoard')->name('like.bulletin.board');
+
             Route::get('/bulletin_board/my_post', 'PostsController@myBulletinBoard')->name('my.bulletin.board');
+
             Route::post('/bulletin_board/create', 'PostsController@postCreate')->name('post.create');
+
             Route::post('/create/main_category', 'PostsController@mainCategoryCreate')->name('main.category.create');
+
             Route::post('/create/sub_category', 'PostsController@subCategoryCreate')->name('sub.category.create');
+
             Route::get('/bulletin_board/post/{id}', 'PostsController@postDetail')->name('post.detail');
+
             Route::post('/bulletin_board/edit', 'PostsController@postEdit')->name('post.edit');
+
             Route::get('/bulletin_board/delete/{id}', 'PostsController@postDelete')->name('post.delete');
+
             Route::post('/comment/create', 'PostsController@commentCreate')->name('comment.create');
+
             Route::post('/like/post/{id}', 'PostsController@postLike')->name('post.like');
+
             Route::post('/unlike/post/{id}', 'PostsController@postUnLike')->name('post.unlike');
+
         });
         Route::namespace('Users')->group(function(){
+
             Route::get('/show/users', 'UsersController@showUsers')->name('user.show');
+
             Route::get('/user/profile/{id}', 'UsersController@userProfile')->name('user.profile');
+
             Route::post('/user/profile/edit', 'UsersController@userEdit')->name('user.edit');
         });
     });

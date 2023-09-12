@@ -74,14 +74,11 @@ class User extends Authenticatable
     public function subjects()
     {
         return $this->belongsToMany(User::class, 'subject_users', 'user_id', 'subject_id');
-        //ログインユーザーのid,選択科目のid
+        //ログインユーザーのidがuser_idに入る。
+        //attach($subjects)のidがsubject_idに入る。
     }
 
-    public function users()
-    {
-        return $this->belongsToMany(User::class, 'subject_users', 'subject_id', 'user_id');
-        //選択科目のid,ログインユーザーのid
-    }
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 

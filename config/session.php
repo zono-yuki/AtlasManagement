@@ -31,7 +31,9 @@ return [
     |
     */
 
+    //セッション時間の調整
     'lifetime' => env('SESSION_LIFETIME', 120),
+    // 'lifetime' => env('SESSION_LIFETIME', 1),
 
     'expire_on_close' => false,
 

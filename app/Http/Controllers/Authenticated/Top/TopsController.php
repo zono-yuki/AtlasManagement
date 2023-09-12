@@ -13,6 +13,7 @@ class TopsController extends Controller
         return view('authenticated.top.top');
     }
 
+    //ログアウトする処理
     public function logout(){
         Auth::logout();
         return redirect('/login');

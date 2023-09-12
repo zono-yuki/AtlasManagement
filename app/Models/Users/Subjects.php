@@ -19,8 +19,12 @@ class Subjects extends Model
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //多対多のリレーションの定義
-    public function users(){
+    public function users()
+    {
         // return $this->belongsToMany(User::class, 'subject_users', 'subject_id', 'user_id');
+        return $this->belongsToMany(Subjects::class, 'subject_users', 'subject_id', 'user_id');
+
+        //選択科目のid,ログインユーザーのid
     }
 
 
