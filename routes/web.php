@@ -42,14 +42,14 @@ Route::group(['middleware' => 'auth'], function(){
 
 
         Route::namespace('Calendar')->group(function(){
-            //一般
+            //生徒
             Route::namespace('General')->group(function(){
                 Route::get('/calendar/{user_id}', 'CalendarsController@show')->name('calendar.general.show');
                 Route::post('/reserve/calendar', 'CalendarsController@reserve')->name('reserveParts');
                 Route::post('/delete/calendar', 'CalendarsController@delete')->name('deleteParts');
             });
 
-            //管理者
+            //教師
             Route::namespace('Admin')->group(function(){
                 Route::get('/calendar/{user_id}/admin', 'CalendarsController@show')->name('calendar.admin.show');
                 Route::get('/calendar/{date}/{part}', 'CalendarsController@reserveDetail')->name('calendar.admin.detail');
