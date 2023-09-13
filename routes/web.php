@@ -73,12 +73,14 @@ Route::group(['middleware' => 'auth'], function(){
 
             Route::post('/create/sub_category', 'PostsController@subCategoryCreate')->name('sub.category.create');
 
+            //投稿詳細画面へ遷移する
             Route::get('/bulletin_board/post/{id}', 'PostsController@postDetail')->name('post.detail');
 
             Route::post('/bulletin_board/edit', 'PostsController@postEdit')->name('post.edit');
 
             Route::get('/bulletin_board/delete/{id}', 'PostsController@postDelete')->name('post.delete');
 
+            //コメントをpost_commentsテーブルに登録する処理
             Route::post('/comment/create', 'PostsController@commentCreate')->name('comment.create');
 
             Route::post('/like/post/{id}', 'PostsController@postLike')->name('post.like');

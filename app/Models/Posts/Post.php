@@ -15,11 +15,11 @@ class Post extends Model
         'post',
     ];
 
-    public function user(){
+    public function user(){//usersテーブルとのリレーション(1対多の多の方)
         return $this->belongsTo('App\Models\Users\User');
     }
 
-    public function postComments(){
+    public function postComments(){//postCommentsとのリレーション(1対多の1の方)
         return $this->hasMany('App\Models\Posts\PostComment');
     }
 

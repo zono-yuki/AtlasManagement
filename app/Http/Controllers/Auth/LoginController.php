@@ -55,7 +55,7 @@ class LoginController extends Controller
 
         //認証処理 attempt()は認証に成功したらtrueを返す。失敗時はfalseを返す。
         if (Auth::attempt($userdata)) {
-            
+
             return redirect('/top');//成功したらトップページへ遷移
 
         }else{

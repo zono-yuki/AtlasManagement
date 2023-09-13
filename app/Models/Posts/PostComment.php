@@ -18,10 +18,12 @@ class PostComment extends Model
     ];
 
     public function post(){
+        // postテーブルとのリレーション 1対多の多の方
         return $this->belongsTo('App\Models\Posts\Post');
     }
 
     public function commentUser($user_id){
+        //このコメントをしたユーザーを探す。一致したusersテーブルのレコードを持ってくる。
         return User::where('id', $user_id)->first();
     }
 }

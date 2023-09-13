@@ -56,7 +56,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function posts(){
+    public function posts(){//postsテーブルとのリレーション1対多の1の方。
         return $this->hasMany('App\Models\Posts\Post');
     }
 

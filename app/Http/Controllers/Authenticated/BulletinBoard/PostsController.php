@@ -13,8 +13,10 @@ use App\Models\Users\User;
 use App\Http\Requests\BulletinBoard\PostFormRequest;
 use Auth;
 
+
 class PostsController extends Controller
 {
+    //掲示板をクリックしたら、投稿一覧を表示する
     public function show(Request $request){
         $posts = Post::with('user', 'postComments')->get();
         $categories = MainCategory::get();
@@ -38,9 +40,17 @@ class PostsController extends Controller
         return view('authenticated.bulletinboard.posts', compact('posts', 'categories', 'like', 'post_comment'));
     }
 
-    public function postDetail($post_id){
+    //タイトルをクリックしたら投稿詳細画面へ遷移する処理
+    public function postDetail($post_id){//投稿のidを受け取る
+
         $post = Post::with('user', 'postComments')->findOrFail($post_id);
+
+        //Post.phpでリレーションしているメソッドを使う。user()とpostComments()、紐づいているuserテーブルとpostCommentsテーブルの$post_idを探す。一致したレコードを$postに入れる。
+
+        // dd($post);
+
         return view('authenticated.bulletinboard.post_detail', compact('post'));
+        //投稿詳細画面を表示する。$postを送る。
     }
 
     public function postInput(){
@@ -74,13 +84,15 @@ class PostsController extends Controller
         return redirect()->route('post.input');
     }
 
+    // post_commentsテーブルにコメントを登録する処理
     public function commentCreate(Request $request){
         PostComment::create([
-            'post_id' => $request->post_id,
-            'user_id' => Auth::id(),
-            'comment' => $request->comment
+            'post_id' => $request->post_id,//投稿のidを登録する。
+            'user_id' => Auth::id(),//コメントを書いた人のid(ログインid)を登録する。
+            'comment' => $request->comment//コメント本文を登録する。
         ]);
         return redirect()->route('post.detail', ['id' => $request->post_id]);
+        //再度、投稿詳細画面へ遷移する処理。表示させるために、この投稿のidをまた送る。
     }
 
     public function myBulletinBoard(){

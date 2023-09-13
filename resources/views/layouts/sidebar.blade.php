@@ -26,7 +26,7 @@
       <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
 
 
-      <!-- 管理者のみに表示する if文で作る教師なら表示する(スクール予約確認、スクール枠登録) -->
+      <!-- 管理者のみに表示する 教師の時のみ表示する(スクール予約確認、スクール枠登録) -->
       <!-- スクール予約確認 -->
       @if(Auth::user()->role != 4 )
       <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
