@@ -59,14 +59,17 @@ Route::group(['middleware' => 'auth'], function(){
         });
         Route::namespace('BulletinBoard')->group(function(){
 
+            //掲示板へ
             Route::get('/bulletin_board/posts/{keyword?}', 'PostsController@show')->name('post.show');
 
+            //投稿画面へ
             Route::get('/bulletin_board/input', 'PostsController@postInput')->name('post.input');
 
             Route::get('/bulletin_board/like', 'PostsController@likeBulletinBoard')->name('like.bulletin.board');
 
             Route::get('/bulletin_board/my_post', 'PostsController@myBulletinBoard')->name('my.bulletin.board');
 
+            //投稿ボタンを押すと、、、
             Route::post('/bulletin_board/create', 'PostsController@postCreate')->name('post.create');
 
             Route::post('/create/main_category', 'PostsController@mainCategoryCreate')->name('main.category.create');
@@ -76,6 +79,7 @@ Route::group(['middleware' => 'auth'], function(){
             //投稿詳細画面へ遷移する
             Route::get('/bulletin_board/post/{id}', 'PostsController@postDetail')->name('post.detail');
 
+            //編集モーダルで、編集ボタンを押したら、
             Route::post('/bulletin_board/edit', 'PostsController@postEdit')->name('post.edit');
 
             Route::get('/bulletin_board/delete/{id}', 'PostsController@postDelete')->name('post.delete');

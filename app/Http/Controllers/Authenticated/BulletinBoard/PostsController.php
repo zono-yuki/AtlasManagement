@@ -16,7 +16,7 @@ use Auth;
 
 class PostsController extends Controller
 {
-    //掲示板をクリックしたら、投稿一覧を表示する
+    //掲示板を表示する
     public function show(Request $request){
         $posts = Post::with('user', 'postComments')->get();
         $categories = MainCategory::get();
@@ -45,7 +45,7 @@ class PostsController extends Controller
 
         $post = Post::with('user', 'postComments')->findOrFail($post_id);
 
-        //Post.phpでリレーションしているメソッドを使う。user()とpostComments()、紐づいているuserテーブルとpostCommentsテーブルの$post_idを探す。一致したレコードを$postに入れる。
+        //Post.phpでリレーションしているメソッドを使う。user()とpostComments()、紐づいているuserテーブルとpostCommentsテーブルの、$post_idにはいっているid、と一致しているレコードを探す。一致したレコードを$postに入れる。
 
         // dd($post);
 
@@ -58,21 +58,31 @@ class PostsController extends Controller
         return view('authenticated.bulletinboard.post_create', compact('main_categories'));
     }
 
+    //投稿する処理
     public function postCreate(PostFormRequest $request){
+    // public function postCreate(Request $request)
+
         $post = Post::create([
             'user_id' => Auth::id(),
             'post_title' => $request->post_title,
             'post' => $request->post_body
         ]);
-        return redirect()->route('post.show');
+        return redirect()->route('post.show');//掲示板へ
     }
 
-    public function postEdit(Request $request){
+    //投稿を更新する処理
+    public function postEdit(PostFormRequest $request){
         Post::where('id', $request->post_id)->update([
-            'post_title' => $request->post_title,
-            'post' => $request->post_body,
+
+            'post_title' => $request->post_title,//投稿タイトルを更新する処理
+
+            'post' => $request->post_body,//投稿内容を更新する処理
+
         ]);
+
         return redirect()->route('post.detail', ['id' => $request->post_id]);
+            //更新したのち、投稿詳細画面へ遷移する処理
+
     }
 
     public function postDelete($id){
@@ -85,14 +95,17 @@ class PostsController extends Controller
     }
 
     // post_commentsテーブルにコメントを登録する処理
-    public function commentCreate(Request $request){
+    public function commentCreate(PostFormRequest $request){
+
         PostComment::create([
             'post_id' => $request->post_id,//投稿のidを登録する。
             'user_id' => Auth::id(),//コメントを書いた人のid(ログインid)を登録する。
             'comment' => $request->comment//コメント本文を登録する。
         ]);
+
         return redirect()->route('post.detail', ['id' => $request->post_id]);
         //再度、投稿詳細画面へ遷移する処理。表示させるために、この投稿のidをまた送る。
+
     }
 
     public function myBulletinBoard(){

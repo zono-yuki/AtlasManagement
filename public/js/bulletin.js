@@ -48,18 +48,37 @@ $(function () {
     });
   });
 
+// 投稿の編集モーダルを表示する処理 & 渡された変数をモーダルに表示する処理
   $('.edit-modal-open').on('click',function(){
-    $('.js-modal').fadeIn();
+
+    $('.js-modal').fadeIn();//編集モーダルを表示させる。
+
+    //属性と値(タイトル)を変数に入れる処理
     var post_title = $(this).attr('post_title');
+
+    //属性と値(投稿内容)を変数に入れる処理
     var post_body = $(this).attr('post_body');
+
+    //属性と値(投稿id)を変数に入れる処理
     var post_id = $(this).attr('post_id');
+
+
+    //モーダルのタイトル部分に既存のタイトルを入れる処理
     $('.modal-inner-title input').val(post_title);
+
+    //モーダルの投稿部分に既存のタイトルを入れる処理
     $('.modal-inner-body textarea').text(post_body);
+
+    //投稿idをhiddenのvalueに入れる処理
     $('.edit-modal-hidden').val(post_id);
+
     return false;
+
   });
+
+
   $('.js-modal-close').on('click', function () {
-    $('.js-modal').fadeOut();
+    $('.js-modal').fadeOut();//モーダルを閉じる
     return false;
   });
 

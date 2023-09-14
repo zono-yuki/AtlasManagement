@@ -27,6 +27,10 @@ class PostFormRequest extends FormRequest
         return [
             'post_title' => 'required|string|max:100',
             'post_body' => 'required|string|max:5000',
+
+
+            'comment' => 'required|string|max:2500',
+
             // 'post_category_id' => 'required|'登録されているサブカテゴリーかどうか
             //とりあえず、サブカテゴリー追加タスク実装したあとで追加する。
         ];
@@ -39,6 +43,9 @@ class PostFormRequest extends FormRequest
 
             'post_body.required' => '投稿内容は必ず入力してください。',
             'post_body.max' => '投稿内容は5000文字以内で入力してください。',
+
+            'comment.required' => 'コメントは必ず入力してください。',
+            'comment.max' => 'コメントは2500文字以内で入力してください。',
         ];
     }
 }
