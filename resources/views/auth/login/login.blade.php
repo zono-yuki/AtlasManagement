@@ -18,10 +18,10 @@
   <form action="{{ route('loginPost') }}" method="POST">
 
     <!-- ロゴあとで作る。中央寄せする。 -->
-    <p class="logo">
-      <img class="atlas_logo" src="{{ asset('image/atlas-black.png') }}">
-    </p>
-    <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
+    <div class="w-100 vh-100 d-flex" style="flex-flow: column; align-items:center; justify-content:center;">
+      <p class="logo">
+        <img class="atlas_logo" src="{{ asset('image/atlas-black.png') }}">
+      </p>
       <div class="border vh-50 w-25">
         <div class="w-75 m-auto pt-5">
           <label class="d-block m-0" style="font-size:13px;">メールアドレス</label>
@@ -39,7 +39,7 @@
           <input type="submit" class="btn btn-primary" value="ログイン">
         </div>
         <div class="text-center">
-          <a href="{{ route('registerView') }}">新規登録</a>
+          <a href="{{ route('registerView') }}">新規登録はこちら</a>
         </div>
       </div>
       {{ csrf_field() }}

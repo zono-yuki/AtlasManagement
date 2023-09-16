@@ -33,9 +33,12 @@ li{
 
 /* ログインページ */
 
+
 .atlas_logo{
-  width: 15%;
+  width: 40%;
   height: auto;
+  margin-left: 120px;
+  margin-bottom: 30px;
 }
 
 /* エラーメッセージ赤字 */
