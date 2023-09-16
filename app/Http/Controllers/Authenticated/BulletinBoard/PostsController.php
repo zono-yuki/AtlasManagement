@@ -11,6 +11,10 @@ use App\Models\Posts\PostComment;
 use App\Models\Posts\Like;
 use App\Models\Users\User;
 use App\Http\Requests\BulletinBoard\PostFormRequest;
+use App\Http\Requests\BulletinBoard\PostUpdateFormRequest;
+use App\Http\Requests\BulletinBoard\CommentFormRequest;
+
+
 use Auth;
 
 
@@ -59,9 +63,9 @@ class PostsController extends Controller
     }
 
     //投稿する処理
-    public function postCreate(PostFormRequest $request){
-    // public function postCreate(Request $request)
+    public function postCreate(PostFormRequest $request){//新規投稿用のバリデーション
 
+        //投稿を登録
         $post = Post::create([
             'user_id' => Auth::id(),
             'post_title' => $request->post_title,
@@ -70,8 +74,8 @@ class PostsController extends Controller
         return redirect()->route('post.show');//掲示板へ
     }
 
-    //投稿を更新する処理
-    public function postEdit(PostFormRequest $request){
+    //モーダルで投稿を編集する処理
+    public function postEdit(PostUpdateFormRequest $request){//投稿編集用のバリデーション
         Post::where('id', $request->post_id)->update([
 
             'post_title' => $request->post_title,//投稿タイトルを更新する処理
@@ -94,8 +98,8 @@ class PostsController extends Controller
         return redirect()->route('post.input');
     }
 
-    // post_commentsテーブルにコメントを登録する処理
-    public function commentCreate(PostFormRequest $request){
+    // コメントを登録する処理
+    public function commentCreate(CommentFormRequest $request){
 
         PostComment::create([
             'post_id' => $request->post_id,//投稿のidを登録する。
