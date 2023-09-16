@@ -30,6 +30,7 @@ class Post extends Model
 
     public function postComments(){//postCommentsとのリレーション(1対多の1の方)
         return $this->hasMany(PostComment::class);
+
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -38,8 +39,16 @@ class Post extends Model
         // リレーションの定義
     }
 
-    // コメント数
-    public function commentCounts($post_id){
-        return Post::with('postComments')->find($post_id)->postComments();
+    // コメント数計算
+    public function commentCounts($post_id){ //$post_idは投稿のid
+
+        return Post::with('postComments')->find($post_id)->postComments()->get()->count();
+
+        //postsテーブルのidが$post_idであるカラムをfind()で取得する。そのカラムから、リレーションで紐づいている、postCommentsテーブルのpost_idと同じidの数を取得する。(1対多なのでたくさんある。)=コメントの数が出る。
+
+        // return PostComment::where('post_id', $post_id)->get()->count();
+        //自作。これでもOKだった。
     }
+
+
 }

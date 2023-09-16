@@ -20,12 +20,13 @@
       <div class="post_bottom_area d-flex">
         <div class="d-flex post_status">
 
-         <!-- コメントの表示 -->
+          <!-- コメントの表示 -->
           <div class="mr-5">
             <!-- アイコンの表示 -->
             <i class="fa fa-comment"></i>
             <!-- コメント数の表示 -->
-            <span class="">{{ $post->commentCounts($post->id)->count($post->id) }}</span>
+            <!-- 作成中 -->
+            <span class="">{{ $post->commentCounts($post->id) }}</span>
           </div>
 
           <!-- いいねボタンの表示 -->

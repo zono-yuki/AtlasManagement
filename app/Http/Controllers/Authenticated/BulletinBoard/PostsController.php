@@ -50,7 +50,7 @@ class PostsController extends Controller
                         $posts = Post::with('user', 'postComments')
                         ->where('user_id', Auth::id())->get();
                     }
-        // dd($posts);
+        // dd($post_comment);
         return view('authenticated.bulletinboard.posts', compact('posts', 'categories', 'like', 'post_comment'));
     }
 
