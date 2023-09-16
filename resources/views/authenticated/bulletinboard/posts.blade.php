@@ -3,7 +3,7 @@
 @section('content')
 <div class="board_area w-100 border m-auto d-flex">
   <div class="post_view w-75 mt-5">
-    <p class="w-75 m-auto">投稿一覧</p>
+    <p class="w-75 m-auto"></p>
 
 
     @foreach($posts as $post)
@@ -14,7 +14,9 @@
 
       <!-- タイトルの表示 -->
       <!-- クリックしたら投稿詳細画面へ遷移する (投稿idを送る)-->
-      <p><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a></p>
+      <p class="">
+        <a class="post-title" href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a>
+      </p>
 
       <!-- コメントといいねの表示 -->
       <div class="post_bottom_area d-flex">

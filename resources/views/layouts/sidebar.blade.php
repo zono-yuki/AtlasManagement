@@ -18,29 +18,29 @@
 
 <body class="all_content">
   <div class="d-flex">
-    <!-- サイドバー -->
+    <!-- サイドバー （左側の青い部分）-->
     <div class="sidebar">
       @section('sidebar')
-      <p><a href="{{ route('top.show') }}">トップ</a></p>
-      <p><a href="/logout">ログアウト</a></p>
-      <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
+      <p class="mt-3"><a href="{{ route('top.show') }}">トップ</a></p>
+      <p class="mt-3"><a href="/logout">ログアウト</a></p>
+      <p class="mt-3"><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
 
 
       <!-- 管理者のみに表示する 教師の時のみ表示する(スクール予約確認、スクール枠登録) -->
       <!-- スクール予約確認 -->
       @if(Auth::user()->role != 4 )
-      <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
+      <p class="mt-3"><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
       <!--スクール枠登録-->
-      <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
+      <p class="mt-3"><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
       @endif
 
 
 
       <!-- 掲示板へ -->
-      <p><a href="{{ route('post.show') }}">掲示板</a></p>
+      <p class="mt-3"><a href="{{ route('post.show') }}">掲示板</a></p>
 
       <!-- ユーザー検索へ -->
-      <p><a href="{{ route('user.show') }}">ユーザー検索</a></p>
+      <p class="mt-3"><a href="{{ route('user.show') }}">ユーザー検索</a></p>
 
       @show
 

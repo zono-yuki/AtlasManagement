@@ -4,8 +4,8 @@
 
 @section('content')
 <div class="vh-100 border">
+  <p class="mt-3 ml-3 font-gray profile-font-gray">自分のプロフィール</p>
   <div class="top_area w-75 m-auto pt-5">
-    <p>マイページ</p>
     <div class="user_status p-3">
       <p>
         名前：<span>{{ Auth::user()->over_name }}</span>
