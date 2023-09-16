@@ -30,8 +30,7 @@ class Post extends Model
 
     public function postComments(){//postCommentsとのリレーション(1対多の1の方)
         return $this->hasMany(PostComment::class);
-
-    }
+     }
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
