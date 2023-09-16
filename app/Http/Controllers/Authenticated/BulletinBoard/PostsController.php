@@ -30,17 +30,27 @@ class PostsController extends Controller
             $posts = Post::with('user', 'postComments')
             ->where('post_title', 'like', '%'.$request->keyword.'%')
             ->orWhere('post', 'like', '%'.$request->keyword.'%')->get();
-        }else if($request->category_word){
-            $sub_category = $request->category_word;
-            $posts = Post::with('user', 'postComments')->get();
-        }else if($request->like_posts){
-            $likes = Auth::user()->likePostId()->get('like_post_id');
-            $posts = Post::with('user', 'postComments')
-            ->whereIn('id', $likes)->get();
-        }else if($request->my_posts){
-            $posts = Post::with('user', 'postComments')
-            ->where('user_id', Auth::id())->get();
+
         }
+            else if($request->category_word){
+                $sub_category = $request->category_word;
+                $posts = Post::with('user', 'postComments')->get();
+            }
+
+                else if($request->like_posts){
+                    $like = Auth::user()->likePostId()->get('like_post_id');
+                    //likePostId()で、ログインユーザーがいいねしているレコードをとってくる。
+                    //そのレコードの,like_post_id（いいねした投稿のid）を取得する。
+
+                    $posts = Post::with('user', 'postComments')
+                    ->whereIn('id', $like)->get();
+                    }
+
+                    else if($request->my_posts){
+                        $posts = Post::with('user', 'postComments')
+                        ->where('user_id', Auth::id())->get();
+                    }
+        // dd($posts);
         return view('authenticated.bulletinboard.posts', compact('posts', 'categories', 'like', 'post_comment'));
     }
 
@@ -89,6 +99,7 @@ class PostsController extends Controller
 
     }
 
+    //投稿の削除
     public function postDelete($id){
         Post::findOrFail($id)->delete();
         return redirect()->route('post.show');

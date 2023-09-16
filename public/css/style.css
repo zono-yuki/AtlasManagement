@@ -167,10 +167,13 @@ li{
 .post_bottom_area{
   justify-content: space-between;
 }
+
+/* いいねボタン */
 .like_btn,
 .un_like_btn{
   cursor:pointer;
 }
+
 .un_like,
 .un_like_btn{
   color:#E2254D;

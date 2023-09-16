@@ -1,9 +1,14 @@
+
 $(function () {
   $('.main_categories').click(function () {
     var category_id = $(this).attr('category_id');
     $('.category_num' + category_id).slideToggle();
   });
 
+
+//いいねボタンの実装
+
+  //いいねしていない場合
   $(document).on('click', '.like_btn', function (e) {
     e.preventDefault();
     $(this).addClass('un_like_btn');
@@ -11,6 +16,7 @@ $(function () {
     var post_id = $(this).attr('post_id');
     var count = $('.like_counts' + post_id).text();
     var countInt = Number(count);
+
     $.ajax({
       headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
       method: "post",
@@ -26,6 +32,7 @@ $(function () {
     });
   });
 
+  //いいねしていた場合
   $(document).on('click', '.un_like_btn', function (e) {
     e.preventDefault();
     $(this).removeClass('un_like_btn');
@@ -47,6 +54,8 @@ $(function () {
 
     });
   });
+
+
 
 // 投稿の編集モーダルを表示する処理 & 渡された変数をモーダルに表示する処理
   $('.edit-modal-open').on('click',function(){

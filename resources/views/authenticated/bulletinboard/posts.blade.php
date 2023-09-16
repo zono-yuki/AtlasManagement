@@ -9,7 +9,7 @@
     @foreach($posts as $post)
     <div class="post_area border w-75 m-auto p-3">
 
-    <!-- 名前の表示 -->
+      <!-- 名前の表示 -->
       <p><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
 
       <!-- タイトルの表示 -->
@@ -19,15 +19,38 @@
       <!-- コメントといいねの表示 -->
       <div class="post_bottom_area d-flex">
         <div class="d-flex post_status">
+
+         <!-- コメントの表示 -->
           <div class="mr-5">
-            <i class="fa fa-comment"></i><span class=""></span>
+            <!-- アイコンの表示 -->
+            <i class="fa fa-comment"></i>
+            <!-- コメント数の表示 -->
+            <span class="">{{ $post->commentCounts($post->id)->count($post->id) }}</span>
           </div>
+
+          <!-- いいねボタンの表示 -->
           <div>
             @if(Auth::user()->is_Like($post->id))
-            <!-- いいねボタンの表示 -->
-            <p class="m-0"><i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}"></span></p>
+            <!-- もしログインユーザーがこの投稿をイイネしていた場合は、-->
+            <p class="m-0">
+              <!-- ハート 赤 -->
+              <i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i>
+              <!-- カウント -->
+              <span class="like_counts{{ $post->id }}">
+                {{ $like->likeCounts($post->id)  }}
+              </span>
+            </p>
+
             @else
-            <p class="m-0"><i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}"></span></p>
+            <!-- いいねしていなかった場合-->
+            <p class="m-0">
+              <!-- ハート 黒 -->
+              <i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i>
+              <!-- カウント -->
+              <span class="like_counts{{ $post->id }}">
+                {{ $like->likeCounts($post->id)  }}
+              </span>
+            </p>
             @endif
           </div>
         </div>

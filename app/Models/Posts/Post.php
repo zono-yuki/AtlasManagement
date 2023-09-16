@@ -4,6 +4,11 @@ namespace App\Models\Posts;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Users\User;
+use App\Models\Posts\PostComment;
+
+
+
 class Post extends Model
 {
     const UPDATED_AT = null;
@@ -15,13 +20,19 @@ class Post extends Model
         'post',
     ];
 
+/////////////////////////////////////////////////////////////////////////////////////////
+
     public function user(){//usersテーブルとのリレーション(1対多の多の方)
-        return $this->belongsTo('App\Models\Users\User');
+        return $this->belongsTo(User::class);
     }
 
+/////////////////////////////////////////////////////////////////////////////////////////
+
     public function postComments(){//postCommentsとのリレーション(1対多の1の方)
-        return $this->hasMany('App\Models\Posts\PostComment');
+        return $this->hasMany(PostComment::class);
     }
+
+////////////////////////////////////////////////////////////////////////////////////////
 
     public function subCategories(){
         // リレーションの定義

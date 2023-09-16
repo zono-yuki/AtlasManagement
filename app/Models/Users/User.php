@@ -7,9 +7,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+
 use App\Models\Posts\Like;
+
+use App\Models\Posts\Post;
+
+
+
 use Auth;
-use App\Models\Users\subjects;
+
+use App\Models\Users\subject;
 
 
 class User extends Authenticatable
@@ -56,9 +63,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function posts(){//postsテーブルとのリレーション1対多の1の方。
-        return $this->hasMany('App\Models\Posts\Post');
+/////////////////////////////////////////////////////////////////////////////////////
+    public function posts(){//postsテーブルとのリレーション1対多の,1の方。
+        return $this->hasMany(Post::class);
     }
+
+    public function likes(){ //likesテーブルとのリレーション1対多の,1の方。
+        return $this->hasMany(Like::class);
+    }
+
+/////////////////////////////////////////////////////////////////////////////////////
 
     public function calendars(){
         return $this->belongsToMany('App\Models\Calendars\Calendar', 'calendar_users', 'user_id', 'calendar_id')->withPivot('user_id', 'id');
@@ -82,9 +96,14 @@ class User extends Authenticatable
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // いいねしているかどうか
+    // ログインユーザーが投稿にイイネしているかどうか確認する
     public function is_Like($post_id){
         return Like::where('like_user_id', Auth::id())->where('like_post_id', $post_id)->first(['likes.id']);
+        //like_user_idは,いいねした人のidのこと
+        //like_post_idは,いいねした投稿のidのこと
+        //渡されてきた投稿が、自分がいいねした投稿であれば、その投稿のidを取得する
+
+        //likes.idはlikesテーブルのid
     }
 
     public function likePostId(){
