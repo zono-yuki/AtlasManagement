@@ -41,6 +41,9 @@ li{
   margin-bottom: 30px;
 }
 
+.background-white{
+  background: #fff;
+}
 /* エラーメッセージ赤字 */
 .error-message{
   color:red;
@@ -55,21 +58,34 @@ li{
 }
 
 .border-mail{
-  border-width: 3px;
-  border-color: #3399FF;
+
 }
+
 /* 新規登録 性別 ラジオボタン */
 .sex-flex{
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .sex-box{
   display: inline-block;
-  width: 30%;
+  width: 35%;
+  height: 30px;
+  margin-left: 5%;
+}
+
+/* 役職flex */
+.role-flex{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.role-box{
+  width: 85px;
   height: auto;
-  margin-right: 10%;
+  margin-right: 10px;
 }
 
 /* サイドバー */

@@ -17,40 +17,40 @@
 <body>
 
   <form action="{{ route('registerPost') }}" method="POST">
-    <div class="w-120 vh-100 d-flex" style="align-items:center; justify-content:center;">
-      <div class="w-30 vh-60 border p-5 m-2">
+    <div class="w-120 vh-100 d-flex all_content" style="align-items:center; justify-content:center;">
+      <div class="w-30 vh-60 border pt-5 pr-5 pb-4 pl-5 background-white">
         <!-- ----------------------------------------------------------------------------- -->
 
         <!--名前（漢字）のエラーメッセージを表示する-->
         @if ($errors->has('over_name'))
-            @foreach($errors->get('over_name') as $message)
-              <p class="error-message"> {{ $message }} </>
-            @endforeach
-        @endif
+        @foreach($errors->get('over_name') as $message)
+        <p class="error-message"> {{ $message }} </>
+          @endforeach
+          @endif
 
-        @if ($errors->has('under_name'))
-            @foreach($errors->get('under_name') as $message)
-              <p class="error-message"> {{ $message }} </>
-            @endforeach
-        @endif
+          @if ($errors->has('under_name'))
+          @foreach($errors->get('under_name') as $message)
+        <p class="error-message"> {{ $message }} </>
+          @endforeach
+          @endif
 
         <div class="register_form">
 
           <!-- 姓 名 -->
-          <div class="d-flex mt-3" style="justify-content:space-between">
+          <div class="d-flex mt-3" style="justify-content:space-between;">
 
             <!-- 姓 -->
-            <div class="" style="width:140px">
+            <div class="" style="width:180px">
               <label class="d-block m-0" style="font-size:15px">姓</label>
-              <div class="border-bottom border-primary" style="width:140px;">
+              <div class="border-bottom border-primary" style="width:150px;">
                 <input type="text" style="width:140px;" class="border-0 over_name" name="over_name">
               </div>
             </div>
 
             <!-- 名 -->
-            <div class="" style="width:140px">
+            <div class="" style="width:180px">
               <label class=" d-block m-0" style="font-size:15px">名</label>
-              <div class="border-bottom border-primary" style="width:140px;">
+              <div class="border-bottom border-primary" style="width:150px;">
                 <input type="text" style="width:140px;" class="border-0 under_name" name="under_name">
               </div>
             </div>
@@ -60,16 +60,16 @@
 
           <!--名前（フリガナ）のエラーメッセージを表示する-->
           @if ($errors->has('over_name_kana'))
-            @foreach($errors->get('over_name_kana') as $message)
-              <p class="error-message"> {{ $message }} </>
+          @foreach($errors->get('over_name_kana') as $message)
+          <p class="error-message"> {{ $message }} </>
             @endforeach
-          @endif
+            @endif
 
-          @if ($errors->has('under_name_kana'))
+            @if ($errors->has('under_name_kana'))
             @foreach($errors->get('under_name_kana') as $message)
-              <p class="error-message"> {{ $message }} </>
+          <p class="error-message"> {{ $message }} </>
             @endforeach
-          @endif
+            @endif
 
 
           <div class="register_form">
@@ -78,17 +78,17 @@
             <div class="d-flex mt-3" style="justify-content:space-between">
 
               <!-- セイ -->
-              <div class="" style="width:140px">
+              <div class="" style="width:180px">
                 <label class="d-block m-0" style="font-size:15px">セイ</label>
-                <div class="border-bottom border-primary" style="width:140px;">
+                <div class="border-bottom border-primary" style="width:150px;">
                   <input type="text" style="width:140px;" class="border-0 over_name_kana" name="over_name_kana">
                 </div>
               </div>
 
               <!-- メイ -->
-              <div class="" style="width:140px">
+              <div class="" style="width:180px">
                 <label class="d-block m-0" style="font-size:15px">メイ</label>
-                <div class="border-bottom border-primary" style="width:140px;">
+                <div class="border-bottom border-primary" style="width:150px;">
                   <input type="text" style="width:140px;" class="border-0 under_name_kana" name="under_name_kana">
                 </div>
               </div>
@@ -97,9 +97,9 @@
 
             <!--mail_addressのエラーメッセージを表示する-->
             @if ($errors->has('mail_address'))
-              @foreach($errors->get('mail_address') as $message)
-                <p class="error-message"> {{ $message }} </p>
-              @endforeach
+            @foreach($errors->get('mail_address') as $message)
+            <p class="error-message"> {{ $message }} </p>
+            @endforeach
             @endif
 
             <!-- メールアドレス -->
@@ -116,26 +116,26 @@
 
           <!--性別のエラーメッセージを表示する-->
           @if ($errors->has('sex'))
-            @foreach($errors->get('sex') as $message)
-             <p class="error-message"> {{ $message }} </p>
-            @endforeach
+          @foreach($errors->get('sex') as $message)
+          <p class="error-message"> {{ $message }} </p>
+          @endforeach
           @endif
           <!-- 性別 -->
           <div class="mt-4 sex-flex">
 
             <div class="sex-box">
               <input type="radio" name="sex" class="sex" value="1">
-              <label class="ml-2" style="font-size:13px">男性</label>
+              <label class="ml-1" style="font-size:13px">男性</label>
             </div>
 
             <div class="sex-box">
               <input type="radio" name="sex" class="sex" value="2">
-              <label class="ml-2" style="font-size:13px">女性</label>
+              <label class="ml-1" style="font-size:13px">女性</label>
             </div>
 
             <div class="sex-box">
               <input type="radio" name="sex" class="sex" value="3">
-              <label class="ml-2" style="font-size:13px">その他</label>
+              <label class="ml-1" style="font-size:13px">その他</label>
             </div>
           </div>
 
@@ -144,9 +144,9 @@
 
           <!--生年月日のエラーメッセージを表示する-->
           @if ($errors->has('datetime_validation'))
-            @foreach($errors->get('datetime_validation') as $message)
-             <p class="error-message"> {{ $message }} </p>
-            @endforeach
+          @foreach($errors->get('datetime_validation') as $message)
+          <p class="error-message"> {{ $message }} </p>
+          @endforeach
           @endif
 
 
@@ -268,26 +268,36 @@
 
           <!--役職のエラーメッセージを表示する-->
           @if ($errors->has('role'))
-            @foreach($errors->get('role') as $message)
-             <p class="error-message"> {{ $message }} </p>
-            @endforeach
+          @foreach($errors->get('role') as $message)
+          <p class="error-message"> {{ $message }} </p>
+          @endforeach
           @endif
 
           <!-- 役職 -->
           <div class="mt-3">
-            <label class="d-block m-0" style="font-size:13px">役職</label>
+            <label class="d-block m-0" style="font-size:13px;">役職</label>
 
-            <input type="radio" name="role" class="admin_role role" value="1">
-            <label style="font-size:13px">教師(国語)</label>
+            <div class="role-flex">
+              <div class="role-box">
+                <input type="radio" name="role" class="admin_role role" value="1">
+                <label class="ml-1" style="font-size:13px;">教師(国語)</label>
+              </div>
 
-            <input type="radio" name="role" class="admin_role role" value="2">
-            <label style="font-size:13px">教師(数学)</label>
+              <div class="role-box">
+                <input type="radio" name="role" class="admin_role role" value="2">
+                <label class="ml-1" style="font-size:13px;">教師(数学)</label>
+              </div>
 
-            <input type="radio" name="role" class="admin_role role" value="3">
-            <label style="font-size:13px">教師(英語)</label>
+              <div class="role-box">
+                <input type="radio" name="role" class="admin_role role" value="3">
+                <label class="ml-1" style="font-size:13px;">教師(英語)</label>
+              </div>
 
-            <input type="radio" name="role" class="other_role role" value="4">
-            <label style="font-size:13px" class="other_role">生徒</label>
+              <div class="role-box">
+                <input type="radio" name="role" class="other_role role" value="4">
+                <label class="ml-1" style="font-size:13px;" class="other_role">生徒</label>
+              </div>
+            </div>
 
           </div>
 
@@ -310,15 +320,15 @@
 
           <!--パスワードのエラーメッセージを表示する-->
           @if ($errors->has('password'))
-            @foreach($errors->get('password') as $message)
-             <p class="error-message"> {{ $message }} </p>
-            @endforeach
+          @foreach($errors->get('password') as $message)
+          <p class="error-message"> {{ $message }} </p>
+          @endforeach
           @endif
 
           @if ($errors->has('password_confirmation'))
-            @foreach($errors->get('password_confirmation') as $message)
-             <p class="error-message"> {{ $message }} </p>
-            @endforeach
+          @foreach($errors->get('password_confirmation') as $message)
+          <p class="error-message"> {{ $message }} </p>
+          @endforeach
           @endif
 
           <!-- パスワード -->
@@ -345,7 +355,7 @@
 
           <!------------------ログイン画面へ戻る---------------------------------------------->
 
-          <div class="text-center mt-1 mr-5">
+          <div class="text-center mt-1 mr-4">
             <a href="{{ route('loginView') }}">ログインはこちら</a>
             <!-- ログイン画面へ戻る処理 -->
           </div>
