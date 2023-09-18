@@ -72,14 +72,15 @@ class PostsController extends Controller
         return view('authenticated.bulletinboard.post_create', compact('main_categories'));
     }
 
-    //投稿する処理
+    //投稿内容の登録
     public function postCreate(PostFormRequest $request){//新規投稿用のバリデーション
 
         //投稿を登録
         $post = Post::create([
             'user_id' => Auth::id(),
             'post_title' => $request->post_title,
-            'post' => $request->post_body
+            'post' => $request->post_body,
+            'created_at' => now(),
         ]);
         return redirect()->route('post.show');//掲示板へ
     }
@@ -89,9 +90,8 @@ class PostsController extends Controller
         Post::where('id', $request->post_id)->update([
 
             'post_title' => $request->post_title,//投稿タイトルを更新する処理
-
             'post' => $request->post_body,//投稿内容を更新する処理
-
+            'created_at' => now(),
         ]);
 
         return redirect()->route('post.detail', ['id' => $request->post_id]);

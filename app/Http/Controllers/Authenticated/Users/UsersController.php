@@ -14,6 +14,7 @@ use App\Searchs\SearchResultFactories;
 class UsersController extends Controller
 {
 
+    //検索画面を表示する処理
     public function showUsers(Request $request){
         $keyword = $request->keyword;
         $category = $request->category;
@@ -23,7 +24,10 @@ class UsersController extends Controller
         $subjects = null;// ここで検索時の科目を受け取る
         $userFactory = new SearchResultFactories();
         $users = $userFactory->initializeUsers($keyword, $category, $updown, $gender, $role, $subjects);
-        $subjects = Subjects::all();
+
+        $subjects = Subjects::all();//国語、数学、英語を取得する
+        // dd($request);
+
         return view('authenticated.users.search', compact('users', 'subjects'));
     }
 

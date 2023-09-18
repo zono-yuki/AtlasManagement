@@ -23,16 +23,16 @@
 
         <!--名前（漢字）のエラーメッセージを表示する-->
         @if ($errors->has('over_name'))
-        @foreach($errors->get('over_name') as $message)
-        <p class="error-message"> {{ $message }} </>
+          @foreach($errors->get('over_name') as $message)
+            <p class="error-message"> {{ $message }} </p>
           @endforeach
-          @endif
+        @endif
 
-          @if ($errors->has('under_name'))
+        @if ($errors->has('under_name'))
           @foreach($errors->get('under_name') as $message)
-        <p class="error-message"> {{ $message }} </>
+            <p class="error-message"> {{ $message }} </p>
           @endforeach
-          @endif
+        @endif
 
         <div class="register_form">
 
@@ -60,16 +60,16 @@
 
           <!--名前（フリガナ）のエラーメッセージを表示する-->
           @if ($errors->has('over_name_kana'))
-          @foreach($errors->get('over_name_kana') as $message)
-          <p class="error-message"> {{ $message }} </>
+            @foreach($errors->get('over_name_kana') as $message)
+              <p class="error-message"> {{ $message }} </p>
             @endforeach
-            @endif
+          @endif
 
-            @if ($errors->has('under_name_kana'))
+          @if ($errors->has('under_name_kana'))
             @foreach($errors->get('under_name_kana') as $message)
-          <p class="error-message"> {{ $message }} </>
+              <p class="error-message"> {{ $message }} </p>
             @endforeach
-            @endif
+          @endif
 
 
           <div class="register_form">
@@ -97,15 +97,15 @@
 
             <!--mail_addressのエラーメッセージを表示する-->
             @if ($errors->has('mail_address'))
-            @foreach($errors->get('mail_address') as $message)
-            <p class="error-message"> {{ $message }} </p>
-            @endforeach
+              @foreach($errors->get('mail_address') as $message)
+                <p class="error-message"> {{ $message }} </p>
+              @endforeach
             @endif
 
             <!-- メールアドレス -->
             <div class="mt-3">
               <label class="m-0 d-block" style="font-size:15px">メールアドレス</label>
-              <div class="border-bottom  border-primary">
+              <div class="border-bottom  border-primary border-2">
                 <input type="mail" class="w-100  border-0 mail_address" name="mail_address">
               </div>
             </div>
@@ -116,9 +116,9 @@
 
           <!--性別のエラーメッセージを表示する-->
           @if ($errors->has('sex'))
-          @foreach($errors->get('sex') as $message)
-          <p class="error-message"> {{ $message }} </p>
-          @endforeach
+            @foreach($errors->get('sex') as $message)
+              <p class="error-message"> {{ $message }} </p>
+            @endforeach
           @endif
           <!-- 性別 -->
           <div class="mt-4 sex-flex">
@@ -144,9 +144,9 @@
 
           <!--生年月日のエラーメッセージを表示する-->
           @if ($errors->has('datetime_validation'))
-          @foreach($errors->get('datetime_validation') as $message)
-          <p class="error-message"> {{ $message }} </p>
-          @endforeach
+            @foreach($errors->get('datetime_validation') as $message)
+              <p class="error-message"> {{ $message }} </p>
+            @endforeach
           @endif
 
 
@@ -268,9 +268,9 @@
 
           <!--役職のエラーメッセージを表示する-->
           @if ($errors->has('role'))
-          @foreach($errors->get('role') as $message)
-          <p class="error-message"> {{ $message }} </p>
-          @endforeach
+            @foreach($errors->get('role') as $message)
+              <p class="error-message"> {{ $message }} </p>
+            @endforeach
           @endif
 
           <!-- 役職 -->
@@ -320,15 +320,15 @@
 
           <!--パスワードのエラーメッセージを表示する-->
           @if ($errors->has('password'))
-          @foreach($errors->get('password') as $message)
-          <p class="error-message"> {{ $message }} </p>
-          @endforeach
+            @foreach($errors->get('password') as $message)
+              <p class="error-message"> {{ $message }} </p>
+            @endforeach
           @endif
 
           @if ($errors->has('password_confirmation'))
-          @foreach($errors->get('password_confirmation') as $message)
-          <p class="error-message"> {{ $message }} </p>
-          @endforeach
+            @foreach($errors->get('password_confirmation') as $message)
+              <p class="error-message"> {{ $message }} </p>
+            @endforeach
           @endif
 
           <!-- パスワード -->

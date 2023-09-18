@@ -21,7 +21,7 @@
     <!-- サイドバー （左側の青い部分）-->
     <div class="sidebar">
       @section('sidebar')
-      <p class="mt-3"><a href="{{ route('top.show') }}">トップ</a></p>
+      <p class="mt-3"><a href="{{ route('top.show') }}">マイページ</a></p>
       <p class="mt-3"><a href="/logout">ログアウト</a></p>
       <p class="mt-3"><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
 

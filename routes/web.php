@@ -94,6 +94,7 @@ Route::group(['middleware' => 'auth'], function(){
         });
         Route::namespace('Users')->group(function(){
 
+            //ユーザー検索画面へ
             Route::get('/show/users', 'UsersController@showUsers')->name('user.show');
 
             Route::get('/user/profile/{id}', 'UsersController@userProfile')->name('user.profile');
