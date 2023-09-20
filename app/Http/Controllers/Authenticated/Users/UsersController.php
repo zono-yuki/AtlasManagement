@@ -21,13 +21,16 @@ class UsersController extends Controller
         $updown = $request->updown;
         $gender = $request->sex;
         $role = $request->role;
-        $subjects = null;// ここで検索時の科目を受け取る
+
+        $subjects = null;// ここで検索時の科目を受け取る initializeUsers()でif文に入るためnullにしている。
+
         $userFactory = new SearchResultFactories();
+
+        //SearchResultFactoriesクラスのinitializeUsers()でキーワードなどからユーザーを検索する
         $users = $userFactory->initializeUsers($keyword, $category, $updown, $gender, $role, $subjects);
 
         $subjects = Subjects::all();//国語、数学、英語を取得する
-        // dd($request);
-
+        // dd($users);
         return view('authenticated.users.search', compact('users', 'subjects'));
     }
 

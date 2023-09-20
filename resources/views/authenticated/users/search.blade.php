@@ -41,27 +41,38 @@
         <span>権限 : </span><span>生徒</span>
         @endif
       </div>
+      <!-- ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
       <div>
         @if($user->role == 4)
-        <span>選択科目 :</span>
+        <!-- if文 1の時国語、2の時数学、3の時英語 -->
+
+        {{-- $user->subjects()->subject_id--}}
+        <span>選択科目 : 国語</span>
+
         @endif
       </div>
+      <!-- ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
     </div>
     @endforeach
   </div>
   <div class="search_area w-25 border">
     <div class="">
       <div>
+        <!-- keyword -->
         <input type="text" class="free_word" name="keyword" placeholder="キーワードを検索" form="userSearchRequest">
       </div>
       <div>
         <lavel>カテゴリ</lavel>
+
+        <!-- category -->
         <select form="userSearchRequest" name="category">
           <option value="name">名前</option>
           <option value="id">社員ID</option>
         </select>
+
       </div>
       <div>
+        <!-- updown -->
         <label>並び替え</label>
         <select name="updown" form="userSearchRequest">
           <option value="ASC">昇順</option>
@@ -72,11 +83,13 @@
         <p class="m-0 search_conditions"><span>検索条件の追加</span></p>
         <div class="search_conditions_inner">
           <div>
+            <!-- sex -->
             <label>性別</label>
             <span>男</span><input type="radio" name="sex" value="1" form="userSearchRequest">
             <span>女</span><input type="radio" name="sex" value="2" form="userSearchRequest">
           </div>
           <div>
+            <!-- role -->
             <label>権限</label>
             <select name="role" form="userSearchRequest" class="engineer">
               <option selected disabled>----</option>
@@ -87,16 +100,22 @@
             </select>
           </div>
           <div class="selected_engineer">
+            <!-- 選択科目 追加する! -->
             <label>選択科目</label>
           </div>
         </div>
       </div>
+
       <div>
+        <!-- リセットボタン -->
         <input type="reset" value="リセット" form="userSearchRequest">
       </div>
+
       <div>
+        <!-- 検索ボタン -->
         <input type="submit" name="search_btn" value="検索" form="userSearchRequest">
       </div>
+
     </div>
     <form action="{{ route('user.show') }}" method="get" id="userSearchRequest"></form>
   </div>

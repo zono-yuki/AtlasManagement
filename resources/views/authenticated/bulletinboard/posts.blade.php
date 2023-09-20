@@ -62,32 +62,37 @@
     @endforeach
   </div>
   <div class="other_area">
-    <div class="searcher-box">
+    <div class="search-area">
       <!-- 投稿をクリックすると、新規投稿画面に遷移する-->
 
       <!-- 投稿ボタン -->
       <a class="post-color" href="{{ route('post.input') }}">
-        <button type="submit" class="btn btn-info mb-3 post_btn">投稿</button>
+        <button type="submit" class="btn btn-info post_btn">投稿</button>
       </a>
-
-      <!-- 検索ボタン-->
-      <div class="searcher-box">
+      <!--------------------------------------------------------------------------------------------------- -->
+      <!-- 検索-->
+      <div class="search-box">
         <input type="text" class="searcher-text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
         <input type="submit" class="btn btn-info  searcher_btn" value="検索" form="postSearchRequest">
       </div>
 
-      <!-- いいねした投稿 ここからボタンつくっていくbootstrap使わない。-->
-      <input type="submit" name="like_posts" class="search_like_btn" value="いいねした投稿" form="postSearchRequest">
+      <!------------------------------------------------------------------------------------------------------>
 
-      <!-- 自分の投稿 -->
-      <input type="submit" name="my_posts" class="search_like_btn" value="自分の投稿" form="postSearchRequest">
+      <!-- いいねした投稿、自分の投稿-->
+      <div class="like_post_btn">
+        <!-- いいねした投稿 ここからボタンつくっていくbootstrap使わない。-->
+        <input type="submit" name="like_posts" class="search_like_btn_good" value="いいねした投稿" form="postSearchRequest">
+        <!-- 自分の投稿 -->
+        <input type="submit" name="my_posts" class="search_like_btn_myself" value="自分の投稿" form="postSearchRequest">
+      </div>
 
-      <!-- カテゴリー検索 -->
+      <!-- カテゴリー検索--------------------------------------------------------------------------------------->
       <ul>
         @foreach($categories as $category)
-        <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
+          <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
         @endforeach
       </ul>
+
     </div>
   </div>
   <form action="{{ route('post.show') }}" method="get" id="postSearchRequest"></form>

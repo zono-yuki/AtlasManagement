@@ -26,7 +26,7 @@ class PostsController extends Controller
         $categories = MainCategory::get();
         $like = new Like;
         $post_comment = new Post;
-        if(!empty($request->keyword)){
+        if(!empty($request->keyword)){//キーワードがあった場合
             $posts = Post::with('user', 'postComments')
             ->where('post_title', 'like', '%'.$request->keyword.'%')
             ->orWhere('post', 'like', '%'.$request->keyword.'%')->get();
@@ -37,16 +37,21 @@ class PostsController extends Controller
                 $posts = Post::with('user', 'postComments')->get();
             }
 
-                else if($request->like_posts){
-                    $like = Auth::user()->likePostId()->get('like_post_id');
+                else if($request->like_posts){//いいねした投稿を取得する
+                    $likes = Auth::user()->likePostId()->get('like_post_id');
                     //likePostId()で、ログインユーザーがいいねしているレコードをとってくる。
                     //そのレコードの,like_post_id（いいねした投稿のid）を取得する。
 
-                    $posts = Post::with('user', 'postComments')
-                    ->whereIn('id', $like)->get();
-                    }
+                    // dd($likes);
+                    //like_post_id取得できている
 
-                    else if($request->my_posts){
+                    $posts = Post::with('user', 'postComments')
+                    ->whereIn('id', $likes)->get();
+                    // dd($posts);
+                    //いいねした投稿が全部取得できている
+                }
+
+                    else if($request->my_posts){//自分の投稿を検索する
                         $posts = Post::with('user', 'postComments')
                         ->where('user_id', Auth::id())->get();
                     }

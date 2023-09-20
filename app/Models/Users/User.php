@@ -16,7 +16,7 @@ use App\Models\Posts\Post;
 
 use Auth;
 
-use App\Models\Users\subject;
+use App\Models\Users\subjects;
 
 
 class User extends Authenticatable
@@ -87,7 +87,9 @@ class User extends Authenticatable
 
     public function subjects()
     {
-        return $this->belongsToMany(User::class, 'subject_users', 'user_id', 'subject_id');
+        // return $this->belongsToMany(Subjects::class, 'subject_users', 'user_id', 'subject_id')->withPivot('subject_id');
+        return $this->belongsToMany(Subjects::class, 'subject_users', 'user_id', 'subject_id')->withPivot('subject_id');
+
         //ログインユーザーのidがuser_idに入る。
         //attach($subjects)のidがsubject_idに入る。
     }
@@ -106,7 +108,7 @@ class User extends Authenticatable
         //likes.idはlikesテーブルのid
     }
 
-    public function likePostId(){
-        return Like::where('like_user_id', Auth::id());
+    public function likePostId(){//いいねした投稿を検索する
+        return Like::where('like_user_id', Auth::id());//リレーション先のLikeテーブルからlike_user_idがログインidの
     }
 }

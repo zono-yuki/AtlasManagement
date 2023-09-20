@@ -17,14 +17,14 @@ class SelectNameDetails implements DisplayUsers{
     }else{
       $role = array($role);
     }
-    $users = User::with('subjects')
-    ->where(function($q) use ($keyword){
+    $users = User::with('subjects')//UsersテーブルとSubjectsテーブルも使うということ。
+    ->where(function($q) use ($keyword){//keywordを使って検索
       $q->Where('over_name', 'like', '%'.$keyword.'%')
       ->orWhere('under_name', 'like', '%'.$keyword.'%')
       ->orWhere('over_name_kana', 'like', '%'.$keyword.'%')
       ->orWhere('under_name_kana', 'like', '%'.$keyword.'%');
     })
-    ->where(function($q) use ($role, $gender){
+    ->where(function($q) use ($role, $gender){//roleとgenderを使って検索
       $q->whereIn('sex', $gender)
       ->whereIn('role', $role);
     })

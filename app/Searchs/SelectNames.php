@@ -5,8 +5,10 @@ use App\Models\Users\User;
 
 class SelectNames implements DisplayUsers{
 
+//ここでユーザーを検索する。
+
   public function resultUsers($keyword, $category, $updown, $gender, $role, $subjects){
-    if(empty($gender)){
+    if(empty($gender)){//性別がnullの時
       $gender = ['1', '2'];
     }else{
       $gender = array($gender);
@@ -18,6 +20,7 @@ class SelectNames implements DisplayUsers{
     }
     $users = User::with('subjects')
     ->where(function($q) use ($keyword){
+      //キーワードから検索する。
       $q->where('over_name', 'like', '%'.$keyword.'%')
       ->orWhere('under_name', 'like', '%'.$keyword.'%')
       ->orWhere('over_name_kana', 'like', '%'.$keyword.'%')
