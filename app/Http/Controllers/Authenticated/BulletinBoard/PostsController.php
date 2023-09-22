@@ -56,6 +56,7 @@ class PostsController extends Controller
                         ->where('user_id', Auth::id())->get();
                     }
         // dd($post_comment);
+        //表示する
         return view('authenticated.bulletinboard.posts', compact('posts', 'categories', 'like', 'post_comment'));
     }
 

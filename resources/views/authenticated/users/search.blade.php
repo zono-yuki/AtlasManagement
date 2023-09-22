@@ -1,6 +1,7 @@
 @extends('layouts.sidebar')
 
 @section('content')
+<!-- ーーーーーーーーーーーーーーーーーーーーーー表示ーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
 <p>ユーザー検索</p>
 <div class="search_content w-100 border d-flex">
   <div class="reserve_users_area">
@@ -55,6 +56,8 @@
     </div>
     @endforeach
   </div>
+
+<!-- ---------------------------------------検索---------------------------------------- -->
   <div class="search_area w-25 border">
     <div class="">
       <div>
@@ -112,11 +115,12 @@
       </div>
 
       <div>
-        <!-- 検索ボタン -->
+        <!-- 検索ボタン submitで全部送る-->
         <input type="submit" name="search_btn" value="検索" form="userSearchRequest">
       </div>
 
     </div>
+    <!-- ここで送る。Usersコントローラーで$requestで受け取る -->
     <form action="{{ route('user.show') }}" method="get" id="userSearchRequest"></form>
   </div>
 </div>
