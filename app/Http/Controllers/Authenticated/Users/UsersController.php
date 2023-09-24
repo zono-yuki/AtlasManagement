@@ -29,10 +29,14 @@ class UsersController extends Controller
         //SearchResultFactoriesクラスのinitializeUsers()でキーワードなどからユーザーを検索する
         $users = $userFactory->initializeUsers($keyword, $category, $updown, $gender, $role, $subjects);
 
-        $subjects = Subjects::all();//国語、数学、英語を取得する
-        // dd($users);
+        $subjects = Subjects::all();//国語、数学、英語を取得する ここがなんですべていれているのかわからない。
+        // dd($subjects);
+
+        //検索ページを更新して表示する。
         return view('authenticated.users.search', compact('users', 'subjects'));
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////
 
     public function userProfile($id){
         $user = User::with('subjects')->findOrFail($id);

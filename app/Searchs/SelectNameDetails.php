@@ -5,7 +5,8 @@ use App\Models\Users\User;
 
 class SelectNameDetails implements DisplayUsers{
 
-  // 改修課題：選択科目の検索機能
+  //カテゴリが名前の時
+  //科目が入っていた場合
   public function resultUsers($keyword, $category, $updown, $gender, $role, $subjects){
     if(is_null($gender)){
       $gender = ['1', '2'];
@@ -17,8 +18,9 @@ class SelectNameDetails implements DisplayUsers{
     }else{
       $role = array($role);
     }
+
     $users = User::with('subjects')//UsersテーブルとSubjectsテーブルも使うということ。
-    ->where(function($q) use ($keyword){//keywordを使って検索
+    ->where(function($q) use ($keyword){//keywordを使って名前を検索
       $q->Where('over_name', 'like', '%'.$keyword.'%')
       ->orWhere('under_name', 'like', '%'.$keyword.'%')
       ->orWhere('over_name_kana', 'like', '%'.$keyword.'%')

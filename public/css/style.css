@@ -386,21 +386,41 @@ li{
 .reserve_users_area{
   display:flex;
   flex-wrap:wrap;
-  width:800px;
-  margin:10px auto;
+  width:70%;
+  margin:1% 0 0 3%;
   height:80vh;
   overflow: scroll;
   padding:10px;
-  background:#FFF;
-  border-radius:5px;
+
 }
 .reserve_users_area span{
   font-size:12px;
+
 }
 .one_person{
-  width:250px;
-  height:250px;
+  width:20%;
+  height:30%;
+  background: #fff;
+  margin-right: 2.5%;
+  padding: 2% 2% 1% 2%;
 }
+
+.search_content{
+  min-height: 100vh;
+}
+
+.search_area{
+  min-height: 100vh;
+}
+
+.search_box{
+  margin-top: 10%;
+}
+
+.search-font{
+  margin-bottom: 0;
+}
+
 .search_conditions span{
   cursor:pointer;
 }

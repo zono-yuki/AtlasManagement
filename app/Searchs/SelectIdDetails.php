@@ -5,14 +5,16 @@ use App\Models\Users\User;
 
 class SelectIdDetails implements DisplayUsers{
 
-  // 改修課題：選択科目の検索機能
+  //カテゴリが社員IDのとき
+  //科目が入っていた時
+
   public function resultUsers($keyword, $category, $updown, $gender, $role, $subjects){
-    if(is_null($keyword)){
-      $keyword = User::get('id')->toArray();
-    }else{
+    if(is_null($keyword)){//キーワードが何も入力されていない場合
+      $keyword = User::get('id')->toArray();//usersテーブルからidを全部取得する。
+    }else{//キーワードが入力されていた場合
       $keyword = array($keyword);
     }
-    if(is_null($gender)){
+    if(is_null($gender)){//性別
       $gender = ['1', '2'];
     }else{
       $gender = array($gender);
@@ -28,7 +30,8 @@ class SelectIdDetails implements DisplayUsers{
       $q->whereIn('sex', $gender)
       ->whereIn('role', $role);
     })
-    ->whereHas('subjects', function($q) use ($subjects){
+    ->whereHas('subjects', function($q) use ($subjects){//subjectsテーブルで検索する。
+      //whereHas()は、リレーション先のテーブルを検索する。
       $q->where('subjects.id', $subjects);
     })
     ->orderBy('id', $updown)->get();

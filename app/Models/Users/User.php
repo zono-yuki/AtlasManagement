@@ -16,7 +16,7 @@ use App\Models\Posts\Post;
 
 use Auth;
 
-use App\Models\Users\subjects;
+use App\Models\Users\Subjects;
 
 
 class User extends Authenticatable
@@ -40,7 +40,9 @@ class User extends Authenticatable
         'sex',
         'birth_day',
         'role',
-        'password'
+        'password',
+        'created_at',
+        'updated_at',
     ];
 
     protected $dates = ['deleted_at'];
@@ -51,7 +53,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password' , 'remember_token', 'user_id' , 'subject_users'
+        'password' , 'remember_token', 'user_id' , 'subject_users',
     ];
 
     /**
@@ -87,9 +89,7 @@ class User extends Authenticatable
 
     public function subjects()
     {
-        // return $this->belongsToMany(Subjects::class, 'subject_users', 'user_id', 'subject_id')->withPivot('subject_id');
-        return $this->belongsToMany(Subjects::class, 'subject_users', 'user_id', 'subject_id')->withPivot('subject_id');
-
+        return $this->belongsToMany(Subjects::class,'subject_users','user_id','subject_id');
         //ログインユーザーのidがuser_idに入る。
         //attach($subjects)のidがsubject_idに入る。
     }

@@ -2,36 +2,36 @@
 
 @section('content')
 <!-- ーーーーーーーーーーーーーーーーーーーーーー表示ーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
-<p>ユーザー検索</p>
-<div class="search_content w-100 border d-flex">
+<div class="search_content w-100  d-flex">
   <div class="reserve_users_area">
     @foreach($users as $user)
     <div class="border one_person">
-      <div>
+      <div class="mb-2">
         <span>ID : </span><span>{{ $user->id }}</span>
       </div>
-      <div><span>名前 : </span>
+      <div class="mb-1"><span>名前 : </span>
         <a href="{{ route('user.profile', ['id' => $user->id]) }}">
           <span>{{ $user->over_name }}</span>
           <span>{{ $user->under_name }}</span>
         </a>
       </div>
-      <div>
-        <span>カナ : </span>
-        <span>({{ $user->over_name_kana }}</span>
-        <span>{{ $user->under_name_kana }})</span>
+      <div class="mb-1">
+          <span>カナ : </span>
+          <span>({{ $user->over_name_kana }}</span>
+          <span>{{ $user->under_name_kana }})</span>
       </div>
-      <div>
+      <div class="mb-1">
         @if($user->sex == 1)
-        <span>性別 : </span><span>男</span>
+          <span>性別 : </span><span>男</span>
         @else
-        <span>性別 : </span><span>女</span>
+          <span>性別 : </span><span>女</span>
         @endif
       </div>
-      <div>
+
+      <div class="mb-1">
         <span>生年月日 : </span><span>{{ $user->birth_day }}</span>
       </div>
-      <div>
+      <div class="mb-1">
         @if($user->role == 1)
         <span>権限 : </span><span>教師(国語)</span>
         @elseif($user->role == 2)
@@ -46,9 +46,21 @@
       <div>
         @if($user->role == 4)
         <!-- if文 1の時国語、2の時数学、3の時英語 -->
+        <span>選択科目:</span>
+          @foreach($user->subjects as $subject )
+              @if($subject->id == 1)
+                <span>国語</span>
+              @endif
 
-        {{-- $user->subjects()->subject_id--}}
-        <span>選択科目 : 国語</span>
+              @if($subject->id == 2)
+                <span>数学</span>
+              @endif
+
+              @if($subject->id == 3)
+                <span>英語</span>
+              @endif
+          @endforeach
+
 
         @endif
       </div>
@@ -57,9 +69,10 @@
     @endforeach
   </div>
 
-<!-- ---------------------------------------検索---------------------------------------- -->
-  <div class="search_area w-25 border">
-    <div class="">
+  <!-- ---------------------------------------検索---------------------------------------- -->
+  <div class="search_area w-25">
+    <div class="search_box">
+      <p class="search-font">検索</p>
       <div>
         <!-- keyword -->
         <input type="text" class="free_word" name="keyword" placeholder="キーワードを検索" form="userSearchRequest">
@@ -120,7 +133,7 @@
       </div>
 
     </div>
-    <!-- ここで送る。Usersコントローラーで$requestで受け取る -->
+    <!-- ここで送る。Usersコントローラーで$requestで受け取る form="userSearchRequest"がついているものを全て送信する。 -->
     <form action="{{ route('user.show') }}" method="get" id="userSearchRequest"></form>
   </div>
 </div>
