@@ -382,44 +382,85 @@ li{
   cursor:pointer;
 }
 
-/* ユーザー検索 */
+/* ユーザー検索 ---------------------------------------*/
 .reserve_users_area{
   display:flex;
   flex-wrap:wrap;
-  width:70%;
+  width:100%;
+  height: auto;
   margin:1% 0 0 3%;
-  height:80vh;
+  /* min-height:100vh; */
   overflow: scroll;
   padding:10px;
 
 }
+
 .reserve_users_area span{
   font-size:12px;
 
 }
+
 .one_person{
-  width:20%;
-  height:30%;
+  width:19%;
+  height:25%;
   background: #fff;
   margin-right: 2.5%;
-  padding: 2% 2% 1% 2%;
+  padding: 2% 2% 0% 2%;
 }
-
+/* ------------------------ */
 .search_content{
   min-height: 100vh;
 }
 
 .search_area{
   min-height: 100vh;
+  width: 25%;
 }
 
 .search_box{
-  margin-top: 10%;
+  margin-top: 15%;
 }
 
+/* 検索、文字 */
 .search-font{
-  margin-bottom: 0;
+  font-size: 20px;
+  font-weight: normal;
 }
+
+/* キーワードを検索 */
+.free_word{
+  background: #D9E5FF;
+  border-radius: 2px;
+  border: none;
+}
+
+.name_id_word{
+  background: #D9E5FF;
+  border-radius: 2px;
+  border: none;
+}
+
+/* 検索ボタン */
+.search__button {
+  width: 100%;
+  display       : inline-block;
+  border-radius : 8%;          /* 角丸       */
+  font-size     : 17pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 12px;   /* 余白       */
+  background    : #03AAD2;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  border        : 2px solid #4da6ff;    /* 枠の指定 */
+}
+.search__button:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : #4da6ff;     /* 背景色     */
+  background    : #ffffff;     /* 文字色     */
+}
+
 
 .search_conditions span{
   cursor:pointer;

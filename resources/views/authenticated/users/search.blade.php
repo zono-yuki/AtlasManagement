@@ -16,15 +16,15 @@
         </a>
       </div>
       <div class="mb-1">
-          <span>カナ : </span>
-          <span>({{ $user->over_name_kana }}</span>
-          <span>{{ $user->under_name_kana }})</span>
+        <span>カナ : </span>
+        <span>({{ $user->over_name_kana }}</span>
+        <span>{{ $user->under_name_kana }})</span>
       </div>
       <div class="mb-1">
         @if($user->sex == 1)
-          <span>性別 : </span><span>男</span>
+        <span>性別 : </span><span>男</span>
         @else
-          <span>性別 : </span><span>女</span>
+        <span>性別 : </span><span>女</span>
         @endif
       </div>
 
@@ -47,19 +47,19 @@
         @if($user->role == 4)
         <!-- if文 1の時国語、2の時数学、3の時英語 -->
         <span>選択科目:</span>
-          @foreach($user->subjects as $subject )
-              @if($subject->id == 1)
-                <span>国語</span>
-              @endif
+        @foreach($user->subjects as $subject )
+        @if($subject->id == 1)
+        <span>国語</span>
+        @endif
 
-              @if($subject->id == 2)
-                <span>数学</span>
-              @endif
+        @if($subject->id == 2)
+        <span>数学</span>
+        @endif
 
-              @if($subject->id == 3)
-                <span>英語</span>
-              @endif
-          @endforeach
+        @if($subject->id == 3)
+        <span>英語</span>
+        @endif
+        @endforeach
 
 
         @endif
@@ -70,33 +70,33 @@
   </div>
 
   <!-- ---------------------------------------検索---------------------------------------- -->
-  <div class="search_area w-25">
+  <div class="search_area">
     <div class="search_box">
-      <p class="search-font">検索</p>
+      <p class="search-font mb-1">検索</p>
       <div>
         <!-- keyword -->
-        <input type="text" class="free_word" name="keyword" placeholder="キーワードを検索" form="userSearchRequest">
+        <input type="text" class="free_word mb-2" name="keyword" placeholder="キーワードを検索" form="userSearchRequest">
       </div>
       <div>
-        <lavel>カテゴリ</lavel>
+        <p class="mb-1">カテゴリ</p>
 
         <!-- category -->
-        <select form="userSearchRequest" name="category">
-          <option value="name">名前</option>
+        <select class="name_id_word mb-2" form="userSearchRequest" name="category">
+          <option class="" value="name">名前</option>
           <option value="id">社員ID</option>
         </select>
 
       </div>
       <div>
         <!-- updown -->
-        <label>並び替え</label>
-        <select name="updown" form="userSearchRequest">
+        <p class="mb-1">並び替え</p>
+        <select class="name_id_word mb-2" name="updown" form="userSearchRequest">
           <option value="ASC">昇順</option>
           <option value="DESC">降順</option>
         </select>
       </div>
       <div class="">
-        <p class="m-0 search_conditions"><span>検索条件の追加</span></p>
+        <p class="mb-4 search_conditions"><span>検索条件の追加</span></p>
         <div class="search_conditions_inner">
           <div>
             <!-- sex -->
@@ -122,15 +122,17 @@
         </div>
       </div>
 
+      <div class="mt-3 mb-4">
+        <!-- 検索ボタン submitで全部送る-->
+        <input class="search__button" type="submit" name="search_btn" value="検索" form="userSearchRequest">
+      </div>
+
       <div>
         <!-- リセットボタン -->
         <input type="reset" value="リセット" form="userSearchRequest">
       </div>
 
-      <div>
-        <!-- 検索ボタン submitで全部送る-->
-        <input type="submit" name="search_btn" value="検索" form="userSearchRequest">
-      </div>
+
 
     </div>
     <!-- ここで送る。Usersコントローラーで$requestで受け取る form="userSearchRequest"がついているものを全て送信する。 -->
