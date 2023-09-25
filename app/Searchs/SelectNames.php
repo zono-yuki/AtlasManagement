@@ -11,7 +11,7 @@ class SelectNames implements DisplayUsers{
 
   public function resultUsers($keyword, $category, $updown, $gender, $role, $subjects){
     if(empty($gender)){//性別が空の時,is_nullにする？
-      $gender = ['1', '2'];
+      $gender = ['1', '2' ,'3'];
     }else{//nullではない時
       $gender = array($gender);
     }

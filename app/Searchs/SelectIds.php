@@ -10,7 +10,7 @@ class SelectIds implements DisplayUsers{
 
   public function resultUsers($keyword, $category, $updown, $gender, $role, $subjects){
     if(is_null($gender)){
-      $gender = ['1', '2'];
+      $gender = ['1', '2' ,'3'];
     }else{
       $gender = array($gender);//$genderがあった場合、変数に設定する
     }

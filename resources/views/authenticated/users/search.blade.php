@@ -23,8 +23,14 @@
       <div class="mb-1">
         @if($user->sex == 1)
         <span>性別 : </span><span>男</span>
-        @else
+        @endif
+
+        @if($user->sex == 2)
         <span>性別 : </span><span>女</span>
+        @endif
+
+        @if($user->sex == 3)
+        <span>性別 : </span><span>その他</span>
         @endif
       </div>
 
@@ -95,29 +101,41 @@
           <option value="DESC">降順</option>
         </select>
       </div>
-      <div class="">
-        <p class="mb-4 search_conditions"><span>検索条件の追加</span></p>
+      <div class="search_user_box pl-3 mb-5">
+        <p class="mb-1 search_conditions"><span>検索条件の追加</span></p>
         <div class="search_conditions_inner">
           <div>
             <!-- sex -->
-            <label>性別</label>
-            <span>男</span><input type="radio" name="sex" value="1" form="userSearchRequest">
-            <span>女</span><input type="radio" name="sex" value="2" form="userSearchRequest">
+            <label class="mt-1 mb-1">性別</label>
+            <div>
+              <span>男</span><input type="radio" name="sex" value="1" form="userSearchRequest">
+              <span>女</span><input type="radio" name="sex" value="2" form="userSearchRequest">
+              <span>その他</span><input type="radio" name="sex" value="3" form="userSearchRequest">
+            </div>
           </div>
+
           <div>
             <!-- role -->
             <label>権限</label>
-            <select name="role" form="userSearchRequest" class="engineer">
-              <option selected disabled>----</option>
-              <option value="1">教師(国語)</option>
-              <option value="2">教師(数学)</option>
-              <option value="3">教師(英語)</option>
-              <option value="4" class="">生徒</option>
-            </select>
+            <div>
+              <select name="role" form="userSearchRequest" class="engineer">
+                <option selected disabled>----</option>
+                <option value="1">教師(国語)</option>
+                <option value="2">教師(数学)</option>
+                <option value="3">教師(英語)</option>
+                <option value="4" class="">生徒</option>
+              </select>
+            </div>
           </div>
+
           <div class="selected_engineer">
             <!-- 選択科目 追加する! -->
             <label>選択科目</label>
+            <div>
+              <span>国語</span><input type="checkbox" name="subjects" value="1" form="userSearchRequest" class="mr-1">
+              <span>数学</span><input type="checkbox" name="subjects" value="2" form="userSearchRequest" class="mr-1">
+              <span>英語</span><input type="checkbox" name="subjects" value="3" form="userSearchRequest" class="mr-1">
+            </div>
           </div>
         </div>
       </div>
@@ -127,9 +145,9 @@
         <input class="search__button" type="submit" name="search_btn" value="検索" form="userSearchRequest">
       </div>
 
-      <div>
+      <div class="text-center">
         <!-- リセットボタン -->
-        <input type="reset" value="リセット" form="userSearchRequest">
+        <input class="btn-reset" type="reset" value="リセット" form="userSearchRequest">
       </div>
 
 

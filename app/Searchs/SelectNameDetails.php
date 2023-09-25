@@ -9,7 +9,7 @@ class SelectNameDetails implements DisplayUsers{
   //科目が入っていた場合
   public function resultUsers($keyword, $category, $updown, $gender, $role, $subjects){
     if(is_null($gender)){
-      $gender = ['1', '2'];
+      $gender = ['1', '2' ,'3'];
     }else{
       $gender = array($gender);
     }
