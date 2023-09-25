@@ -79,15 +79,15 @@
   <div class="search_area">
     <div class="search_box">
       <p class="search-font mb-1">検索</p>
-      <div>
+      <div class="mb-2">
         <!-- keyword -->
-        <input type="text" class="free_word mb-2" name="keyword" placeholder="キーワードを検索" form="userSearchRequest">
+        <input type="text" class="free_word mb-2 w-100" name="keyword" placeholder="キーワードを検索" form="userSearchRequest">
       </div>
       <div>
         <p class="mb-1">カテゴリ</p>
 
         <!-- category -->
-        <select class="name_id_word mb-2" form="userSearchRequest" name="category">
+        <select class="name_id_word mb-3" form="userSearchRequest" name="category">
           <option class="" value="name">名前</option>
           <option value="id">社員ID</option>
         </select>
@@ -95,8 +95,8 @@
       </div>
       <div>
         <!-- updown -->
-        <p class="mb-1">並び替え</p>
-        <select class="name_id_word mb-2" name="updown" form="userSearchRequest">
+        <p class="mb-0">並び替え</p>
+        <select class="name_id_word mt-1 mb-3" name="updown" form="userSearchRequest">
           <option value="ASC">昇順</option>
           <option value="DESC">降順</option>
         </select>

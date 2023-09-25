@@ -216,7 +216,7 @@ li{
 }
 
 .search-area{
-  padding-right: 200px;
+  /* padding-right: 200px; */
   min-height: 100vh;
 }
 /* 投稿ボタン*/
@@ -423,7 +423,7 @@ li{
 
 /* 検索、文字 */
 .search-font{
-  font-size: 20px;
+  font-size: 28px;
   font-weight: normal;
   color: #90b9d7;
 }
