@@ -129,7 +129,7 @@
           </div>
 
           <div class="selected_engineer">
-            <!-- 選択科目 追加する! -->
+            <!-- 選択科目 name="subjects[]"を追加する! -->
             <label>選択科目</label>
             <div>
               <span>国語</span><input type="checkbox" name="subjects[]" value="1" form="userSearchRequest" class="mr-1">
