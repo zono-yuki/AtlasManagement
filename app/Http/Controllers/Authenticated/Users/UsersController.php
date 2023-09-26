@@ -16,13 +16,22 @@ class UsersController extends Controller
 
     //検索画面を表示する処理
     public function showUsers(Request $request){
+        // dd($request);
         $keyword = $request->keyword;
         $category = $request->category;
         $updown = $request->updown;
         $gender = $request->sex;
         $role = $request->role;
 
-        $subjects = null;// ここで検索時の科目を受け取る initializeUsers()でif文に入るためnullにしている。
+        if(isset($request->subjects) && is_array($request->subjects)){
+            $subjects = $request->subjects;
+            //科目が選択された時の処理
+        }else{
+            $subjects = null;
+            //科目が選択されなかった時の処理initializeUsers()でif文に入るためnullにしている。
+        }
+        // dd($subjects);
+        //科目を選択したら、1,2,3の数字が配列が受け取れている。
 
         $userFactory = new SearchResultFactories();
 
@@ -30,7 +39,6 @@ class UsersController extends Controller
         $users = $userFactory->initializeUsers($keyword, $category, $updown, $gender, $role, $subjects);
 
         $subjects = Subjects::all();//国語、数学、英語を取得する ここがなんですべていれているのかわからない。
-        // dd($subjects);
 
         //検索ページを更新して表示する。
         return view('authenticated.users.search', compact('users', 'subjects'));

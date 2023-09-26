@@ -132,9 +132,9 @@
             <!-- 選択科目 追加する! -->
             <label>選択科目</label>
             <div>
-              <span>国語</span><input type="checkbox" name="subjects" value="1" form="userSearchRequest" class="mr-1">
-              <span>数学</span><input type="checkbox" name="subjects" value="2" form="userSearchRequest" class="mr-1">
-              <span>英語</span><input type="checkbox" name="subjects" value="3" form="userSearchRequest" class="mr-1">
+              <span>国語</span><input type="checkbox" name="subjects[]" value="1" form="userSearchRequest" class="mr-1">
+              <span>数学</span><input type="checkbox" name="subjects[]" value="2" form="userSearchRequest" class="mr-1">
+              <span>英語</span><input type="checkbox" name="subjects[]" value="3" form="userSearchRequest" class="mr-1">
             </div>
           </div>
         </div>

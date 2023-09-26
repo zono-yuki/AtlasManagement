@@ -19,7 +19,7 @@ class SelectNameDetails implements DisplayUsers{
       $role = array($role);
     }
 
-    $users = User::with('subjects')//UsersテーブルとSubjectsテーブルも使うということ。
+    $users = User::with('subjects')//UsersテーブルとリレーションしているSubjectsテーブルも使うということ。
     ->where(function($q) use ($keyword){//keywordを使って名前を検索
       $q->Where('over_name', 'like', '%'.$keyword.'%')
       ->orWhere('under_name', 'like', '%'.$keyword.'%')
