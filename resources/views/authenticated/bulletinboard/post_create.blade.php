@@ -2,7 +2,7 @@
 <!-- 投稿画面--------------------------------------------------------------- -->
 @section('content')
 <div class="post_create_container d-flex">
-  <div class="post_create_area border w-50 m-5 p-5">
+  <div class="post_create_area  border-0 w-50 m-5 p-5">
     <div class="">
 
       <p class="mb-0">カテゴリー</p>

@@ -108,7 +108,7 @@
 
   <!--コメントフォーム -->
   <div class="w-50 p-3">
-    <div class="comment_container border m-5">
+    <div class="comment_container m-5">
 
       <div class="comment_area p-3">
 

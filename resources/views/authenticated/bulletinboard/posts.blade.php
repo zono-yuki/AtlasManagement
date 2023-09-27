@@ -68,13 +68,13 @@
 
       <!-- 投稿ボタン -->
       <a class="post-color" href="{{ route('post.input') }}">
-        <button type="submit" class="btn btn-info post_btn">投稿</button>
+        <button type="submit" class="post_btn">投稿</button>
       </a>
       <!--------------------------------------------------------------------------------------------------- -->
       <!-- 検索-->
       <div class="search-box">
-        <input type="text" class="searcher-text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
-        <input type="submit" class="btn btn-info  searcher_btn" value="検索" form="postSearchRequest">
+        <input type="text" class="searcher-text pt-2 pb-2 pl-1" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
+        <input type="submit" class="searcher_btn" value="検索" form="postSearchRequest">
       </div>
 
       <!------------------------------------------------------------------------------------------------------>
@@ -82,7 +82,7 @@
       <!-- いいねした投稿、自分の投稿-->
       <div class="like_post_btn">
         <!-- いいねした投稿 ここからボタンつくっていくbootstrap使わない。-->
-        <input type="submit" name="like_posts" class="search_like_btn_good" value="いいねした投稿" form="postSearchRequest">
+        <input type="submit" name="like_posts" class="search_like_btn_good mr-1" value="いいねした投稿" form="postSearchRequest">
         <!-- 自分の投稿 -->
         <input type="submit" name="my_posts" class="search_like_btn_myself" value="自分の投稿" form="postSearchRequest">
       </div>
