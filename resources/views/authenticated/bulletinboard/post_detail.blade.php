@@ -129,7 +129,7 @@
 
         <!-- 投稿ボタン -->
         <div class="comment_btn">
-          <input type="submit" class="btn btn-primary" form="commentRequest" value="投稿">
+          <input type="submit" class="btn btn-primary btn-lg" form="commentRequest" value="投稿">
         </div>
 
         <!-- コメントを投稿する処理に飛ばす (id="commentRequestで、関連づけたcommentやpost_idを飛ばす。)" -->

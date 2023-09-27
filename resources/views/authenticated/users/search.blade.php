@@ -7,55 +7,55 @@
     @foreach($users as $user)
     <div class="border one_person">
       <div class="mb-2">
-        <span>ID : </span><span>{{ $user->id }}</span>
+        <span class="text-muted">ID : </span><span>{{ $user->id }}</span>
       </div>
-      <div class="mb-1"><span>名前 : </span>
+      <div class="mb-1"><span class="text-muted">名前 : </span>
         <a href="{{ route('user.profile', ['id' => $user->id]) }}">
           <span>{{ $user->over_name }}</span>
           <span>{{ $user->under_name }}</span>
         </a>
       </div>
       <div class="mb-1">
-        <span>カナ : </span>
+        <span class="text-muted">カナ : </span>
         <span>({{ $user->over_name_kana }}</span>
         <span>{{ $user->under_name_kana }})</span>
       </div>
       <div class="mb-1">
         @if($user->sex == 1)
-        <span>性別 : </span><span>男</span>
+        <span class="text-muted">性別 : </span><span>男</span>
         @endif
 
         @if($user->sex == 2)
-        <span>性別 : </span><span>女</span>
+        <span class="text-muted">性別 : </span><span>女</span>
         @endif
 
         @if($user->sex == 3)
-        <span>性別 : </span><span>その他</span>
+        <span class="text-muted">性別 : </span><span>その他</span>
         @endif
       </div>
 
       <div class="mb-1">
-        <span>生年月日 : </span><span>{{ $user->birth_day }}</span>
+        <span class="text-muted">生年月日 : </span><span>{{ $user->birth_day }}</span>
       </div>
       <div class="mb-1">
         @if($user->role == 1)
-        <span>権限 : </span><span>教師(国語)</span>
+        <span class="text-muted">権限 : </span><span>教師(国語)</span>
         @elseif($user->role == 2)
-        <span>権限 : </span><span>教師(数学)</span>
+        <span class="text-muted">権限 : </span><span>教師(数学)</span>
         @elseif($user->role == 3)
-        <span>権限 : </span><span>講師(英語)</span>
+        <span class="text-muted">権限 : </span><span>講師(英語)</span>
         @else
-        <span>権限 : </span><span>生徒</span>
+        <span class="text-muted">権限 : </span><span>生徒</span>
         @endif
       </div>
       <!-- ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
       <div>
         @if($user->role == 4)
         <!-- if文 1の時国語、2の時数学、3の時英語 -->
-        <span>選択科目:</span>
+        <span class="text-muted">選択科目:</span>
         @foreach($user->subjects as $subject )
         @if($subject->id == 1)
-        <span>国語</span>
+        <span >国語</span>
         @endif
 
         @if($subject->id == 2)
@@ -87,7 +87,7 @@
         <p class="mb-1">カテゴリ</p>
 
         <!-- category -->
-        <select class="name_id_word mb-3" form="userSearchRequest" name="category">
+        <select class="name_id_word mt-1 mb-3 pt-2 pr-2 pl-3 pb-2" form="userSearchRequest" name="category">
           <option class="" value="name">名前</option>
           <option value="id">社員ID</option>
         </select>
@@ -96,13 +96,16 @@
       <div>
         <!-- updown -->
         <p class="mb-0">並び替え</p>
-        <select class="name_id_word mt-1 mb-3" name="updown" form="userSearchRequest">
+        <select class="name_id_word mt-1 mb-3 pt-2 pr-4 pl-3 pb-2" name="updown" form="userSearchRequest">
           <option value="ASC">昇順</option>
           <option value="DESC">降順</option>
         </select>
       </div>
       <div class="search_user_box pl-3 mb-5">
-        <p class="mb-1 search_conditions"><span>検索条件の追加</span></p>
+        <p class="mb-1 search_conditions">
+          <span>検索条件の追加</span>
+          <span class="arrow"></span>
+        </p>
         <div class="search_conditions_inner">
           <div>
             <!-- sex -->

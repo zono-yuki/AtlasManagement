@@ -18,7 +18,7 @@
 
   <form action="{{ route('registerPost') }}" method="POST">
     <div class="w-120 vh-100 d-flex all_content" style="align-items:center; justify-content:center;">
-      <div class="w-30 vh-60 border pt-5 pr-5 pb-4 pl-5 background-white">
+      <div class="w-30 vh-60 shadow pt-5 pr-5 pb-4 pl-5 background-white">
         <!-- ----------------------------------------------------------------------------- -->
 
         <!--名前（漢字）のエラーメッセージを表示する-->

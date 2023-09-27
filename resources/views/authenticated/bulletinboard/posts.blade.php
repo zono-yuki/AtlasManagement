@@ -7,7 +7,7 @@
 
 
     @foreach($posts as $post)
-    <div class="post_area  m-posts">
+    <div class="post_area  m-posts  border-bottom">
 
       <!-- 名前の表示 -->
       <p class="name-color"><span class="name-color">{{ $post->user->over_name }}</span><span class="ml-3 name-color">{{ $post->user->under_name }}</span>さん</p>
@@ -31,7 +31,7 @@
           </div>
 
           <!-- いいねボタンの表示 -->
-          <div>
+          <div class="mr-2">
             @if(Auth::user()->is_Like($post->id))
             <!-- もしログインユーザーがこの投稿をイイネしていた場合は、-->
             <p class="m-0">

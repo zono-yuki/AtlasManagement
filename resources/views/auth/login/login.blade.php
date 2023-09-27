@@ -22,7 +22,7 @@
       <p class="logo">
         <img class="atlas_logo" src="{{ asset('image/atlas-black.png') }}">
       </p>
-      <div class="border vh-50 w-25 background-white pb-4 pr-4 pl-4 pt-4">
+      <div class="border vh-50 w-25 background-white shadow p-3 mb-5 bg-body rounded">
         <div class="w-75 m-auto pt-5">
           <label class="d-block m-0" style="font-size:13px;">メールアドレス</label>
           <div class="border-bottom border-primary w-100">
