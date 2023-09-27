@@ -7,7 +7,7 @@
 
   <!-- 左半分。投稿内容、名前や、コメント表示 -->
   <div class="w-50 mt-5">
-    <div class="m-3 detail_container">
+    <div class="m-3 ml-4 p-2 detail_container">
       <!-----------------------左半分------------------------------------------------------------->
       <div class="p-3">
 
@@ -18,19 +18,19 @@
           <!----------------------------------------------------------------------------------->
           <!-- 編集ボタンと削除ボタン （自分の投稿にのみ表示）-->
           @if($post->user_id === Auth::user()->id )
-            <div>
+          <div>
 
-              <!-- 編集を押したら、JSに中身のvalueが渡される。（モーダルに既存のタイトルと投稿を表示させるため） -->
-              <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">
-                編集
-              </span>
+            <!-- 編集を押したら、JSに中身のvalueが渡される。（モーダルに既存のタイトルと投稿を表示させるため） -->
+            <span class="edit-modal-open btn btn-primary" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">
+              編集
+            </span>
 
-              <!-- 削除ボタン -->
-              <a href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('削除してもよろしいですか？')">
-                削除
-              </a>
+            <!-- 削除ボタン -->
+            <a class="btn btn-danger" href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('削除してもよろしいですか？')">
+              削除
+            </a>
 
-            </div>
+          </div>
           @endif
         </div>
 
@@ -128,7 +128,9 @@
         <input type="hidden" name="post_id" form="commentRequest" value="{{ $post->id }}">
 
         <!-- 投稿ボタン -->
-        <input type="submit" class="btn btn-primary" form="commentRequest" value="投稿">
+        <div class="comment_btn">
+          <input type="submit" class="btn btn-primary" form="commentRequest" value="投稿">
+        </div>
 
         <!-- コメントを投稿する処理に飛ばす (id="commentRequestで、関連づけたcommentやpost_idを飛ばす。)" -->
         <form action="{{ route('comment.create') }}" method="post" id="commentRequest">{{ csrf_field() }}</form>
@@ -164,13 +166,13 @@
         <div class="w-50 m-auto edit-modal-btn d-flex">
 
           <!-- 閉じるボタン -->
-          <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
+          <a class="js-modal-close btn btn-danger btn-lg d-block" href="">閉じる</a>
 
           <!-- 投稿のidを受け取る -->
           <input type="hidden" class="edit-modal-hidden" name="post_id" value="">
 
           <!-- 編集ボタン -->
-          <input type="submit" class="btn btn-primary d-block" value="編集">
+          <input type="submit" class="btn btn-primary btn-lg d-block"  value="編集">
         </div>
       </div>
       {{ csrf_field() }}
