@@ -51,6 +51,7 @@ class Handler extends ExceptionHandler
      * @throws \Exception
      */
 
+    //セッションアウトしたらログイン画面へ遷移するように実装した。
     public function render($request, Exception $exception)
     {
         if ($exception instanceof TokenMismatchException) {

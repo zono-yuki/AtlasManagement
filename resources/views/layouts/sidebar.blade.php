@@ -12,8 +12,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Oswald:wght@200&display=swap" rel="stylesheet">
-  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <!-- <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
+  <!-- FontAwesome追加 -->
+  <script src="https://kit.fontawesome.com/6931b833d3.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body class="all_content">
@@ -21,26 +24,26 @@
     <!-- サイドバー （左側の青い部分）-->
     <div class="sidebar">
       @section('sidebar')
-      <p class="mt-3"><a href="{{ route('top.show') }}">マイページ</a></p>
-      <p class="mt-3"><a href="/logout">ログアウト</a></p>
-      <p class="mt-3"><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
+      <p class="mt-3"><i class="fa-solid fa-house ml-1 mr-2" style="color: #ffffff;"></i><a href="{{ route('top.show') }}">マイページ</a></p>
+      <p class="mt-3"><i class="fa-solid fa-arrow-right-from-bracket ml-1 mr-2" style="color: #ffffff;"></i><a href="/logout">ログアウト</a></p>
+      <p class="mt-3"><i class="fa-regular fa-calendar ml-1 mr-2" style="color: #ffffff;"></i><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
 
 
       <!-- 管理者のみに表示する 教師の時のみ表示する(スクール予約確認、スクール枠登録) -->
       <!-- スクール予約確認 -->
       @if(Auth::user()->role != 4 )
-      <p class="mt-3"><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
+      <p class="mt-3"><i class="fa-regular fa-calendar-check ml-1 mr-2" style="color: #ffffff;"></i><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
       <!--スクール枠登録-->
-      <p class="mt-3"><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
+      <p class="mt-3"><i class="fa-regular fa-calendar ml-1 mr-2" style="color: #ffffff;"></i><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
       @endif
 
 
 
       <!-- 掲示板へ -->
-      <p class="mt-3"><a href="{{ route('post.show') }}">掲示板</a></p>
+      <p class="mt-3"><i class="fa-solid fa-message ml-1 mr-2" style="color: #ffffff;"></i><a href="{{ route('post.show') }}">掲示板</a></p>
 
       <!-- ユーザー検索へ -->
-      <p class="mt-3"><a href="{{ route('user.show') }}">ユーザー検索</a></p>
+      <p class="mt-3"><i class="fa-solid fa-user-group ml-1 mr-2" style="color: #ffffff;"></i><a href="{{ route('user.show') }}">ユーザー検索</a></p>
 
       @show
 
@@ -54,8 +57,11 @@
 
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="{{ asset('js/register.js') }}" rel="stylesheet"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+    < /> <
+    script src = "{{ asset('js/register.js') }}"
+    rel = "stylesheet" >
+  </script>
   <script src="{{ asset('js/bulletin.js') }}" rel="stylesheet"></script>
   <script src="{{ asset('js/user_search.js') }}" rel="stylesheet"></script>
   <script src="{{ asset('js/calendar.js') }}" rel="stylesheet"></script>

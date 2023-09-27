@@ -95,7 +95,8 @@ li{
 
 /* サイドバー */
 .sidebar{
-  width:170px;
+  font-size: 18px;
+  width:220px;
   min-height:160vh;
 /* ここ変える */
   background-color:#03AAD2;
