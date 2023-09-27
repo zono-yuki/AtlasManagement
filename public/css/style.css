@@ -98,7 +98,6 @@ li{
   font-size: 18px;
   width:220px;
   min-height:160vh;
-/* ここ変える */
   background-color:#03AAD2;
   font-weight:bold;
 }
@@ -293,6 +292,10 @@ li{
 .post-title{
   font-weight: bold;
   color: #000;
+}
+
+.name-color{
+  color: gray;
 }
 
 /* いいねボタン */

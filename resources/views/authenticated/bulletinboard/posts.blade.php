@@ -10,7 +10,7 @@
     <div class="post_area  m-posts">
 
       <!-- 名前の表示 -->
-      <p><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
+      <p class="name-color"><span class="name-color">{{ $post->user->over_name }}</span><span class="ml-3 name-color">{{ $post->user->under_name }}</span>さん</p>
 
       <!-- タイトルの表示 -->
       <!-- クリックしたら投稿詳細画面へ遷移する (投稿idを送る)-->
@@ -25,9 +25,8 @@
           <!-- コメントの表示 -->
           <div class="mr-5">
             <!-- アイコンの表示 -->
-            <i class="fa fa-comment"></i>
+            <i class="fa-solid fa-comment" style="color: #adb3bd;"></i>
             <!-- コメント数の表示 -->
-            <!-- 作成中 -->
             <span class="">{{ $post->commentCounts($post->id) }}</span>
           </div>
 
@@ -38,6 +37,7 @@
             <p class="m-0">
               <!-- ハート 赤 -->
               <i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i>
+              <!-- <i class="fa-solid fa-heart un_like_btn" style="color: #ff0033;" post_id="{{ $post->id }}"></i> -->
               <!-- カウント -->
               <span class="like_counts{{ $post->id }}">
                 {{ $like->likeCounts($post->id)  }}
@@ -49,6 +49,7 @@
             <p class="m-0">
               <!-- ハート 黒 -->
               <i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i>
+              <!-- <i class="fa-regular fa-heart like_btn" style="color: #caced3;" post_id="{{ $post->id }}"></i> -->
               <!-- カウント -->
               <span class="like_counts{{ $post->id }}">
                 {{ $like->likeCounts($post->id)  }}
@@ -89,7 +90,7 @@
       <!-- カテゴリー検索--------------------------------------------------------------------------------------->
       <ul>
         @foreach($categories as $category)
-          <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
+        <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
         @endforeach
       </ul>
 
