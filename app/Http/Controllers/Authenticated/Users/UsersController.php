@@ -14,7 +14,7 @@ use App\Searchs\SearchResultFactories;
 class UsersController extends Controller
 {
 
-    //検索画面を表示する処理
+    //検索画面を表示
     public function showUsers(Request $request){
         // dd($request);
         $keyword = $request->keyword;
@@ -46,6 +46,7 @@ class UsersController extends Controller
 
     ///////////////////////////////////////////////////////////////////////////////////////
 
+    //プロフィール画面を表示
     public function userProfile($id){
         $user = User::with('subjects')->findOrFail($id);
         $subject_lists = Subjects::all();

@@ -8,5 +8,7 @@ $(function () {
 
   $('.subject_edit_btn').click(function () {
     $('.subject_inner').slideToggle();
+    //矢印の向きを変更
+    $('.arrow-subjects').toggleClass("open", 300);
   });
 });

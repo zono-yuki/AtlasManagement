@@ -429,12 +429,12 @@ li{
 .reserve_users_area{
   display:flex;
   flex-wrap:wrap;
-  width:120%;
+  justify-content: start;
+  width:70%;
   height: auto;
-  margin:1% 0 0 3%;
+  margin:1% 0% 0% 3%;
   /* min-height:100vh; */
   overflow: scroll;
-  padding:10px;
 
 }
 
@@ -445,14 +445,16 @@ li{
 
 .one_person{
   width:19%;
-  height:27%;
+  height:25%;
   background: #fff;
+  margin-bottom: 2%;
   margin-right: 2.5%;
   padding: 2% 2% 0% 2%;
 }
 /* ------------------------ */
 .search_content{
   min-height: 100vh;
+  display:flex;
 }
 
 .search_area{
@@ -468,19 +470,19 @@ li{
 .search-font{
   font-size: 28px;
   font-weight: normal;
-  color: #90b9d7;
+  color:#4da6ff;
 }
 
 /* キーワードを検索 */
 .free_word{
   background: #DCDCDC;
-  border-radius: 2px;
+  border-radius: 12px;
   border: none;
 }
 
 .name_id_word{
   background: #DCDCDC;
-  border-radius: 2px;
+  border-radius: 10px;
   border: none;
 }
 
@@ -501,6 +503,26 @@ li{
   top: 45%;
   /* 矢印を上向きに変える */
   transform: rotate(-45deg);
+}
+
+/* プロフィール画面の矢印 */
+.arrow-subjects{
+  width: 7px; /* ボックスの横幅を指定する */
+  height: 7px; /* ボックスの高さを指定する */
+  border-top: 2px solid #03AAD2; /* 境界線の上部を実線に指定する*/
+  border-right: 2px solid #03AAD2;/* 境界線の上部を実線に指定する*/
+  display: inline-block; /* インライン要素化 */
+  margin-left: 0.5%;
+  margin-top: 2%;
+  margin-bottom:0.3%;
+  transform: rotate(135deg); /* 下向き矢印 */
+}
+/* 矢印を反転させる */
+.arrow-subjects.open{
+  /* 矢印の位置を少し変える */
+  /* 矢印を上向きに変える */
+  transform: rotate(-45deg);
+  margin-bottom: 0.1%;
 }
 
 
@@ -544,6 +566,7 @@ li{
 .engineer{
   border: none;
   background: #DCDCDC;
+  border-radius: 12px;
 }
 
 .btn-reset{
@@ -552,9 +575,14 @@ li{
 }
 .subject_edit_btn{
   font-size:12px;
-  color:#0000FF;
+  color:skyblue;
   cursor:pointer;
 }
 .subject_inner{
   display:none;
+}
+
+.profile-subjects_box{
+  display: inline-block;
+  
 }

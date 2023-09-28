@@ -97,6 +97,7 @@ Route::group(['middleware' => 'auth'], function(){
             //検索してユーザー検索画面を表示する
             Route::get('/show/users', 'UsersController@showUsers')->name('user.show');
 
+            //プロフィール画面を表示する
             Route::get('/user/profile/{id}', 'UsersController@userProfile')->name('user.profile');
 
             Route::post('/user/profile/edit', 'UsersController@userEdit')->name('user.edit');
