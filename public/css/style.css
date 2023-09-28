@@ -113,8 +113,10 @@ li{
 }
 
 /* トップページ */
+
+
 .user_status{
-  border-radius:10px;
+  border-radius: 20px;
   background:#FFF;
 }
 
@@ -450,6 +452,7 @@ li{
   margin-bottom: 2%;
   margin-right: 2.5%;
   padding: 2% 2% 0% 2%;
+  border-radius: 12px;
 }
 /* ------------------------ */
 .search_content{
@@ -584,5 +587,5 @@ li{
 
 .profile-subjects_box{
   display: inline-block;
-  
+
 }

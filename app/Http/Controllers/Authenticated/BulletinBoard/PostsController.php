@@ -167,4 +167,7 @@ class PostsController extends Controller
 
         return response()->json();
     }
+
+    //mainCategoryを登録する処理mainCategoryCreate
+    //subCategoryを登録する処理subCategoryCreate
 }

@@ -72,8 +72,10 @@ Route::group(['middleware' => 'auth'], function(){
             //投稿ボタンを押すと、、、
             Route::post('/bulletin_board/create', 'PostsController@postCreate')->name('post.create');
 
+            //メインカテゴリーを追加する
             Route::post('/create/main_category', 'PostsController@mainCategoryCreate')->name('main.category.create');
 
+            //サブカテゴリーを追加する
             Route::post('/create/sub_category', 'PostsController@subCategoryCreate')->name('sub.category.create');
 
             //投稿詳細画面へ遷移する
