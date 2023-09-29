@@ -13,10 +13,9 @@ use App\Models\Users\User;
 use App\Http\Requests\BulletinBoard\PostFormRequest;
 use App\Http\Requests\BulletinBoard\PostUpdateFormRequest;
 use App\Http\Requests\BulletinBoard\CommentFormRequest;
-
-
+use App\Http\Requests\BulletinBoard\MainFormRequest;
+use App\Http\Requests\MainFormRequest as RequestsMainFormRequest;
 use Auth;
-
 
 class PostsController extends Controller
 {
@@ -32,7 +31,7 @@ class PostsController extends Controller
             ->orWhere('post', 'like', '%'.$request->keyword.'%')->get();
 
         }
-            else if($request->category_word){
+            else if($request->category_word){//サブカテゴリーで検索の場合
                 $sub_category = $request->category_word;
                 $posts = Post::with('user', 'postComments')->get();
             }
@@ -73,7 +72,9 @@ class PostsController extends Controller
         //投稿詳細画面を表示する。$postを送る。
     }
 
+    //新規投稿画面へ遷移する処理（投稿&カテゴリーの作成画面へ）
     public function postInput(){
+        //メインカテゴリを取得する
         $main_categories = MainCategory::get();
         return view('authenticated.bulletinboard.post_create', compact('main_categories'));
     }
@@ -155,7 +156,8 @@ class PostsController extends Controller
         return response()->json();
     }
 
-    public function postUnLike(Request $request){
+    public function postUnLike(Request $request)
+    {
         $user_id = Auth::id();
         $post_id = $request->post_id;
 
@@ -168,6 +170,16 @@ class PostsController extends Controller
         return response()->json();
     }
 
-    //mainCategoryを登録する処理mainCategoryCreate
+    //メインカテゴリーを登録する処理
+    public function mCategoryCreate(MainFormRequest $request)
+    {
+        //メインカテゴリーを登録
+        MainCategory::create([
+            'main_category' => $request->main_category_name,
+            'created_at' => now(),
+        ]);
+        return redirect()->route('post.input'); //投稿画面へ戻る
+    }
+
     //subCategoryを登録する処理subCategoryCreate
 }

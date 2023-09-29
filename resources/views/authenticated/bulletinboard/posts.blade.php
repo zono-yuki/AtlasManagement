@@ -88,9 +88,17 @@
       </div>
 
       <!-- カテゴリー検索--------------------------------------------------------------------------------------->
-      <ul>
+      <p class="mt-4 text-muted">カテゴリー検索</p>
+      <ul class="text-muted">
+        <!-- メインカテゴリの表示 -->
         @foreach($categories as $category)
-        <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
+        <li class="main_categories main_conditions mb-3" category_id="{{ $category->id }}">
+          <span>{{ $category->main_category }}<span>
+        </li>
+        <!-- メインカテゴリを押すと、サブカテゴリーが表示される。-->
+        <div class="main_conditions_inner">
+
+        </div>
         @endforeach
       </ul>
 
