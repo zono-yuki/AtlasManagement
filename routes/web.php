@@ -72,25 +72,30 @@ Route::group(['middleware' => 'auth'], function(){
             //投稿ボタンを押すと、、、
             Route::post('/bulletin_board/create', 'PostsController@postCreate')->name('post.create');
 
+/////////作成中//////////////
             //メインカテゴリーを追加する
             Route::post('/create/main_category', 'PostsController@mainCategoryCreate')->name('main.category.create');
 
             //サブカテゴリーを追加する
             Route::post('/create/sub_category', 'PostsController@subCategoryCreate')->name('sub.category.create');
 
+///////////////////////
             //投稿詳細画面へ遷移する
             Route::get('/bulletin_board/post/{id}', 'PostsController@postDetail')->name('post.detail');
 
             //編集モーダルで、編集ボタンを押したら、
             Route::post('/bulletin_board/edit', 'PostsController@postEdit')->name('post.edit');
 
+            //投稿削除
             Route::get('/bulletin_board/delete/{id}', 'PostsController@postDelete')->name('post.delete');
 
             //コメントをpost_commentsテーブルに登録する処理
             Route::post('/comment/create', 'PostsController@commentCreate')->name('comment.create');
 
+            //いいね
             Route::post('/like/post/{id}', 'PostsController@postLike')->name('post.like');
 
+            //いいね消す
             Route::post('/unlike/post/{id}', 'PostsController@postUnLike')->name('post.unlike');
 
         });

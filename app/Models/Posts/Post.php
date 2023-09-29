@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Users\User;
 use App\Models\Posts\PostComment;
+use App\Models\Categories\SubCategory;
 
 
 
@@ -31,12 +32,13 @@ class Post extends Model
 
     public function postComments(){//postCommentsとのリレーション(1対多の1の方)
         return $this->hasMany(PostComment::class);
-     }
+    }
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
     public function subCategories(){
-        // リレーションの定義
+        // リレーション 多対多の結合テーブル
+        return $this->belongsToMany(SubCategory::class,'post_sub_categories','post_id','sub_category_id');
     }
 
     // コメント数計算

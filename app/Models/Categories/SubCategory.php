@@ -3,6 +3,8 @@
 namespace App\Models\Categories;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Categories\MainCategory;
+use App\Models\Posts\Post;
 
 class SubCategory extends Model
 {
@@ -14,10 +16,13 @@ class SubCategory extends Model
         'created_at',
     ];
     public function mainCategory(){
-        // リレーションの定義
+     // リレーション 1対多の多
+        return $this->belongsTo(MainCategory::class);
+
     }
 
     public function posts(){
-        // リレーションの定義
+        // リレーション 多対多 結合テーブルsub_category_id ,post_id
+        return $this->belongsToMany(Post::class,'post_sub_categories','sub_category_id','post_id');
     }
 }
