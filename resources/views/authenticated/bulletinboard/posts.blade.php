@@ -90,17 +90,22 @@
       <!-- カテゴリー検索--------------------------------------------------------------------------------------->
       <p class="mt-4 text-muted">カテゴリー検索</p>
       <ul class="text-muted">
-        <!-- メインカテゴリの表示 -->
+        <!-- メインカテゴリの表示 メインカテゴリの数だけ回す-->
         @foreach($categories as $category)
         <li class="main_categories main_conditions mb-3" category_id="{{ $category->id }}">
           <span>{{ $category->main_category }}<span>
         </li>
-        <!-- メインカテゴリを押すと、サブカテゴリーが表示される。-->
-        <div class="main_conditions_inner">
-          @foreach($category->subCategories as $subcategory)
-            <span>{{ $subcategory->sub_category }}</span>
-          @endforeach
-        </div>
+
+          <!-- メインカテゴリを押すと、サブカテゴリーが表示される。-->
+          <div class="main_conditions_inner ml-4">
+            @foreach($category->subCategories as $subcategory)
+              <!--そのサブカテゴリをつけている投稿を検索する-->
+              <div class="subcategory-items mb-4">
+                <a href="" class="subcategory-link">{{ $subcategory->sub_category }}</a>
+              </div>
+            @endforeach
+          </div>
+
         @endforeach
       </ul>
 

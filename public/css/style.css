@@ -573,6 +573,15 @@ li{
   display:none;
 }
 
+.subcategory-items{
+  width:80%;
+  border-bottom: 1px solid #808080;
+}
+.subcategory-link{
+  color: #808080;
+  text-decoration: none;
+}
+
 .engineer{
   border: none;
   background: #DCDCDC;
