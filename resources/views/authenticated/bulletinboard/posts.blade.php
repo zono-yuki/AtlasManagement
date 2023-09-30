@@ -97,7 +97,9 @@
         </li>
         <!-- メインカテゴリを押すと、サブカテゴリーが表示される。-->
         <div class="main_conditions_inner">
-
+          @foreach($category->subCategories as $subcategory)
+            <span>{{ $subcategory->sub_category }}</span>
+          @endforeach
         </div>
         @endforeach
       </ul>

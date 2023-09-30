@@ -14,6 +14,7 @@ use App\Http\Requests\BulletinBoard\PostFormRequest;
 use App\Http\Requests\BulletinBoard\PostUpdateFormRequest;
 use App\Http\Requests\BulletinBoard\CommentFormRequest;
 use App\Http\Requests\BulletinBoard\MainFormRequest;
+use App\Http\Requests\BulletinBoard\SubFormRequest;
 use App\Http\Requests\MainFormRequest as RequestsMainFormRequest;
 use Auth;
 
@@ -170,10 +171,10 @@ class PostsController extends Controller
         return response()->json();
     }
 
-    //メインカテゴリーを登録する処理
+    //メインカテゴリーを追加する処理
     public function mCategoryCreate(MainFormRequest $request)
     {
-        //メインカテゴリーを登録
+        //メインカテゴリーを追加
         MainCategory::create([
             'main_category' => $request->main_category_name,
             'created_at' => now(),
@@ -181,5 +182,22 @@ class PostsController extends Controller
         return redirect()->route('post.input'); //投稿画面へ戻る
     }
 
-    //subCategoryを登録する処理subCategoryCreate
+    //サブカテゴリーを追加する処理
+    public function subCategoryCreate(SubFormRequest $request)
+    {
+        $main_category_id = $request->main_category_id;
+        // dd($main_category_id);
+        //メインカテゴリーのidが正しく送られている
+
+        $sub_category_name = $request->sub_category_name;
+        // dd($sub_category_name);
+        //サグカテゴリーの名前が正しく送られている
+
+        SubCategory::create([
+            'main_category_id' => $main_category_id,
+            'sub_category' => $sub_category_name,
+            'created_at' => now(),
+        ]);
+        return redirect()->route('post.input');//投稿画面へ戻る
+    }
 }

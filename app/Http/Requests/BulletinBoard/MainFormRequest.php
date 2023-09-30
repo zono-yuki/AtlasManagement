@@ -25,7 +25,7 @@ class MainFormRequest extends FormRequest
     {
         //メインカテゴリーのバリデーションルール
         return [
-            'main_category_name' => 'required|string|max:100',
+            'main_category_name' => 'required|string|max:100|unique:main_categories,main_category',
         ];
     }
     public function messages()
@@ -33,6 +33,7 @@ class MainFormRequest extends FormRequest
         return [ //メインカテゴリーのエラーメッセージ
             'main_category_name.required' => 'メインカテゴリーは必ず入力してください。',
             'main_category_name.max' => 'メインカテゴリーは100文字以内で入力してください。',
+            'main_category_name.unique' => '登録済みのメインカテゴリーです。',
         ];
     }
 

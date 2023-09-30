@@ -53,34 +53,58 @@
     <div class="category_area mt-5 p-5">
       <!-- メインカテゴリーのエラーメッセージを表示する -->
       @if ($errors->has('main_category_name'))
-      @foreach($errors->get('main_category_name') as $message)
-      <p class="error-message"> {{ $message }} </p>
-      @endforeach
+        @foreach($errors->get('main_category_name') as $message)
+          <p class="error-message"> {{ $message }} </p>
+        @endforeach
       @endif
+
+
       <div class="">
         <p class="m-0">メインカテゴリー</p>
-        <!-- 入力（メインカテゴリー） -->
+          <!-- 入力（メインカテゴリー） -->
         <input type="text" class="w-100" name="main_category_name" form="mainCategoryRequest">
-        <!-- 追加ボタン -->
+          <!-- 追加ボタン -->
         <input type="submit" value="追加" class="w-100 btn btn-primary p-0 mt-3" form="mainCategoryRequest">
       </div>
       <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}</form>
 
+
+
       <div class="mt-5">
+
+        <!-- サブカテゴリーのエラーメッセージを表示する -->
+        @if ($errors->has('main_category_id'))
+          @foreach($errors->get('main_category_id') as $message)
+            <p class="error-message"> {{ $message }} </p>
+          @endforeach
+        @endif
+
+        @if ($errors->has('sub_category_name'))
+          @foreach($errors->get('sub_category_name') as $message)
+            <p class="error-message"> {{ $message }} </p>
+          @endforeach
+        @endif
+
         <p class="mb-0">サブカテゴリー</p>
+
         <!--メインカテゴリーの選択-->
-        <select name="" class="mt-1 w-100 pt-1 pb-1" form="subCategoryRequest">
+        <select name="main_category_id" class="mt-1 w-100 pt-1 pb-1" form="subCategoryRequest">
           <option value="">---</option>
           @foreach($main_categories as $main_category)
-            <option value="{{ $main_category->id }}">{{ $main_category->main_category }}</option>
+          <option value="{{ $main_category->id }}">{{ $main_category->main_category }}</option>
           @endforeach
         </select>
+
         <!-- サブカテゴリーの入力 -->
         <input type="text" class="w-100 mt-3" name="sub_category_name" form="subCategoryRequest">
+
         <!-- 追加ボタン 点火-->
         <input type="submit" value="追加" class="w-100 btn btn-primary p-0 mt-3" form="subCategoryRequest">
+
         <!-- サブカテゴリーの作成に進む -->
-        <form action="{{ route('sub.category.create') }}" method="post" id="subCategoryRequest">{{ csrf_field() }}</form>
+        <form action="{{ route('sub.category.create') }}" method="post" id="subCategoryRequest">
+          {{ csrf_field() }}
+        </form>
       </div>
 
     </div>
