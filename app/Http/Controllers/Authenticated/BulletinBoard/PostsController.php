@@ -81,16 +81,27 @@ class PostsController extends Controller
     }
 
     //投稿内容の登録
-    public function postCreate(PostFormRequest $request){//新規投稿用のバリデーション
+    public function postCreate(PostFormRequest $request){ //新規投稿用のバリデーション
 
         //投稿を登録
-        $post = Post::create([
+        $post_get = Post::create([
             'user_id' => Auth::id(),
             'post_title' => $request->post_title,
             'post' => $request->post_body,
             'created_at' => now(),
         ]);
-        return redirect()->route('post.show');//掲示板へ
+
+        //新規投稿した情報を取得する。
+        $post = Post::findOrFail($post_get->id);
+
+        //受けとったサブカテゴリーのidを取得する。
+        $post_category_id = $request->post_category_id;
+
+        //中間テーブルにアクセスする。サブカテゴリーを登録する。
+        $post->subCategories()->attach($post_category_id);
+
+
+        return redirect()->route('post.show');//掲示板へ戻る
     }
 
     //モーダルで投稿を編集する処理
@@ -165,8 +176,8 @@ class PostsController extends Controller
         $like = new Like;
 
         $like->where('like_user_id', $user_id)
-             ->where('like_post_id', $post_id)
-             ->delete();
+            ->where('like_post_id', $post_id)
+            ->delete();
 
         return response()->json();
     }

@@ -9,9 +9,12 @@
 
       <select class="w-100" form="postCreate" name="post_category_id">
         @foreach($main_categories as $main_category)
-        <optgroup label="{{ $main_category->main_category }}"></optgroup>
-        <!-- サブカテゴリー表示 -->
-        </optgroup>
+          <!--メインカテゴリーごとにグループ化する メインカテゴリーは灰色で表示される。-->
+          <optgroup label="{{ $main_category->main_category }}">
+            @foreach($main_category -> subCategories as $subcategory)
+              <option value="{{ $subcategory-> id}}"> {{ $subcategory-> sub_category }}</option>
+            @endforeach
+          </optgroup>
         @endforeach
       </select>
 
@@ -46,6 +49,7 @@
 
   </div>
 
+  <!-------------------------------------------------------------------------------------------------- -->
 
   <!-- 講師アカウントのみに表示する -->
   @can('admin')

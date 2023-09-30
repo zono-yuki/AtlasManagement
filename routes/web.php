@@ -69,17 +69,17 @@ Route::group(['middleware' => 'auth'], function(){
 
             Route::get('/bulletin_board/my_post', 'PostsController@myBulletinBoard')->name('my.bulletin.board');
 
-            //投稿ボタンを押すと、、、
+            //新規投稿
             Route::post('/bulletin_board/create', 'PostsController@postCreate')->name('post.create');
 
-/////////作成中////////////////////////////////////////////////////////////
+
             //メインカテゴリーを追加する
             Route::post('/create/main_category', 'PostsController@mCategoryCreate')->name('main.category.create');
 
             //サブカテゴリーを追加する
             Route::post('/create/sub_category', 'PostsController@subCategoryCreate')->name('sub.category.create');
 
-/////////////////////////////////////////////////////////////////////////
+
             //投稿詳細画面へ遷移する
             Route::get('/bulletin_board/post/{id}', 'PostsController@postDetail')->name('post.detail');
 
