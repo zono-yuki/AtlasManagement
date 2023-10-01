@@ -96,7 +96,7 @@ li{
 /* サイドバー */
 .sidebar{
   font-size: 18px;
-  width:220px;
+  width:200px;
   min-height:160vh;
   background-color:#03AAD2;
   font-weight:bold;
@@ -199,18 +199,22 @@ li{
 }
 .detail_container{
   background:#FFF;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   border-radius: 20px;
 }
 /* -----------投稿表示欄-----*/
 .post_area{
   background:#FFF;
   border-radius:10px;
+  padding-bottom: 0;
 }
 .m-posts{
   margin-left: 100px;
   margin-right: 100px;
-  padding: 15px;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 0;
 }
 /*--------検索欄------------*/
 .post_view{
@@ -356,13 +360,17 @@ li{
   font-weight:bold;
 }
 .post-user-name{
-  font-size: 17px;
+  font-size: 16px;
 }
 .detail_post_title{
   font-size:17px;
+  font-weight: bold;
 }
 .detail_post{
-  font-size:14px;
+  font-size:17px;
+}
+.post-user-comment{
+  font-size:15px;
 }
 .detail_inner_head{
   display:flex;
@@ -381,6 +389,7 @@ li{
 /* 掲示板 コメント */
 .comment_container{
   background:#FFF;
+  border-radius: 20px;
 }
 .comment_area p,
 .comment_area input{
@@ -402,12 +411,17 @@ li{
 .comment_btn{
  text-align: right;
 }
-
+.subcategory__name{
+  height: 48px;
+}
 .margin__right{
-  margin-right: 865px;
+  margin-right: 889px;
 }
 
-.btn-category{
+.margin__right2{
+  margin-right: 0;
+}
+/* .btn-category{
   background-color: #03AAD2;
   display: flex;
   justify-content: center;
@@ -421,11 +435,37 @@ li{
   font-size: 14px;
   font-weight: normal;
   transition: 0.3s;
+} */
+
+.btn-category{
+  width: 80px;
+  height:auto;
+  padding: 7px 5px;
+  border-radius: 10px;
+  color: #fff;
+  font-size:14px;
+  font-weight: normal;
+  transition: 0.3s;
+  background-color: #03AAD2;
+  text-align: center;
 }
 
 .button-category:hover {
   text-decoration: none;
   background-color: #bbbbbb;
+}
+
+.btn-category2{
+  width:auto;
+  height:auto;
+  padding: 7px 5px;
+  border-radius: 10px;
+  color: #fff;
+  font-size:14px;
+  font-weight: normal;
+  transition: 0.3s;
+  background-color: #03AAD2;
+  text-align: center;
 }
 
 /* 掲示板　カテゴリー */
@@ -441,11 +481,13 @@ li{
   color:#FFF;
 }
 .category_btn{
-  font-size:12px;
+  font-size:17px;
   border-radius:5px;
-  padding:0 5px;
+  width: auto;
+  height: auto;
+  padding:3px 8px;
   border:none;
-  background:#999;
+  background:gray;
   color:#FFF;
 }
 .main_categories{

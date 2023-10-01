@@ -12,11 +12,16 @@
       <div class="p-3">
 
         <div class="detail_inner_head">
-
-          <div>
-          </div>
           <!----------------------------------------------------------------------------------->
           <!-- 編集ボタンと削除ボタン （自分の投稿にのみ表示）-->
+          @foreach($post->subCategories as $sub_category)
+          <div class="margin__right2">
+            <p class="btn-category2">
+              <span">{{ $sub_category -> sub_category }}</span>
+            </p>
+          </div>
+          @endforeach
+
           @if($post->user_id === Auth::user()->id )
           <div>
 
@@ -78,7 +83,7 @@
 
       <div class="p-3">
         <div class="comment_container">
-          <span class="">コメント</span>
+          <span class="post-user-comment">コメント</span>
 
           @foreach($post->postComments as $comment)
           <!-- Post.phpのpostCommentsメソッドを使う。コントローラーで、userテーブルとpostCommentsテーブルで一致した'postsテーブル'のレコード（投稿$post）が送られてくるので、'その投稿に紐づくコメント'をある分だけ表示する。Post.phpのpostCommentsメソッドで、postCommentsテーブルと繋がっている。-->

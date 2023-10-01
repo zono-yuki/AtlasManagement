@@ -109,7 +109,7 @@
         <div class="main_conditions_inner ml-4">
           <!--メインカテゴリに紐づいているサブカテゴリの分だけ回す。-->
           <!--そのサブカテゴリをつけている投稿を検索する-->
-          <div class="subcategory-items mb-4">
+          <div class="subcategory-items mb-0">
             @foreach($category->subCategories as $subcategory)
               <li style="border:none;">
                 <input type="submit" name="category_word" class="category_btn" style="border:none;" value="{{ $subcategory -> sub_category }}" form="postSearchRequest">
