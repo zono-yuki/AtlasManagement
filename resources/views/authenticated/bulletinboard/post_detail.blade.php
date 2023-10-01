@@ -3,7 +3,7 @@
 
 <!-----------------------------投稿詳細画面-------------------------------------------->
 
-<div class="vh-100 d-flex">
+<div class="vh-100 d-flex text-muted">
 
   <!-- 左半分。投稿内容、名前や、コメント表示 -->
   <div class="w-50 mt-5">
@@ -39,9 +39,9 @@
         <div class="contributor d-flex">
           <!--  名前の表示-->
           <p>
-            <span>{{ $post->user->over_name }}</span>
-            <span>{{ $post->user->under_name }}</span>
-            さん
+            <span class="post-user-name">{{ $post->user->over_name }}</span>
+            <span class="post-user-name">{{ $post->user->under_name }}</span>
+            <span class="post-user-name">さん</span>
           </p>
           <!-- 投稿時間の表示 -->
           <span class="ml-5">{{ $post->created_at }}</span>
@@ -56,7 +56,7 @@
         @endforeach
         @endif
 
-        <div class="detsail_post_title">{{ $post->post_title }}</div>
+        <div class="detail_post_title">{{ $post->post_title }}</div>
 
         <!------------------------------------------------------------------------------------>
 
@@ -68,7 +68,7 @@
         @endforeach
         @endif
 
-        <div class="mt-3 detsail_post">{{ $post->post }}</div>
+        <div class="mt-3 detail_post">{{ $post->post }}</div>
 
       </div>
 
@@ -172,7 +172,7 @@
           <input type="hidden" class="edit-modal-hidden" name="post_id" value="">
 
           <!-- 編集ボタン -->
-          <input type="submit" class="btn btn-primary btn-lg d-block"  value="編集">
+          <input type="submit" class="btn btn-primary btn-lg d-block" value="編集">
         </div>
       </div>
       {{ csrf_field() }}

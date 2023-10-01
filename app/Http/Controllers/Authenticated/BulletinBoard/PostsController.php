@@ -22,6 +22,7 @@ class PostsController extends Controller
 {
     //掲示板を表示する
     public function show(Request $request){
+        // dd($request->category_word);
         $posts = Post::with('user', 'postComments')->get();
         $categories = MainCategory::get();
         $like = new Like;
@@ -33,8 +34,11 @@ class PostsController extends Controller
 
         }
             else if($request->category_word){//サブカテゴリーで検索の場合
-                $sub_category = $request->category_word;
-                $posts = Post::with('user', 'postComments')->get();
+            $posts = Post::with('user', 'postComments')
+            ->whereHas('subCategories', function($q) use($request){
+                $q->where('sub_category', 'LIKE', '%'.$request['category_word']. '%');
+            })->get();
+
             }
 
                 else if($request->like_posts){//いいねした投稿を取得する

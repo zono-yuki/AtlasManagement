@@ -61,6 +61,8 @@ Route::group(['middleware' => 'auth'], function(){
 
             //掲示板へ
             Route::get('/bulletin_board/posts/{keyword?}', 'PostsController@show')->name('post.show');
+            //掲示板へ(試験的に)
+            Route::post('/bulletin_board/posts/{category_word?}', 'PostsController@show')->name('post.show');
 
             //投稿画面へ
             Route::get('/bulletin_board/input', 'PostsController@postInput')->name('post.input');

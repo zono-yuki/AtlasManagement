@@ -21,7 +21,15 @@
       <!-- コメントといいねの表示 -->
       <div class="post_bottom_area d-flex">
         <div class="d-flex post_status">
-
+          <!-- ------------------------------------------------------------------------- -->
+          <div class="subcategory__name">
+            @foreach($post->subCategories as $sub_category)
+            <div class="margin__right">
+              <p class="btn-category"><span">{{ $sub_category -> sub_category }}</span></p>
+            </div>
+            @endforeach
+          </div>
+          <!-- ------------------------------------------------------------------------ -->
           <!-- コメントの表示 -->
           <div class="mr-5">
             <!-- アイコンの表示 -->
@@ -93,18 +101,23 @@
         <!-- メインカテゴリの表示 メインカテゴリの数だけ回す-->
         @foreach($categories as $category)
         <li class="main_categories main_conditions mb-3" category_id="{{ $category->id }}">
+          <!-- メインカテゴリー名を表示する -->
           <span>{{ $category->main_category }}<span>
         </li>
 
-          <!-- メインカテゴリを押すと、サブカテゴリーが表示される。-->
-          <div class="main_conditions_inner ml-4">
+        <!-- メインカテゴリを押すと、サブカテゴリーが表示される。-->
+        <div class="main_conditions_inner ml-4">
+          <!--メインカテゴリに紐づいているサブカテゴリの分だけ回す。-->
+          <!--そのサブカテゴリをつけている投稿を検索する-->
+          <div class="subcategory-items mb-4">
             @foreach($category->subCategories as $subcategory)
-              <!--そのサブカテゴリをつけている投稿を検索する-->
-              <div class="subcategory-items mb-4">
-                <a href="" class="subcategory-link">{{ $subcategory->sub_category }}</a>
-              </div>
+              <li style="border:none;">
+                <input type="submit" name="category_word" class="category_btn" style="border:none;" value="{{ $subcategory -> sub_category }}" form="postSearchRequest">
+              </li>
+              <span type="submit" name="category_word" value="{{ $subcategory -> sub_category }}" form="postSearchRequest"></span>
             @endforeach
           </div>
+        </div>
 
         @endforeach
       </ul>
