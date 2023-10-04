@@ -4,6 +4,9 @@ use Carbon\Carbon;
 use App\Models\Users\User;
 
 class CalendarView{
+
+// 講師（管理者）用
+
   private $carbon;
 
   function __construct($date){
@@ -14,6 +17,7 @@ class CalendarView{
     return $this->carbon->format('Y年n月');
   }
 
+//ここで
   public function render(){
     $html = [];
     $html[] = '<div class="calendar text-center">';
@@ -25,8 +29,8 @@ class CalendarView{
     $html[] = '<th class="border">水</th>';
     $html[] = '<th class="border">木</th>';
     $html[] = '<th class="border">金</th>';
-    $html[] = '<th class="border">土</th>';
-    $html[] = '<th class="border">日</th>';
+    $html[] = '<th class="border font-blue">土</th>';
+    $html[] = '<th class="border font-red">日</th>';
     $html[] = '</tr>';
     $html[] = '</thead>';
     $html[] = '<tbody>';

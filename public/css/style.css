@@ -133,8 +133,29 @@ li{
 .past-day{
   background:#EEE;
 }
+
+.calendar-margin{
+  width:90%;
+  margin-left: 150px;
+  text-align: center;
+}
+
+.calendar-box{
+  max-width: 1050px;
+  margin-bottom: ;
+}
+.calendar-center{
+  display: flex;
+}
+
 .calendar-td{
-  min-width:100px;
+  min-width:150px;
+}
+
+/* 過ぎ去った日,灰色にする */
+.calendar-tx{
+  min-width:150px;
+  background: #EEEEEE;
 }
 .day_part{
   color:#494949;
@@ -151,6 +172,10 @@ li{
 }
 .adjust-table-btn{
   width:70%;
+}
+
+.calensar-btn{
+  text-align: right;
 }
 
 /* モーダル */
@@ -468,7 +493,7 @@ li{
   text-align: center;
 }
 
-/* 掲示板　カテゴリー */
+/* 掲示板,カテゴリー */
 .category_area{
   background:#FFF;
   border-radius:10px;
@@ -671,5 +696,12 @@ li{
 
 .profile-subjects_box{
   display: inline-block;
+}
 
+/* カレンダー（予約画面） */
+.font-blue{
+  color: blue;
+}
+.font-red{
+  color: red;
 }

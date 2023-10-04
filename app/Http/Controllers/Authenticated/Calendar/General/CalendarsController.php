@@ -14,7 +14,8 @@ use DB;
 class CalendarsController extends Controller
 {
     public function show(){
-        $calendar = new CalendarView(time());
+        //スクール予約画面を表示する
+        $calendar = new CalendarView(time());//ここで全ての集計をしている。
         return view('authenticated.calendar.general.calendar', compact('calendar'));
     }
 
@@ -34,5 +35,10 @@ class CalendarsController extends Controller
             DB::rollback();
         }
         return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
+    }
+
+    //スクール枠登録 作成中
+    public function reserveSettings($user_id){
+        //
     }
 }

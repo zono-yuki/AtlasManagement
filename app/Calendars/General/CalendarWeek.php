@@ -9,7 +9,7 @@ class CalendarWeek{
 
   function __construct($date, $index = 0){
     $this->carbon = new Carbon($date);
-    $this->index = $index;
+    $this->index = $index;//0
   }
 
   function getClassName(){
@@ -20,7 +20,7 @@ class CalendarWeek{
    * @return
    */
 
-   function getDays(){
+   function getDays(){//日を数える
      $days = [];
 
      $startDay = $this->carbon->copy()->startOfWeek();

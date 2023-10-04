@@ -13,9 +13,10 @@ class ReserveSettings extends Model
         'setting_reserve',
         'setting_part',
         'limit_users',
+        'created_at',
     ];
 
-    public function users(){
+    public function users(){//リレーション、usersテーブルとの中間テーブル
         return $this->belongsToMany('App\Models\Users\User', 'reserve_setting_users', 'reserve_setting_id', 'user_id')->withPivot('reserve_setting_id', 'id');
     }
 }

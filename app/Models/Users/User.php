@@ -76,12 +76,13 @@ class User extends Authenticatable
 
 /////////////////////////////////////////////////////////////////////////////////////
 
-    public function calendars(){
+    public function calendars(){ //カレンダーテーブルとの中間テーブルリレーション
         return $this->belongsToMany('App\Models\Calendars\Calendar', 'calendar_users', 'user_id', 'calendar_id')->withPivot('user_id', 'id');
     }
 
-    public function reserveSettings(){
+    public function reserveSettings(){ //スクール予約テーブルとの中間テーブルリレーション
         return $this->belongsToMany('App\Models\Calendars\ReserveSettings', 'reserve_setting_users', 'user_id', 'reserve_setting_id')->withPivot('id');
+        //withPivot $user->pivot->idで簡単に中間テーブルのカラムが取得できるようになる
     }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
