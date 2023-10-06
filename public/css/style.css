@@ -140,6 +140,7 @@ li{
   text-align: center;
 }
 
+
 .calendar-box{
   max-width: 1050px;
   margin-bottom: ;
@@ -189,20 +190,24 @@ li{
   height: 100%;
   over-flow: auto;
   background-color: rgba(0,0,0,0.4);
+  color: #000;
+
 }
 .calendar_content {
   text-align: center;
-  margin-top: 300px;
-  margin-left: 120px;
+  margin-top: 350px;
+  margin-left: 180px;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  height: auto;
   resize: none;
   background-color: #fff;
-  border-radius: 20px;
+  border:10px solid black;
+  box-sizing: border-box;
   box-shadow: 0 4px 16px 0 rgba(0,0,0,0.2);
   background-color: #fff;
-  color: white;
+  color: #000;
 }
 .close {
   color: #aaa;
@@ -224,7 +229,17 @@ li{
 
 #closeModal{
   cursor:pointer;
+}
 
+.content__box{
+ width:60%;
+ height: auto;
+}
+
+.cancel-font{
+  display: inline-block;
+  margin-left: 20%;
+  padding-bottom: 12px;
 }
 
 /* 予約キャンセルボタン */

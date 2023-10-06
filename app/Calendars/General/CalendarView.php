@@ -48,7 +48,7 @@ class CalendarView{
 
         //ここでグレーの背景日を決めている。
         // if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-        if ($startDay <= $day->everyDay() && $toDay > $day->everyDay()) {
+        if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {
           $html[] = '<td class=" border-left border-right calendar-tx">';//灰色に塗る
         }else{//今月の過ぎた日以外の日の場合
           $html[] = '<td class="calendar-td  border-bottom border-left border-bottom '.$day->getClassName().'">';
@@ -70,7 +70,7 @@ class CalendarView{
           }
 
             // if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-            if ($startDay <= $day->everyDay() && $toDay > $day->everyDay()) {//予約されているけど、過ぎていた日の場合 未参加か参加の調べ方はあとでわかったら追加する
+            if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {//予約されているけど、過ぎていた日の場合 未参加か参加の調べ方はあとでわかったら追加する
               // $html[] = '<p class="m-auto p-0 w-100" style="font-size:15px">'. $reservePart. '未参加</p>';
               $html[] = $reservePart."未参加";
               $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
@@ -89,7 +89,7 @@ class CalendarView{
 
         }else{//予約がされていない場合///
           //もし過ぎた日だった場合、
-          if($startDay <= $day->everyDay() && $toDay > $day->everyDay()){
+          if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
             $html[] = '受付終了';
           }else{ //まだ過ぎていない日の場合、セレクトボックスを表示する。
             $html[] = $day->selectPart($day->everyDay());
@@ -108,16 +108,31 @@ class CalendarView{
 
     //-----------------------ここから削除モーダル---------------------------------------
     $html[] =  '<div id="myModal" class="calendar_modal">';
-      $html[] =  '<div class="calendar_content">';
-        $html[] =  '<form method="get" action="">';//追加
-          // $html[] =  '<input type="hidden" name="id" value="" id="setting_reserve_id">';
-          $html[] =  '<input type="text" name="id" value="" id="setting_reserve_id">';
-            //更新ボタン
-            $html[] = '<div class="d-flex">';
+      $html[] =  '<div class=" text-center calendar_content">';
+        $html[] =  '<form class=" text-left" method="get" action="">'; //追加
+            // $html[] =  '<input type="hidden" name="id" value="" id="setting_reserve_id">';
+
+            $html[] = '<div>';
+            $html[] =   '<p class="mb-2 cancel-font">予約日：<span id="setting_reserve_id"></span></p> ';
+            // $html[] =  '<span name="id" value="" id="setting_reserve_id">></span>';
+            $html[] = '</div>';
+
+            $html[] = '<div>';
+            $html[]=   '<p class="mb-2 cancel-font">時間：<span id="setting_reserve_id"></span></p> ';
+            // $html[] =  '<span name="id" value="" id="setting_reserve_id">></span>';
+            $html[] = '</div>';
+
+            $html[] = '<div>';
+             $html[] = '<p class="mb-2 cancel-font">上記の予約をキャンセルしてもよろしいですか？</p>';
+            $html[] = '</div>';
+
+            //予約キャンセルボタン
+            $html[] = '<div class="d-flex text-left">';
               $html[] ='<button id="closeModal" class="close__btn">閉じる</button>'; //キャンセルボタン
             $html[] =  '<button type="submit" class="cancel__btn" value="" alt="キャンセル">キャンセル</button>';
             $html[] = '</div>';
-          $html[] = '</form>';
+
+        $html[] = '</form>';
         $html[] = '</div>';
       $html[] = '</div>';
     //--------------------------------------------------------------------------------
