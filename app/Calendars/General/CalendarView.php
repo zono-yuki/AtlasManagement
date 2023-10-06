@@ -49,13 +49,16 @@ class CalendarView{
         //ここでグレーの背景日を決めている。
         // if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
         if ($startDay <= $day->everyDay() && $toDay > $day->everyDay()) {
-          $html[] = '<td class=" border-left border-right calendar-tx">';//ここが今月で過ぎた日！？
+          $html[] = '<td class=" border-left border-right calendar-tx">';//灰色に塗る
         }else{//今月の過ぎた日以外の日の場合
           $html[] = '<td class="calendar-td  border-bottom border-left border-bottom '.$day->getClassName().'">';
         }
         $html[] = $day->render();//前月も来月も含めて全ての日
 
+
+      //予約がされているかどうか
         //in_array()は変数が配列にあるかどうかをチェックする関数
+        //予約されている
         if(in_array($day->everyDay(), $day->authReserveDay())){//予約がされていた場合
           $reservePart = $day->authReserveDate($day->everyDay())->first()->setting_part;
           if($reservePart == 1){
@@ -67,20 +70,28 @@ class CalendarView{
           }
 
             // if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-            if ($startDay <= $day->everyDay() && $toDay > $day->everyDay()) {
-              $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px"></p>';
+            if ($startDay <= $day->everyDay() && $toDay > $day->everyDay()) {//予約されているけど、過ぎていた日の場合 未参加か参加の調べ方はあとでわかったら追加する
+              // $html[] = '<p class="m-auto p-0 w-100" style="font-size:15px">'. $reservePart. '未参加</p>';
+              $html[] = $reservePart."未参加";
               $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
             }
-            else{//キャンセルボタンを表示する //すでに予約している場所に赤色の「リモ⚪︎部ボタン表示する」
-              $html[] = '<button type="submit" class="btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'">'. $reservePart .'</button>';
-              $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+            else{//過ぎていなければ、キャンセルボタンを表示する //すでに予約している場所に赤色の「リモ⚪︎部ボタン表示する」
+              //キャンセルボタンにはと予約日を表示させる//予約日（setting_reserve）はvalueで飛んでいる。時間(リモ○部$reservePartも飛ばしてあげる。)
+
+              $setting_reserve = $day->authReserveDate($day->everyDay())->first()->setting_reserve;
+              //dd($setting_reserve);
+
+              //submit->button
+              $html[] = '<button type="button" class="btn btn-danger p-0 w-75 cancelModal" name="delete_date" style="font-size:12px" setting_reserve="'.$setting_reserve.'">'. $reservePart .'</button>';
+
+              $html[] = '<input type="hidden" name="getPart[]" value="'.$reservePart.'" form="reserveParts">';
             }
 
         }else{//予約がされていない場合///
           //もし過ぎた日だった場合、
           if($startDay <= $day->everyDay() && $toDay > $day->everyDay()){
             $html[] = '受付終了';
-          }else{//まだ過ぎていない日の場合、セレクトボックスを表示する。
+          }else{ //まだ過ぎていない日の場合、セレクトボックスを表示する。
             $html[] = $day->selectPart($day->everyDay());
           }
         }
@@ -94,6 +105,22 @@ class CalendarView{
     $html[] = '</div>';
     $html[] = '<form action="/reserve/calendar" method="post" id="reserveParts">'.csrf_field().'</form>';
     $html[] = '<form action="/delete/calendar" method="post" id="deleteParts">'.csrf_field().'</form>';
+
+    //-----------------------ここから削除モーダル---------------------------------------
+    $html[] =  '<div id="myModal" class="calendar_modal">';
+      $html[] =  '<div class="calendar_content">';
+        $html[] =  '<form method="get" action="">';//追加
+          // $html[] =  '<input type="hidden" name="id" value="" id="setting_reserve_id">';
+          $html[] =  '<input type="text" name="id" value="" id="setting_reserve_id">';
+            //更新ボタン
+            $html[] = '<div class="d-flex">';
+              $html[] ='<button id="closeModal" class="close__btn">閉じる</button>'; //キャンセルボタン
+            $html[] =  '<button type="submit" class="cancel__btn" value="" alt="キャンセル">キャンセル</button>';
+            $html[] = '</div>';
+          $html[] = '</form>';
+        $html[] = '</div>';
+      $html[] = '</div>';
+    //--------------------------------------------------------------------------------
 
     return implode('', $html);//$htmlの配列の要素を区切り、文字列とする。
   }
