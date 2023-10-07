@@ -19,15 +19,25 @@ class CalendarsController extends Controller
         return view('authenticated.calendar.general.calendar', compact('calendar'));
     }
 
+    //予約
     public function reserve(Request $request){
         DB::beginTransaction();
         try{
+            dd($request);
             $getPart = $request->getPart;
             $getDate = $request->getData;
+            // dd($getPart);
+            // まだ灰色ではない日の予約している部名がはいっている
+            // dd($getDate);
+            //全ての日付が入っている。
             $reserveDays = array_filter(array_combine($getDate, $getPart));
+            // dd($reserveDays);
+            //$reserveDaysには灰色じゃない日の'予約している日付とリモ⚪︎部'が入っている。
             foreach($reserveDays as $key => $value){
                 $reserve_settings = ReserveSettings::where('setting_reserve', $key)->where('setting_part', $value)->first();
-                $reserve_settings->decrement('limit_users');
+                // dd($reserve_settings);
+                //nullです。
+                $reserve_settings->decrement('limit_users');//reserve_settingsテーブルの人数を減らす
                 $reserve_settings->users()->attach(Auth::id());
             }
             DB::commit();
@@ -38,7 +48,7 @@ class CalendarsController extends Controller
     }
 
     //スクール枠登録 作成中
-    public function reserveSettings($user_id){
-        //
+    public function reserveSettings(){
+
     }
 }

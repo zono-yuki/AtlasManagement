@@ -12,7 +12,12 @@ $(".cancelModal").each(function () {//each(function ()つぶやきがある数�
 
   $(this).on('click', function () {//ボタンを押した時モーダルが表示される
     var setting_reserve = $(this).attr('setting_reserve');
-    $('#setting_reserve_id').val(setting_reserve);//idを受け取る、idをhiddenでcontllorerに渡す。
+    $('#setting_reserve_id').text(setting_reserve);
+
+    var setting_part = $(this).attr('setting_part');
+    $('#setting_part_id').text(setting_part);
+
+//     console.log(ff);
 
     var post = $(this).attr('post');
     $('#textarea_id').text(post);//投稿している内容を引っ張ってきて表示するtext
