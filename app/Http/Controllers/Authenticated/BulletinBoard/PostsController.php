@@ -46,7 +46,6 @@ class PostsController extends Controller
             ->whereHas('subCategories', function($q) use($request){
                 $q->where('sub_category', 'LIKE', '%'.$request['category_word']. '%');
             })->get();
-
             }
                 else if($request->like_posts){//いいねした投稿を取得する
                     $likes = Auth::user()->likePostId()->get('like_post_id');

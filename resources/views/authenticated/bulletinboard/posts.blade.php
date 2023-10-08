@@ -95,8 +95,41 @@
         <input type="submit" name="my_posts" class="search_like_btn_myself" value="自分の投稿" form="postSearchRequest">
       </div>
 
-      <!-- カテゴリー検索--------------------------------------------------------------------------------------->
+      <!-- カテゴリー検索------作成中 pからulまで---------------------------------------------------->
       <p class="mt-4 text-muted">カテゴリー検索</p>
+      <div class="text-muted">
+          <!-- メインカテゴリの表示 メインカテゴリの数だけ回す-->
+          @foreach($categories as $category)
+            <!-- accordion -->
+            <div class="main_categories main_conditions mb-3 accordion" category_id="{{ $category->id }}">
+              <!-- メインカテゴリー名を表示する -->
+              <span>{{ $category->main_category }}<span>
+
+                <!-- メインカテゴリを押すと、サブカテゴリーが表示される。-->
+                <div class="main_conditions_inner ml-4">
+                    <!--メインカテゴリに紐づいているサブカテゴリの分だけ回す。-->
+                    <!--そのサブカテゴリをつけている投稿を検索する-->
+                    <!-- panel -->
+                    <ul class="subcategory-items panel mb-0">
+                      @foreach($category->subCategories as $subcategory)
+                        <li style="border:none;">
+                          <input type="submit" name="category_word" class="category_btn" style="border:none;" value="{{ $subcategory -> sub_category }}" form="postSearchRequest">
+                        </li>
+                        <span type="submit" name="category_word" value="{{ $subcategory -> sub_category }}" form="postSearchRequest"></span>
+                      @endforeach
+                    </ul>
+                </div>
+            </div>
+
+          @endforeach
+      </div>
+
+
+
+
+
+<!-- ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
+      {{--<p class="mt-4 text-muted">カテゴリー検索</p>
       <ul class="text-muted">
         <!-- メインカテゴリの表示 メインカテゴリの数だけ回す-->
         @foreach($categories as $category)
@@ -120,7 +153,8 @@
         </div>
 
         @endforeach
-      </ul>
+      </ul>--}}
+<!-- ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
 
     </div>
   </div>
