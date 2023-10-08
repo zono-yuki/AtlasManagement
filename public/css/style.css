@@ -807,4 +807,74 @@ li{
 }
 
 
+/* -----------------ここからサブカテゴリーのアコーディオンメニュー------------------- */
 
+.sub-font{
+  font-size: 18px;
+}
+
+#main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+#menu {
+  min-width: 250px;
+}
+@media screen and (max-width: 600px) {
+  body {
+    flex-wrap: wrap;
+  }
+  #menu {
+    width: 100%;
+  }
+}
+.accordion {
+  cursor: pointer;
+  /* padding: 18px; */
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.symbol {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.symbol span {
+  display: block;
+  background-color: red;
+  width: 100%;
+  height: 1px;
+  transition: all 0.4s ease;
+}
+
+
+.symbol span:nth-of-type(1) {
+  transform: translateX(15px);
+}
+.symbol span:nth-of-type(2) {
+  transform: rotate(-90deg);
+}
+.accordion.active .symbol span:nth-of-type(2) {
+  transform: rotate(0deg);
+}
+
+.panel {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 18px;
+  background-color:#ECF1F6;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease;
+}
+.panel li {
+  margin: 10px;
+}

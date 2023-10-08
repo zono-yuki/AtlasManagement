@@ -34,6 +34,7 @@
       </div>
 
       <div class="">
+        <!-- 講師だけが全員の選択科目を登録できる。 -->
         @can('admin')
         <div class="subject_edit_btn">
           <span>選択科目の登録</span>

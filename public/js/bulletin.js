@@ -100,18 +100,20 @@ $(function () {
   });
 
   //------------------------ここから【new】サブカテゴリー、アコーディオンメニュー作成中
-  const accordions = document.getElementsByClassName("accordion");
+  const accordions = document.getElementsByClassName("accordion");//まず、accordionから複数の要素を取り出してaccordionsに収める。
 
-  for (let i = 0; i < accordions.length; i++) {
-  accordions[i].addEventListener("click", function () {
-    this.classList.toggle("active");
-    const panel = this.nextElementSibling;
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    }
+  for (let i = 0; i < accordions.length; i++) {//取り出したaccordionの数だけイベントリスナーを付与していく。
+    accordions[i].addEventListener("click", function () {//accordion[0]〜それぞれをクリックした時
+      this.classList.toggle("active");//それぞれのリストにactiveクラスをつける。
+      const panel = this.nextElementSibling;// panelをaccordionの妹クラスと設定する。
+      if (panel.style.maxHeight) {//もしmax-heightが指定していたらmax-heightをnullにする。
+        panel.style.maxHeight = null;
+      } else {//そうでなければ、max-heightを指定する。scrollHeightは隠れている部分も含めた高さのこと。
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
   });
   }
+
+
 
 });

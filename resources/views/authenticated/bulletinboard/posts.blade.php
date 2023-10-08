@@ -25,7 +25,9 @@
           <div class="subcategory__name">
             @foreach($post->subCategories as $sub_category)
             <div class="margin__right">
-              <p class="btn-category"><span">{{ $sub_category -> sub_category }}</span></p>
+              <p class="btn-category">
+                <span">{{ $sub_category -> sub_category }}</span>
+              </p>
             </div>
             @endforeach
           </div>
@@ -96,65 +98,57 @@
       </div>
 
       <!-- カテゴリー検索------作成中 pからulまで---------------------------------------------------->
-      <p class="mt-4 text-muted">カテゴリー検索</p>
-      <div class="text-muted">
-          <!-- メインカテゴリの表示 メインカテゴリの数だけ回す-->
-          @foreach($categories as $category)
-            <!-- accordion -->
-            <div class="main_categories main_conditions mb-3 accordion" category_id="{{ $category->id }}">
-              <!-- メインカテゴリー名を表示する -->
-              <span>{{ $category->main_category }}<span>
+      <nav id="menu">
+        <p class="mt-5 text-muted sub-font">カテゴリー検索</p>
+        @foreach($categories as $category)
+        <div class="accordion text-muted">
+          <!-- メインカテゴリを表示 -->
+          <div>{{ $category->main_category }}</div>
+          <!-- 矢印（今はプラスマーク） -->
+          <div class="symbol">
+            <span></span>
+            <span></span>
+          </div>
+        </div>
 
-                <!-- メインカテゴリを押すと、サブカテゴリーが表示される。-->
-                <div class="main_conditions_inner ml-4">
-                    <!--メインカテゴリに紐づいているサブカテゴリの分だけ回す。-->
-                    <!--そのサブカテゴリをつけている投稿を検索する-->
-                    <!-- panel -->
-                    <ul class="subcategory-items panel mb-0">
-                      @foreach($category->subCategories as $subcategory)
-                        <li style="border:none;">
-                          <input type="submit" name="category_word" class="category_btn" style="border:none;" value="{{ $subcategory -> sub_category }}" form="postSearchRequest">
-                        </li>
-                        <span type="submit" name="category_word" value="{{ $subcategory -> sub_category }}" form="postSearchRequest"></span>
-                      @endforeach
-                    </ul>
-                </div>
-            </div>
-
+        <ul class="panel ml-2 mt-1">
+          @foreach($category->subCategories as $subcategory)
+          <!-- サブカテゴリを表示 -->
+          <li style="border:none">
+            <input type="submit" name="category_word" class="category_btn" style="border:none;" value="{{ $subcategory -> sub_category }}" form="postSearchRequest">
+            <span type="submit" name="category_word" value="{{ $subcategory -> sub_category }}" form="postSearchRequest"></span>
+          </li>
           @endforeach
-      </div>
-
-
-
-
-
-<!-- ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
+        </ul>
+      </nav>
+      @endforeach
+      <!-- ーーーーーーーーーーーーーーーーコメントアウトーーーーーーーーーーーーーーーーーーーーーーーーー -->
       {{--<p class="mt-4 text-muted">カテゴリー検索</p>
       <ul class="text-muted">
         <!-- メインカテゴリの表示 メインカテゴリの数だけ回す-->
         @foreach($categories as $category)
         <li class="main_categories main_conditions mb-3" category_id="{{ $category->id }}">
-          <!-- メインカテゴリー名を表示する -->
-          <span>{{ $category->main_category }}<span>
-        </li>
+      <!-- メインカテゴリー名を表示する -->
+      <span>{{ $category->main_category }}<span>
+          </li>
 
-        <!-- メインカテゴリを押すと、サブカテゴリーが表示される。-->
-        <div class="main_conditions_inner ml-4">
-          <!--メインカテゴリに紐づいているサブカテゴリの分だけ回す。-->
-          <!--そのサブカテゴリをつけている投稿を検索する-->
-          <div class="subcategory-items mb-0">
-            @foreach($category->subCategories as $subcategory)
+          <!-- メインカテゴリを押すと、サブカテゴリーが表示される。-->
+          <div class="main_conditions_inner ml-4">
+            <!--メインカテゴリに紐づいているサブカテゴリの分だけ回す。-->
+            <!--そのサブカテゴリをつけている投稿を検索する-->
+            <div class="subcategory-items mb-0">
+              @foreach($category->subCategories as $subcategory)
               <li style="border:none;">
                 <input type="submit" name="category_word" class="category_btn" style="border:none;" value="{{ $subcategory -> sub_category }}" form="postSearchRequest">
               </li>
               <span type="submit" name="category_word" value="{{ $subcategory -> sub_category }}" form="postSearchRequest"></span>
-            @endforeach
+              @endforeach
+            </div>
           </div>
-        </div>
 
-        @endforeach
-      </ul>--}}
-<!-- ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
+          @endforeach
+          </ul>--}}
+      <!-- ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
 
     </div>
   </div>
