@@ -77,8 +77,8 @@ class CalendarView
           // if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
           if ($startDay <= $day->everyDay() && $toDay > $day->everyDay()) { //予約されているけど、過ぎていた日の場合 未参加か参加の調べ方はあとでわかったら追加する
             // $html[] = '<p class="m-auto p-0 w-100" style="font-size:15px">'. $reservePart. '未参加</p>';
-            // $html[] = $reservePart . "未参加";
-            $html[] = '参加or未参加';
+            $html[] = $reservePart . "未参加";
+            // $html[] = '参加or未参加';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           } else { //過ぎていなければ、キャンセルボタンを表示する //すでに予約している場所に赤色の「リモ⚪︎部ボタン表示する」
             //キャンセルボタンにはと予約日を表示させる//予約日（setting_reserve）はvalueで飛んでいる。時間(リモ○部$reservePartも飛ばしてあげる。)
@@ -89,7 +89,8 @@ class CalendarView
             //submit->button
             $html[] = '<button type="button" class="btn btn-danger p-0 w-75 cancelModal" name="delete_date" style="font-size:12px" setting_reserve="' . $setting_reserve . '" setting_part="' . $reservePart . '">' . $reservePart . '</button>';
 
-            $html[] = '<input type="hidden" name="getPart[]" value="' . $reservePart . '" form="reserveParts">';
+            $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+
           }
         } else { //予約がされていない場合///
           //もし過ぎた日だった場合、
@@ -110,10 +111,15 @@ class CalendarView
     $html[] = '</tbody>';
     $html[] = '</table>';
     $html[] = '</div>';
+
+    //予約する
     $html[] = '<form action="/reserve/calendar" method="post" id="reserveParts">' . csrf_field() . '</form>';
+
+    //削除する
     $html[] = '<form action="/delete/calendar" method="post" id="deleteParts">' . csrf_field() . '</form>';
 
-    //-----------------------ここから削除モーダル---------------------------------------
+    //-----------------------ここから【隠し削除モーダル】追加---------------------------------------
+
     $html[] =  '<div id="myModal" class="calendar_modal">';
     $html[] =  '<div class=" text-center calendar_content">';
     $html[] =  '<form class=" text-left" method="get" action="">'; //追加
@@ -150,6 +156,10 @@ class CalendarView
     return implode('', $html); //$htmlの配列の要素を区切り、文字列とする。
   }
 
+
+
+
+//
   protected function getWeeks()
   {
     $weeks = [];

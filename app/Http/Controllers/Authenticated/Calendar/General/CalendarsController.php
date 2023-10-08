@@ -11,6 +11,8 @@ use App\Models\USers\User;
 use Auth;
 use DB;
 
+//スクール生、講師用のカレンダーコントローラー
+
 class CalendarsController extends Controller
 {
     public function show(){
@@ -19,11 +21,11 @@ class CalendarsController extends Controller
         return view('authenticated.calendar.general.calendar', compact('calendar'));
     }
 
-    //予約
+    //予約するボタンを押した時
     public function reserve(Request $request){
         DB::beginTransaction();
         try{
-            dd($request);
+            // dd($request);
             $getPart = $request->getPart;
             $getDate = $request->getData;
             // dd($getPart);
@@ -45,10 +47,5 @@ class CalendarsController extends Controller
             DB::rollback();
         }
         return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
-    }
-
-    //スクール枠登録 作成中
-    public function reserveSettings(){
-
     }
 }

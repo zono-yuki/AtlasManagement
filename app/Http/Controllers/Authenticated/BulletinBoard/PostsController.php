@@ -22,16 +22,24 @@ class PostsController extends Controller
 {
     //掲示板を表示する
     public function show(Request $request){
-        // dd($request->category_word);
-        $posts = Post::with('user', 'postComments')->get();
+        // dd($request);
+        $posts = Post::with('user', 'postComments')->get();//全投稿の表示
         $categories = MainCategory::get();
         $like = new Like;
         $post_comment = new Post;
-        if(!empty($request->keyword)){//キーワードがあった場合
-            $posts = Post::with('user', 'postComments')
-            ->where('post_title', 'like', '%'.$request->keyword.'%')
-            ->orWhere('post', 'like', '%'.$request->keyword.'%')->get();
+        $keyword = $request->keyword;
 
+        if(!empty($keyword)){ //キーワードがあった場合
+            // サブカテゴリー名が完全一致検索した投稿を取得する。
+            $posts = Post::whereHas('subCategories', function ($query) use ($keyword) {
+                $query->where('sub_category', $keyword);
+            })->get();
+            if($posts->isEmpty()){ //もし、サブカテゴリー名が一致しなかった場合、あいまい検索をする。
+                $posts = Post::with('user', 'postComments')
+                ->where('post_title', 'like', '%' . $keyword . '%')
+                ->orWhere('post', 'like', '%' . $keyword . '%')
+                ->get();
+            }
         }
             else if($request->category_word){//サブカテゴリーで検索の場合
             $posts = Post::with('user', 'postComments')
@@ -40,7 +48,6 @@ class PostsController extends Controller
             })->get();
 
             }
-
                 else if($request->like_posts){//いいねした投稿を取得する
                     $likes = Auth::user()->likePostId()->get('like_post_id');
                     //likePostId()で、ログインユーザーがいいねしているレコードをとってくる。
@@ -61,6 +68,7 @@ class PostsController extends Controller
                     }
         // dd($post_comment);
         //表示する
+
         return view('authenticated.bulletinboard.posts', compact('posts', 'categories', 'like', 'post_comment'));
     }
 

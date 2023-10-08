@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth'], function(){
             Route::get('/top', 'TopsController@show')->name('top.show');
         });
 
+    //--------スクール予約機能エリア--------------------------------------------------------
 
         Route::namespace('Calendar')->group(function(){
             //生徒&教師
@@ -48,25 +49,33 @@ Route::group(['middleware' => 'auth'], function(){
                 //スクール予約画面を表示
                 Route::get('/calendar/{user_id}', 'CalendarsController@show')->name('calendar.general.show');
 
-                //予約
+                //予約するボタンを押した時
                 Route::post('/reserve/calendar', 'CalendarsController@reserve')->name('reserveParts');
 
+                //
                 Route::post('/delete/calendar', 'CalendarsController@delete')->name('deleteParts');
             });
 
             //教師
             Route::namespace('Admin')->group(function(){
+
+                //予約画面を表示
                 Route::get('/calendar/{user_id}/admin', 'CalendarsController@show')->name('calendar.admin.show');
+
+                //
                 Route::get('/calendar/{date}/{part}', 'CalendarsController@reserveDetail')->name('calendar.admin.detail');
 
-                //スクール枠登録もともとあったやつ
-                // Route::get('/setting/{user_id}/admin', 'CalendarsController@reserveSettings')->name('calendar.admin.setting');
+                //スクール枠登録
                 Route::get('/setting/{user_id}/admin', 'CalendarsController@reserveSettings')->name('calendar.admin.setting');
 
-
+                //
                 Route::post('/setting/update/admin', 'CalendarsController@updateSettings')->name('calendar.admin.update');
             });
         });
+
+
+    //------------------掲示板エリア-----------------------------------------------------
+
         Route::namespace('BulletinBoard')->group(function(){
 
             //掲示板へ

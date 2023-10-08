@@ -12,8 +12,11 @@ use App\Models\USers\User;
 use Auth;
 use DB;
 
+//講師用のカレンダーコントローラー
+
 class CalendarsController extends Controller
 {
+    //予約画面を表示
     public function show(){
         $calendar = new CalendarView(time());
         return view('authenticated.calendar.admin.calendar', compact('calendar'));

@@ -5,10 +5,14 @@
   <div class="w-100 vh-100 border p-5">
     {!! $calendar->render() !!}
     <div class="adjust-table-btn m-auto text-right">
-      <!-- フォームで送る----->
-      <a href="/setting/{{ Auth::user() ->id }}/admin">
+
+      <!-- もともとのコード -->
+      <input type="submit" class="btn btn-primary" value="登録" form="reserveSetting" onclick="return confirm('登録してよろしいですか？')">
+
+      <!-- フォームで送る 作成----->
+      {{--<a href="/setting/{{ Auth::user() ->id }}/admin">
         <input type="submit" class="btn btn-primary" value="登録" onclick="return confirm('登録してよろしいですか？')">
-      </a>
+      </a>--}}
     </div>
   </div>
 </div>

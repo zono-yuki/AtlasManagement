@@ -1,5 +1,6 @@
 @extends('layouts.sidebar')
 
+<!-- スクール生、講師用のスクール予約画面の表示 -->
 @section('content')
 <div class="vh-100 pt-5" style="background:#ECF1F6;">
   <div class=" w-75 calendar-margin pt-5 pb-3" style="border-radius:5px; background:#FFF;">
