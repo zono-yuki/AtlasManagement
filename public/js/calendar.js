@@ -12,15 +12,12 @@ $(".cancelModal").each(function () {//each(function ()つぶやきがある数�
 
   $(this).on('click', function () {//ボタンを押した時モーダルが表示される
     var setting_reserve = $(this).attr('setting_reserve');
-    $('#setting_reserve_id').text(setting_reserve);
+    $('#setting_reserve_id').text(setting_reserve);//表示する
+    $('#settings_reserve_id').val(setting_reserve);//input hiddenに送る
 
     var setting_part = $(this).attr('setting_part');
-    $('#setting_part_id').text(setting_part);
-
-//     console.log(ff);
-
-    var post = $(this).attr('post');
-    $('#textarea_id').text(post);//投稿している内容を引っ張ってきて表示するtext
+    $('#setting_part_id').text(setting_part);//表示する
+    $('#settings_part_id').val(setting_part);//input hiddenに送る
 
     modal.style.display = "block";//モーダルを表示する
     return false;

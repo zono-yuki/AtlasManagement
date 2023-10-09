@@ -32,20 +32,36 @@ class CalendarsController extends Controller
             // まだ灰色ではない日の予約している部名がはいっている
             // dd($getDate);
             //全ての日付が入っている。
+
             $reserveDays = array_filter(array_combine($getDate, $getPart));
+            //array_combine(//,//)は2つの配列を一方を$key、一方を$valueにして結合する
+            //2つの要素数が合わないとエラーが出る。
             // dd($reserveDays);
-            //$reserveDaysには灰色じゃない日の'予約している日付とリモ⚪︎部'が入っている。
+            //$reserveDaysには灰色じゃない日の'予約している日付とリモ⚪︎部'が入っている。$valueが$getPartになる。$keyが$getDateになる。
             foreach($reserveDays as $key => $value){
-                $reserve_settings = ReserveSettings::where('setting_reserve', $key)->where('setting_part', $value)->first();
+                $reserve_settings = ReserveSettings::where('setting_reserve', $key)->where('setting_part', $value)->first();//$keyと$valueで探す。
                 // dd($reserve_settings);
                 //nullです。
                 $reserve_settings->decrement('limit_users');//reserve_settingsテーブルの人数を減らす
-                $reserve_settings->users()->attach(Auth::id());
+                $reserve_settings->users()->attach(Auth::id());//中間テーブル(reserve_setting_usersテーブル)に追加して登録している。
             }
             DB::commit();
         }catch(\Exception $e){
             DB::rollback();
         }
         return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
+    }
+
+    //キャンセル機能を押した時
+    public function delete(Request $request){
+        DB::beginTransaction();
+        dd($request);
+        try{
+
+            DB::commit();
+        }catch(\Exception $e){
+            DB::rollback();
+        }
+        return redirect()->route('calendar.general.show',['user_id' => Auth::id()]);
     }
 }

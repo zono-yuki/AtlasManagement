@@ -13,6 +13,7 @@
       </div>
     </div>
     <div class="text-right w-75 m-auto">
+      <!-- 予約するボタン -->
       <input type="submit" class="btn btn-primary calendar-btn" value="予約する" form="reserveParts">
     </div>
   </div>

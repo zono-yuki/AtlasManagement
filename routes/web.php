@@ -52,7 +52,7 @@ Route::group(['middleware' => 'auth'], function(){
                 //予約するボタンを押した時
                 Route::post('/reserve/calendar', 'CalendarsController@reserve')->name('reserveParts');
 
-                //
+                //キャンセルボタンを押した時
                 Route::post('/delete/calendar', 'CalendarsController@delete')->name('deleteParts');
             });
 
