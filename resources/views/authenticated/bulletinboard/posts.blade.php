@@ -97,32 +97,31 @@
         <input type="submit" name="my_posts" class="search_like_btn_myself" value="自分の投稿" form="postSearchRequest">
       </div>
 
-      <!-- カテゴリー検索------作成中 pからulまで---------------------------------------------------->
+      <!-- カテゴリー検索 -->
       <nav id="menu">
         <p class="mt-5 text-muted sub-font">カテゴリー検索</p>
         @foreach($categories as $category)
-        <div class="accordion text-muted">
+        <div class="accordion text-muted mb-2">
           <!-- メインカテゴリを表示 -->
           <div>{{ $category->main_category }}</div>
-          <!-- 矢印（今はプラスマーク） -->
-          <div class="symbol">
-            <span></span>
-            <span></span>
-          </div>
+          <!-- 下矢印 -->
+          <div class="arrow-bottom"></div>
         </div>
 
-        <ul class="panel ml-2 mt-1">
+        <ul class="panel ml-1 mt-1">
           @foreach($category->subCategories as $subcategory)
           <!-- サブカテゴリを表示 -->
-          <li style="border:none">
-            <input type="submit" name="category_word" class="category_btn" style="border:none;" value="{{ $subcategory -> sub_category }}" form="postSearchRequest">
+          <li style="border:none ml-1 mt-0">
+            <input type="submit" name="category_word" class="category_btn ml-0" style="border:none;" value="{{ $subcategory -> sub_category }}" form="postSearchRequest">
             <span type="submit" name="category_word" value="{{ $subcategory -> sub_category }}" form="postSearchRequest"></span>
           </li>
           @endforeach
         </ul>
       </nav>
       @endforeach
-      <!-- ーーーーーーーーーーーーーーーーコメントアウトーーーーーーーーーーーーーーーーーーーーーーーーー -->
+
+
+      <!-- ーーーーーーーーーーーーーーーーコメントアウト(上記適用前)ーーーーーーーーーーーーーーーーーーーーーーーーー -->
       {{--<p class="mt-4 text-muted">カテゴリー検索</p>
       <ul class="text-muted">
         <!-- メインカテゴリの表示 メインカテゴリの数だけ回す-->
@@ -148,7 +147,7 @@
 
           @endforeach
           </ul>--}}
-      <!-- ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
+          <!-- ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
 
     </div>
   </div>

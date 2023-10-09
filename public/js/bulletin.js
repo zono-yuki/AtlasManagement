@@ -99,11 +99,12 @@ $(function () {
     $('.arrow').toggleClass("open", 300);
   });
 
-  //------------------------ここから【new】サブカテゴリー、アコーディオンメニュー作成中
+  // サブカテゴリーアコーディオンメニュー個別展開
+  
   const accordions = document.getElementsByClassName("accordion");//まず、accordionから複数の要素を取り出してaccordionsに収める。
 
   for (let i = 0; i < accordions.length; i++) {//取り出したaccordionの数だけイベントリスナーを付与していく。
-    accordions[i].addEventListener("click", function () {//accordion[0]〜それぞれをクリックした時
+    accordions[i].addEventListener("click", function () {//accordion[0]〜最大数までそれぞれをクリックした時
       this.classList.toggle("active");//それぞれのリストにactiveクラスをつける。
       const panel = this.nextElementSibling;// panelをaccordionの妹クラスと設定する。
       if (panel.style.maxHeight) {//もしmax-heightが指定していたらmax-heightをnullにする。

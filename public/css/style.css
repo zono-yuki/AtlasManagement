@@ -367,6 +367,7 @@ li{
   border: none;
   color: #fff;
   transition: all  0.3s ease;
+  cursor:pointer;
 }
 
 .post_btn:hover{
@@ -385,6 +386,7 @@ li{
   margin-bottom: 20px;
   display: flex;
   align-items: center;
+  cursor:pointer;
 }
 .searcher-text{
   display: inline-block;
@@ -405,6 +407,7 @@ li{
   border: none;
   border-radius: 0 10px 10px 0;
   transition: all  0.3s ease;
+  cursor:pointer;
 }
 .searcher_btn:hover{
   background-color: #0000FF;
@@ -426,6 +429,7 @@ li{
   color:#FFF;
   border-radius: 10px;
   transition: all  0.3s ease;
+  cursor: pointer;
 }
 .search_like_btn_good:hover{
   background-color: #0000FF;
@@ -441,6 +445,7 @@ li{
   color:#FFF;
   border-radius: 10px;
   transition: all  0.3s ease;
+  cursor: pointer;
 }
 .search_like_btn_myself:hover{
   background-color: #0000FF;
@@ -546,21 +551,6 @@ li{
 .margin__right2{
   margin-right: 0;
 }
-/* .btn-category{
-  background-color: #03AAD2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  padding: 5% 0%;
-  width: 90px;
-  height: auto;
-  border-radius: 10px;
-  color: #fff;
-  font-size: 14px;
-  font-weight: normal;
-  transition: 0.3s;
-} */
 
 .btn-category{
   width: 80px;
@@ -573,6 +563,8 @@ li{
   transition: 0.3s;
   background-color: #03AAD2;
   text-align: center;
+  transition: all  0.3s ease;
+  cursor:pointer;
 }
 
 .button-category:hover {
@@ -588,9 +580,10 @@ li{
   color: #fff;
   font-size:14px;
   font-weight: normal;
-  transition: 0.3s;
+  transition: all 0.3s ease;
   background-color: #03AAD2;
   text-align: center;
+  cursor:pointer;
 }
 
 /* 掲示板,カテゴリー */
@@ -605,6 +598,8 @@ li{
   font-size:10px;
   color:#FFF;
 }
+
+/* サブカテゴリーボタン */
 .category_btn{
   font-size:17px;
   border-radius:5px;
@@ -612,9 +607,17 @@ li{
   height: auto;
   padding:3px 8px;
   border:none;
-  background:gray;
+  background:pink;
+  color:#FFF;
+  cursor:pointer;
+  transition: all  0.3s ease;
+}
+
+.category_btn:hover{
+  background: #03AAD2;
   color:#FFF;
 }
+
 .main_categories{
   border-bottom: solid 1px #999;
 }
@@ -840,31 +843,22 @@ li{
   align-items: center;
 }
 
-.symbol {
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.symbol span {
-  display: block;
-  background-color: red;
-  width: 100%;
-  height: 1px;
-  transition: all 0.4s ease;
+/* 下矢印 */
+.arrow-bottom {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 10px;
+  border-bottom: 2px solid #666;
+  border-right: 2px solid #666;
+  transform: rotate(45deg);
 }
 
+/* 上矢印（反転） */
+.accordion.active .arrow-bottom{
+  transform: rotate(225deg);
+}
 
-.symbol span:nth-of-type(1) {
-  transform: translateX(15px);
-}
-.symbol span:nth-of-type(2) {
-  transform: rotate(-90deg);
-}
-.accordion.active .symbol span:nth-of-type(2) {
-  transform: rotate(0deg);
-}
 
 .panel {
   list-style-type: none;
