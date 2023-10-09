@@ -70,10 +70,14 @@ class CalendarView
           //ここで$reservePartに部名を入れて、のちにvalueで送っている。
           if ($reservePart == 1) {
             $reservePart = "リモ1部";
+            //追加
+            $part = "1";
           } else if ($reservePart == 2) {
             $reservePart = "リモ2部";
+            $part = "2";
           } else if ($reservePart == 3) {
             $reservePart = "リモ3部";
+            $part = "3";
           }
 
           // if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
@@ -95,7 +99,8 @@ class CalendarView
             //dd($setting_reserve);
 
             //submit->button
-            $html[] = '<button type="button" class="btn btn-danger p-0 w-75 cancelModal" name="delete_date" style="font-size:12px" setting_reserve="' . $setting_reserve . '" setting_part="' . $reservePart . '">' . $reservePart . '</button>';
+            //キャンセルボタン
+            $html[] = '<button type="button" class="btn btn-danger p-0 w-75 cancelModal" name="delete_date" style="font-size:12px" part= "'.$part.'" setting_reserve="' . $setting_reserve . '" setting_part="' . $reservePart . '">' . $reservePart . '</button>';
 
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
 
@@ -132,6 +137,8 @@ class CalendarView
     $html[] =  '<div class=" text-center calendar_content">';
     // $html[] =  '<form class=" text-left" method="post" action="">';
 
+    $html[] = '<div class="modal__flex">';//追加
+
     $html[] = '<div>';
     $html[] =   '<p class="mb-2 cancel-font">予約日：';
       $html[] =   '<span id="setting_reserve_id" value =""></span>';//2023-10-⚪︎⚪︎表示用
@@ -146,9 +153,14 @@ class CalendarView
      $html[] =  '</p> ';
     $html[] = '</div>';
 
+    // setting_partのwhere文で使うため、コントローラーに送る用
+    $html[] = '<input type="hidden" id="part" value="" name="parts" form="deleteParts">';
+
     $html[] = '<div>';
     $html[] = '<p class="mb-2 cancel-font">上記の予約をキャンセルしてもよろしいですか？</p>';
     $html[] = '</div>';
+
+    $html[] = '</div>';//追加
 
     //予約キャンセルボタン
     $html[] = '<div class="d-flex text-left">';

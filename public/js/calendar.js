@@ -8,7 +8,7 @@ $(function () {
 var modal = document.getElementById("myModal");
 var close__modal = document.getElementById("closeModal");
 
-$(".cancelModal").each(function () {//each(function ()つぶやきがある数、.cancelModalはあるのでそれぞれを使えるように呼び出している。
+$(".cancelModal").each(function () {
 
   $(this).on('click', function () {//ボタンを押した時モーダルが表示される
     var setting_reserve = $(this).attr('setting_reserve');
@@ -18,6 +18,9 @@ $(".cancelModal").each(function () {//each(function ()つぶやきがある数�
     var setting_part = $(this).attr('setting_part');
     $('#setting_part_id').text(setting_part);//表示する
     $('#settings_part_id').val(setting_part);//input hiddenに送る
+
+    var part = $(this).attr('part');
+    $('#part').val(part);//input hiddenに送る contoroller用
 
     modal.style.display = "block";//モーダルを表示する
     return false;

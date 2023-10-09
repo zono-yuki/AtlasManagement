@@ -55,9 +55,19 @@ class CalendarsController extends Controller
     //キャンセル機能を押した時
     public function delete(Request $request){
         DB::beginTransaction();
-        dd($request);
+        // dd($request);
+        //ok
         try{
-
+            $getPart = $request->getPart;
+            $getDate = $request->getDate;
+            $parts = $request->parts;
+            // dd($parts);ok
+            // dd($getPart);ok
+            // dd($getDate);ok
+                $reserve_settings = ReserveSettings::where('setting_reserve', $getDate)->where('setting_part', $parts)->first();
+                // dd($reserve_settings);ok
+                $reserve_settings->increment('limit_users');//reserve_settingsテーブルの人数を増やす（戻す）
+                $reserve_settings->users()->detach(Auth::id());//中間テーブル(reserve_setting_usersテーブル)を削除している。
             DB::commit();
         }catch(\Exception $e){
             DB::rollback();
