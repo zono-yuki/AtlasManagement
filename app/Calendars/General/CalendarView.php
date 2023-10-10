@@ -134,36 +134,35 @@ class CalendarView
     //-----------------------ここから【隠し削除モーダル】追加---------------------------------------
 
     $html[] =  '<div id="myModal" class="calendar_modal">';
-    $html[] =  '<div class=" text-center calendar_content">';
-    // $html[] =  '<form class=" text-left" method="post" action="">';
+    $html[] =  '<div class="calendar_content">';
 
     $html[] = '<div class="modal__flex">';//追加
 
-    $html[] = '<div>';
-    $html[] =   '<p class="mb-2 cancel-font">予約日：';
+    $html[] = '<div class="text-left">';
+    $html[] =   '<div class="mb-2 cancel-font">予約日：';
       $html[] =   '<span id="setting_reserve_id" value =""></span>';//2023-10-⚪︎⚪︎表示用
       $html[] =   '<input type="hidden" id="settings_reserve_id" value="" name="getDate" form="deleteParts">';//作成中 コントローラーに送る用
-      $html[] = '</p>';
+      $html[] = '</div>';
     $html[] = '</div>';
 
-    $html[] = '<div>';
-    $html[] =   '<p class="mb-2 cancel-font">時間：';
+    $html[] = '<div class="text-left">';
+    $html[] =   '<div class="mb-2 cancel-font">時間：';
        $html[] =  '<span id="setting_part_id" value =""></span>';//リモ⚪︎部表示用
        $html[] =  '<input type="hidden" id="settings_part_id" value="" name="getPart" form="deleteParts">';//作成中 コントローラーに送る用
-     $html[] =  '</p> ';
+     $html[] =  '</div> ';
     $html[] = '</div>';
 
     // setting_partのwhere文で使うため、コントローラーに送る用
     $html[] = '<input type="hidden" id="part" value="" name="parts" form="deleteParts">';
 
-    $html[] = '<div>';
+    $html[] = '<div class="text-left">';
     $html[] = '<p class="mb-2 cancel-font">上記の予約をキャンセルしてもよろしいですか？</p>';
     $html[] = '</div>';
 
     $html[] = '</div>';//追加
 
-    //予約キャンセルボタン
-    $html[] = '<div class="d-flex text-left">';
+    //予約キャンセルボタンと閉じるボタン
+    $html[] = '<div class="cancel__box">';
     //閉じるボタン
     $html[] = '<button id="closeModal" class="close__btn">閉じる</button>';
     //予約をキャンセルするボタン
@@ -172,8 +171,6 @@ class CalendarView
 
     //削除するボタンを押した時に必要
     $html[] = '<form action="/delete/calendar" method="post" id="deleteParts">' . csrf_field() . '</form>';
-
-    // $html[] = '</form>';
     $html[] = '</div>';
     $html[] = '</div>';
     //--------------------------------------------------------------------------------

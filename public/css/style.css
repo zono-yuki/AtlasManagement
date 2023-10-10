@@ -195,11 +195,11 @@ li{
 }
 .calendar_content {
   text-align: center;
-  margin-top: 350px;
-  margin-left: 180px;
-  padding: 20px;
+  margin-top: 20%;
+  margin-left: 20%;
+  padding: 2% 15% 2% 15%;
   border: 1px solid #888;
-  width: 80%;
+  width: 70%;
   height: auto;
   resize: none;
   background-color: #fff;
@@ -208,6 +208,13 @@ li{
   box-shadow: 0 4px 16px 0 rgba(0,0,0,0.2);
   background-color: #fff;
   color: #000;
+}
+
+.cancel__box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* text-align: left; */
 }
 .close {
   color: #aaa;
@@ -238,16 +245,14 @@ li{
 
 .cancel-font{
   display: inline-block;
-  margin-left: 20%;
   padding-bottom: 12px;
 }
 
 /* 予約キャンセルボタン */
 .cancel__btn{
   display: inline-block;
-  width: 10%;
+  width: 15%;
   text-align: center;
-  margin: 0 auto;
   padding: 8px 3px;
   border-radius: 10px;
   background: red;
@@ -263,9 +268,8 @@ li{
 /* キャンセルモーダルを閉じるボタン */
 .close__btn{
   display: inline-block;
-  width: 10%;
+  width: 15%;
   text-align: center;
-  margin: 0 auto;
   padding: 8px 3px;
   border-radius: 10px;
   background: #03AAD2;
@@ -809,7 +813,7 @@ li{
   color: red;
 }
 .modal__flex{
-  
+
 }
 
 
