@@ -3,7 +3,7 @@
 <!-- スクール生、講師用のスクール予約画面の表示 -->
 @section('content')
 <div class="vh-100 pt-5" style="background:#ECF1F6;">
-  <div class=" w-75 calendar-margin pt-5 pb-3" style="border-radius:5px; background:#FFF;">
+  <div class="calendar-margin shadow" style="border-radius:5px; background:#FFF;">
     <div class="calendar-box m-auto pb-2" style="border-radius:5px;">
 
       <p class="text-center calendar-margin2 pb-2">{{ $calendar->getTitle() }}</p>
@@ -12,7 +12,7 @@
         {!! $calendar->render() !!}
       </div>
     </div>
-    <div class="text-right w-75 m-auto">
+    <div class="text-right  m-auto">
       <!-- 予約するボタン -->
       <input type="submit" class="btn btn-primary calendar-btn" value="予約する" form="reserveParts">
     </div>
