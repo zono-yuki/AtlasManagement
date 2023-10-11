@@ -134,11 +134,20 @@ li{
   background:#EEE;
 }
 
+.calendar-body{
+  width:80%;
+  padding-top:4%;
+  padding-left: 3%;
+}
+
 .calendar-margin{
   width: fit-content;
-  margin-left: 12%;
+  margin-left: 7%;
   text-align: center;
-  padding: 5%;
+  padding-top: 5%;
+  padding-left: 7%;
+  padding-bottom: 5%;
+  padding-right: 7%;
 }
 .calendar{
   max-width: 100%;
@@ -338,7 +347,6 @@ li{
 .post_area{
   background:#FFF;
   border-radius:10px;
-  padding-bottom: 0;
 }
 .m-posts{
   margin-left: 100px;
@@ -354,7 +362,6 @@ li{
 }
 .other_area{
   min-height: 100vh;
-  width: 20%;
   margin-top: 50px;
   margin-right: 100px;
 }
@@ -461,9 +468,12 @@ li{
 
 /*ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー*/
 
-.post_bottom_area{
-  justify-content: flex-end;
-}
+/* .post_bottom_area{
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+
+} */
 
 /* タイトル */
 .post-title{
@@ -541,7 +551,7 @@ li{
 .comment_container span{
   font-size:12px;
 }
-.post_status span{
+.btn-category span{
   font-size:12px;
 }
 
@@ -551,14 +561,21 @@ li{
 .subcategory__name{
   height: 48px;
 }
-.margin__right{
-  margin-right: 889px;
+.comments-posts-box{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
 }
 
 .margin__right2{
-  margin-right: 0;
 }
 
+.comments-posts{
+  display:flex;
+  align-items: center;
+  /* justify-content: end; */
+}
 .btn-category{
   width: 80px;
   height:auto;

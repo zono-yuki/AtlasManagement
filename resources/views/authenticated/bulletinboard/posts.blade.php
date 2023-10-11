@@ -19,54 +19,57 @@
       </p>
 
       <!-- コメントといいねの表示 -->
-      <div class="post_bottom_area d-flex">
-        <div class="d-flex post_status">
-          <!-- ------------------------------------------------------------------------- -->
+      <div class="post_bottom_area">
+        <div class="comments-posts-box">
+          <!-- -------------①------------------------------------------------------------ -->
           <div class="subcategory__name">
             @foreach($post->subCategories as $sub_category)
             <div class="margin__right">
               <p class="btn-category">
-                <span">{{ $sub_category -> sub_category }}</span>
+                <span class="">{{ $sub_category -> sub_category }}</span>
               </p>
             </div>
             @endforeach
           </div>
-          <!-- ------------------------------------------------------------------------ -->
-          <!-- コメントの表示 -->
-          <div class="mr-5">
-            <!-- アイコンの表示 -->
-            <i class="fa-solid fa-comment" style="color: #adb3bd;"></i>
-            <!-- コメント数の表示 -->
-            <span class="">{{ $post->commentCounts($post->id) }}</span>
-          </div>
+          <!-- ------------------------②コメントといいね----------------------------------------------- -->
+          <div class = "comments-posts">
+            <!-- コメントの表示 -->
+            <div class="mr-5">
+              <!-- アイコンの表示 -->
+              <i class="fa-solid fa-comment" style="color: #adb3bd;"></i>
+              <!-- コメント数の表示 -->
+              <span class="">{{ $post->commentCounts($post->id) }}</span>
+            </div>
 
-          <!-- いいねボタンの表示 -->
-          <div class="mr-2">
-            @if(Auth::user()->is_Like($post->id))
-            <!-- もしログインユーザーがこの投稿をイイネしていた場合は、-->
-            <p class="m-0">
-              <!-- ハート 赤 -->
-              <i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i>
-              <!-- <i class="fa-solid fa-heart un_like_btn" style="color: #ff0033;" post_id="{{ $post->id }}"></i> -->
-              <!-- カウント -->
-              <span class="like_counts{{ $post->id }}">
-                {{ $like->likeCounts($post->id)  }}
-              </span>
-            </p>
+            <!-- いいねボタンの表示 -->
+            <div class="mr-2">
+              @if(Auth::user()->is_Like($post->id))
+              <!-- もしログインユーザーがこの投稿をイイネしていた場合は、-->
+              <p class="m-0">
+                <!-- ハート 赤 -->
+                <i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i>
+                <!-- <i class="fa-solid fa-heart un_like_btn" style="color: #ff0033;" post_id="{{ $post->id }}"></i> -->
+                <!-- カウント -->
+                <span class="like_counts{{ $post->id }}">
+                  {{ $like->likeCounts($post->id)  }}
+                </span>
+              </p>
 
-            @else
-            <!-- いいねしていなかった場合-->
-            <p class="m-0">
-              <!-- ハート 黒 -->
-              <i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i>
-              <!-- <i class="fa-regular fa-heart like_btn" style="color: #caced3;" post_id="{{ $post->id }}"></i> -->
-              <!-- カウント -->
-              <span class="like_counts{{ $post->id }}">
-                {{ $like->likeCounts($post->id)  }}
-              </span>
-            </p>
-            @endif
+              @else
+              <!-- いいねしていなかった場合-->
+              <p class="m-0">
+                <!-- ハート 黒 -->
+                <i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i>
+                <!-- <i class="fa-regular fa-heart like_btn" style="color: #caced3;" post_id="{{ $post->id }}"></i> -->
+                <!-- カウント -->
+                <span class="like_counts{{ $post->id }}">
+                  {{ $like->likeCounts($post->id)  }}
+                </span>
+              </p>
+              @endif
+            </div>
           </div>
+          <!--  ----------------------->
         </div>
       </div>
     </div>
@@ -117,8 +120,8 @@
           </li>
           @endforeach
         </ul>
+        @endforeach
       </nav>
-      @endforeach
 
 
       <!-- ーーーーーーーーーーーーーーーーコメントアウト(上記適用前)ーーーーーーーーーーーーーーーーーーーーーーーーー -->
