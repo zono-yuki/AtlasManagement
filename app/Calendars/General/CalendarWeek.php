@@ -20,22 +20,22 @@ class CalendarWeek{
    * @return
    */
 
-   function getDays(){//日を数える
-     $days = [];
+  function getDays(){//日を数える
+    $days = [];
 
-     $startDay = $this->carbon->copy()->startOfWeek();
-     $lastDay = $this->carbon->copy()->endOfWeek();
-     $tmpDay = $startDay->copy();
-     while($tmpDay->lte($lastDay)){
-       if($tmpDay->month != $this->carbon->month){
-         $day = new CalendarWeekBlankDay($tmpDay->copy());
-         $days[] = $day;
-         $tmpDay->addDay(1);
-         continue;
+    $startDay = $this->carbon->copy()->startOfWeek();
+    $lastDay = $this->carbon->copy()->endOfWeek();
+    $tmpDay = $startDay->copy();
+
+    while($tmpDay->lte($lastDay)){
+      if($tmpDay->month != $this->carbon->month){
+        $day = new CalendarWeekBlankDay($tmpDay->copy());
+        $days[] = $day;
+        $tmpDay->addDay(1);
+        continue;
         }
         $day = new CalendarWeekDay($tmpDay->copy());
         $days[] = $day;
-
         $tmpDay->addDay(1);
       }
       return $days;

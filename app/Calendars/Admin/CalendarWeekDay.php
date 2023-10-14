@@ -23,7 +23,7 @@ class CalendarWeekDay{
     return $this->carbon->format("Y-m-d");
   }
 
-  function dayPartCounts($ymd){
+  function dayPartCounts($ymd){//部を取得する。
     $html = [];
     $one_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '1')->first();
     $two_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '2')->first();

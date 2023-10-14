@@ -59,7 +59,7 @@ Route::group(['middleware' => 'auth'], function(){
             //教師
             Route::namespace('Admin')->group(function(){
 
-                //予約画面を表示
+                //予約確認画面を表示(人数を表示する)
                 Route::get('/calendar/{user_id}/admin', 'CalendarsController@show')->name('calendar.admin.show');
 
                 //

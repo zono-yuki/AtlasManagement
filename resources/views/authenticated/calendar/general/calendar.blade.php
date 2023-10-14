@@ -3,7 +3,7 @@
 <!-- スクール生、講師用のスクール予約画面の表示 -->
 @section('content')
 <div class="calendar-body vh-100" style="background:#ECF1F6;">
-  <div class="calendar-margin shadow" style="border-radius:5px; background:#FFF;">
+  <div class="calendar-margin shadow" style="background:#FFF; border-radius:12px;">
     <div class="calendar-box m-auto pb-2" style="border-radius:5px;">
 
       <p class="text-center calendar-margin2 pb-2">{{ $calendar->getTitle() }}</p>

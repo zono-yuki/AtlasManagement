@@ -45,8 +45,8 @@ class CalendarView
     $weeks = $this->getWeeks();
     foreach ($weeks as $week) { //1週間を繰り返す
       $html[] = '<tr class="' . $week->getClassName() . '">';
-
       $days = $week->getDays();
+
       foreach ($days as $day) { //1日を繰り返す
         $startDay = $this->carbon->copy()->format("Y-m-01");
         $toDay = $this->carbon->copy()->format("Y-m-d");
@@ -181,7 +181,7 @@ class CalendarView
 
 
 
-//
+//週と日の情報を取得する
   protected function getWeeks()
   {
     $weeks = [];

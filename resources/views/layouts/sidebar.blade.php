@@ -58,8 +58,7 @@
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
-    < /> <
-    script src = "{{ asset('js/register.js') }}"
+  </script> <script src = "{{ asset('js/register.js') }}"
     rel = "stylesheet" >
   </script>
   <script src="{{ asset('js/bulletin.js') }}" rel="stylesheet"></script>

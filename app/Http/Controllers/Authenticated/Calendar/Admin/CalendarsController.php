@@ -16,9 +16,12 @@ use DB;
 
 class CalendarsController extends Controller
 {
-    //予約画面を表示
+    //予約確認画面を表示する（講師用）
     public function show(){
+
+        //ここで集計する。
         $calendar = new CalendarView(time());
+
         return view('authenticated.calendar.admin.calendar', compact('calendar'));
     }
 

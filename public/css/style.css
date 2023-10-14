@@ -96,7 +96,7 @@ li{
 /* サイドバー */
 .sidebar{
   font-size: 18px;
-  width : 200px;
+  width : 220px;
   min-height:160vh;
   background-color:#03AAD2;
   font-weight:bold;
@@ -154,7 +154,6 @@ li{
 }
 .calendar-box{
   max-width: 100%;
-  margin-bottom: ;
 }
 .calendar-center{
   display: flex;
@@ -898,4 +897,14 @@ li{
 }
 .panel li {
   margin: 10px;
+}
+
+.calendar_area{
+  background-color: #fff;
+  margin-top: 4%;
+  padding-top: 4%;
+  padding-right: 4%;
+  padding-bottom: 2%;
+  padding-left: 4%;
+  border-radius: 15px;
 }

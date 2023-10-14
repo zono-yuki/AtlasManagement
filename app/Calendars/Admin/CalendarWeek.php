@@ -16,7 +16,7 @@ class CalendarWeek{
     return "week-" . $this->index;
   }
 
-  function getDays(){
+  function getDays(){//日数を取得する。
     $days = [];
     $startDay = $this->carbon->copy()->startOfWeek();
     $lastDay = $this->carbon->copy()->endOfWeek();
