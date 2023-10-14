@@ -3,6 +3,7 @@ namespace App\Calendars\Admin;
 
 use Carbon\Carbon;
 use App\Models\Calendars\ReserveSettings;
+use Auth;
 
 class CalendarWeekDay{
   protected $carbon;
@@ -45,6 +46,8 @@ class CalendarWeekDay{
     return implode("", $html);
   }
 
+
+/////////////これを使っています。///////////////////
   function dayPartCounts2($ymd,$day){ //コピー予約画面で部名を表示するところ
     $html = [];
     $one_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '1')->first();
@@ -54,20 +57,20 @@ class CalendarWeekDay{
   $html[] = '<div class="text-left">';
     if ($one_part) {
       $html[] = '<div class="day_part m-0 pt-1 count_box">';
-        $html[] = '<span>1部</span>';
-        $html[] = '<span class="text-right">'.$day->onePartFrame2($day->everyDay()).'</span>';
+        $html[] = '<span style="color:#03AAD2;">1部</span>';
+        $html[] = '<span class="text-right text-muted">'.$day->onePartFrame2($day->everyDay()).'</span>';
       $html[] = '</div>';
     }
     if ($two_part) {
       $html[] = '<div class="day_part m-0 pt-1 count_box">';
-      $html[] = '<span>2部</span>';
-      $html[] = '<span class="text-right">' . $day->twoPartFrame2($day->everyDay()) . '</span>';
+        $html[] = '<span style="color:#03AAD2;">2部</span>';
+        $html[] = '<span class="text-right text-muted">' . $day->twoPartFrame2($day->everyDay()) . '</span>';
       $html[] = '</div>';
     }
     if ($three_part) {
       $html[] = '<div class="day_part m-0 pt-1 count_box">';
-      $html[] = '<span>3部</span>';
-      $html[] = '<span class="text-right">' . $day->threePartFrame2($day->everyDay()) . '</span>';
+        $html[] = '<span style="color:#03AAD2;">3部</span>';
+        $html[] = '<span class="text-right text-muted">' . $day->threePartFrame2($day->everyDay()) . '</span>';
       $html[] = '</div>';
     }
   $html[] = '</div>';
@@ -187,5 +190,11 @@ class CalendarWeekDay{
     $html[] = '<p class="d-flex m-0 p-0">3部<input class="w-25" style="height:20px;" name="3" type="text" form="reserveSetting"></p>';
     $html[] = '</div>';
     return implode('', $html);
+  }
+
+  //追加
+  function authReserveDay()
+  {
+    return Auth::user()->reserveSettings->pluck('setting_reserve')->toArray();
   }
 }

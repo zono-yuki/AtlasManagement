@@ -54,17 +54,22 @@ class CalendarView{
           //過ぎている日だった場合
           //グレーの背景にする。past-day
           $html[] = '<td class="'.$day->getClassName().' past-day border-right border-left border-bottom">';
+
+          $html[] = $day->render(); //⚪︎日と表示させる
+
+          //ここが1部,2部,3部を表示するところ&予約人数を表示（計算）
+          $html[] = $day->dayPartCounts2($day->everyDay(), $day);
         }else{
           //すぎていない日の場合
           $html[] = '<td class="'.$day->getClassName().' border-right border-left border-bottom">';
+
+          $html[] = $day->render(); //⚪︎日と表示させる
+
+          //ここが1部,2部,3部を表示するところ&予約人数を表示（計算）
+          $html[] = $day->dayPartCounts2($day->everyDay(), $day);
         }
 
-        
-        //ここで部数と人数を表示している。(人数もここかも？)
-        $html[] = $day->render(); //⚪︎日と表示させる
 
-        //ここが1部,2部,3部を表示するところ&予約人数を表示（計算）
-        $html[] = $day->dayPartCounts2($day->everyDay(),$day);
 
         $html[] = '</td>';
       }

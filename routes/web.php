@@ -65,7 +65,7 @@ Route::group(['middleware' => 'auth'], function(){
                 //
                 Route::get('/calendar/{date}/{part}', 'CalendarsController@reserveDetail')->name('calendar.admin.detail');
 
-                //スクール枠登録
+                //スクール枠登録画面を表示
                 Route::get('/setting/{user_id}/admin', 'CalendarsController@reserveSettings')->name('calendar.admin.setting');
 
                 //

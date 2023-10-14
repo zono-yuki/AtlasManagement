@@ -84,7 +84,7 @@ class CalendarView
           if ($startDay <= $day->everyDay() && $toDay > $day->everyDay()) { //予約されているけど、過ぎていた日の場合 未参加か参加の調べ方はあとでわかったら追加する
 
             // $html[] = '<p class="m-auto p-0 w-100" style="font-size:15px">'. $reservePart. '未参加</p>';
-            $html[] = '<p class="m-auto p-0 w-100" style="color: black;font-size:15px">受付終了</p>';
+            $html[] = '<p class="m-auto p-0 w-100" style="color:black; font-size:15px">受付終了</p>';
             // $html[] = $reservePart . "未参加";
             // $html[] = "未参加";
             // $html[] = "受付終了";//◯部未参加と表示するのかどうか,わかったら上に変更する。
@@ -110,7 +110,7 @@ class CalendarView
           //もし過ぎた日だった場合、
           if ($startDay <= $day->everyDay() && $toDay > $day->everyDay()) {
             // $html[] = '受付終了';
-            $html[] = '<p class="m-auto p-0 w-100" style="color: black;font-size:15px">受付終了</p>';
+            $html[] = '<p class="m-auto p-0 w-100" style="color:black; font-size:15px">受付終了</p>';
             //追加 数を合わせる
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
 

@@ -30,6 +30,7 @@ class CalendarsController extends Controller
         return view('authenticated.calendar.admin.reserve_detail', compact('reservePersons', 'date', 'part'));
     }
 
+    //スクール枠登録画面を表示する
     public function reserveSettings(){
         $calendar = new CalendarSettingView(time());
         return view('authenticated.calendar.admin.reserve_setting', compact('calendar'));
