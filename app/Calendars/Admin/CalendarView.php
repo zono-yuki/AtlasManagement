@@ -52,15 +52,14 @@ class CalendarView{
         //=を抜いた。
         if($startDay <= $day->everyDay() && $toDay > $day->everyDay()){
           //過ぎている日だった場合
-          //ここでグレーの背景日を決めている。past-day
+          //グレーの背景にする。past-day
           $html[] = '<td class="'.$day->getClassName().' past-day border-right border-left border-bottom">';
-
-
         }else{
           //すぎていない日の場合
           $html[] = '<td class="'.$day->getClassName().' border-right border-left border-bottom">';
         }
 
+        
         //ここで部数と人数を表示している。(人数もここかも？)
         $html[] = $day->render(); //⚪︎日と表示させる
 
