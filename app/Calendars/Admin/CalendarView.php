@@ -51,17 +51,22 @@ class CalendarView{
 
         //=を抜いた。
         if($startDay <= $day->everyDay() && $toDay > $day->everyDay()){
-          //予約されているけど、過ぎている日だった場合
+          //過ぎている日だった場合
           //ここでグレーの背景日を決めている。past-day
           $html[] = '<td class="past-day border-right border-left border-bottom">';
+
+
         }else{
-          //予約されていて、すぎていない日の場合
+          //すぎていない日の場合
           $html[] = '<td class="'.$day->getClassName().' border-right border-left border-bottom">';
         }
-        //予約されていない場合
+
         //ここで部数と人数を表示している。(人数もここかも？)
-        $html[] = $day->render();
-        $html[] = $day->dayPartCounts($day->everyDay());
+        $html[] = $day->render(); //⚪︎日と表示させる
+
+        //ここが1部,2部,3部を表示するところ&予約人数を表示（計算）
+        $html[] = $day->dayPartCounts2($day->everyDay(),$day);
+
         $html[] = '</td>';
       }
       $html[] = '</tr>';
@@ -73,7 +78,7 @@ class CalendarView{
     return implode("", $html);
   }
 
-//週と日の情報を取得する
+//週と日の情報を取得する////////////////////////////////////////
   protected function getWeeks(){
     $weeks = [];
     $firstDay = $this->carbon->copy()->firstOfMonth();

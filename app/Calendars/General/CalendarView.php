@@ -58,7 +58,7 @@ class CalendarView
         } else { //今月の過ぎた日以外の日の場合
           $html[] = '<td class="calendar-td  border-bottom border-left border-bottom ' . $day->getClassName() . '">';
         }
-        $html[] = $day->render(); //前月も来月も含めて全ての日
+        $html[] = $day->render(); //日付を表示する
 
 
         //予約がされているかどうか

@@ -169,6 +169,7 @@ li{
   min-width:150px;
   background: #EEEEEE;
 }
+/* 灰色にする予約確認画面 */
 .day_part{
   color:#494949;
   font-size:12px;
@@ -184,6 +185,13 @@ li{
 }
 .adjust-table-btn{
   width:70%;
+}
+
+/* 予約確認画面 人数表示 */
+.count_box{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .calendar-btn{
