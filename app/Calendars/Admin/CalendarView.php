@@ -53,7 +53,7 @@ class CalendarView{
         if($startDay <= $day->everyDay() && $toDay > $day->everyDay()){
           //過ぎている日だった場合
           //ここでグレーの背景日を決めている。past-day
-          $html[] = '<td class="past-day border-right border-left border-bottom">';
+          $html[] = '<td class="'.$day->getClassName().' past-day border-right border-left border-bottom">';
 
 
         }else{

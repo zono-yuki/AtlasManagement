@@ -54,7 +54,7 @@ class CalendarView
         //ここでグレーの背景日を決めている。
         // if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
         if ($startDay <= $day->everyDay() && $toDay > $day->everyDay()) {
-          $html[] = '<td class=" border-left border-right calendar-tx">'; //灰色に塗る
+          $html[] = '<td class="calendar-td border-left border-right calendar-tx ' . $day->getClassName() . '">'; //灰色に塗る
         } else { //今月の過ぎた日以外の日の場合
           $html[] = '<td class="calendar-td  border-bottom border-left border-bottom ' . $day->getClassName() . '">';
         }
@@ -84,9 +84,10 @@ class CalendarView
           if ($startDay <= $day->everyDay() && $toDay > $day->everyDay()) { //予約されているけど、過ぎていた日の場合 未参加か参加の調べ方はあとでわかったら追加する
 
             // $html[] = '<p class="m-auto p-0 w-100" style="font-size:15px">'. $reservePart. '未参加</p>';
+            $html[] = '<p class="m-auto p-0 w-100" style="color: black;font-size:15px">受付終了</p>';
             // $html[] = $reservePart . "未参加";
             // $html[] = "未参加";
-            $html[] = "受付終了";//◯部未参加と表示するのかどうか,わかったら上に変更する。
+            // $html[] = "受付終了";//◯部未参加と表示するのかどうか,わかったら上に変更する。
 
 
             // $html[] = '参加or未参加';
@@ -108,7 +109,8 @@ class CalendarView
         } else { //予約がされていない場合///
           //もし過ぎた日だった場合、
           if ($startDay <= $day->everyDay() && $toDay > $day->everyDay()) {
-            $html[] = '受付終了';
+            // $html[] = '受付終了';
+            $html[] = '<p class="m-auto p-0 w-100" style="color: black;font-size:15px">受付終了</p>';
             //追加 数を合わせる
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
 

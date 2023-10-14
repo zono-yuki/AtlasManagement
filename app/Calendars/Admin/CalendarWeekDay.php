@@ -177,7 +177,7 @@ class CalendarWeekDay{
   }
 
   //追加（dayNumberAdjustment()の改良）
-  //これを使って予約している人数を予約確認画面に表示する？
+  //これ何に使うの？
   function dayNumberAdjustment2()
   {
     $html = [];
