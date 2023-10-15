@@ -102,7 +102,7 @@
         </select>
       </div>
       <div class="search_user_box pl-3 mb-5">
-        <p class="mb-3 search_conditions">
+        <p class="mb-3 search_conditions arrow-0">
           <span class="text-muted">検索条件の追加</span>
           <span class="arrow"></span>
         </p>
@@ -134,10 +134,10 @@
           <div class="selected_engineer">
             <!-- 選択科目 name="subjects[]"を追加する! -->
             <label class="mb-1 text-muted">選択科目</label>
-            <div>
-              <span>国語</span><input type="checkbox" name="subjects[]" value="1" form="userSearchRequest" class="mr-3">
-              <span>数学</span><input type="checkbox" name="subjects[]" value="2" form="userSearchRequest" class="mr-3">
-              <span>英語</span><input type="checkbox" name="subjects[]" value="3" form="userSearchRequest" class="mr-3">
+            <div class="mb-0">
+              <span>国語</span><input type="checkbox" name="subjects[]" value="1" form="userSearchRequest" class="mr-2">
+              <span>数学</span><input type="checkbox" name="subjects[]" value="2" form="userSearchRequest" class="mr-2">
+              <span>英語</span><input type="checkbox" name="subjects[]" value="3" form="userSearchRequest" class="mr-2">
             </div>
           </div>
         </div>

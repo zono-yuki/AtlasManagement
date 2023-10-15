@@ -138,19 +138,19 @@ class CalendarView
     $html[] =  '<div id="myModal" class="calendar_modal">';
     $html[] =  '<div class="calendar_content">';
 
-    $html[] = '<div class="modal__flex">';//追加
+    $html[] = '<div class="modal__flex">';
 
     $html[] = '<div class="text-left">';
     $html[] =   '<div class="mb-2 cancel-font">予約日：';
       $html[] =   '<span id="setting_reserve_id" value =""></span>';//2023-10-⚪︎⚪︎表示用
-      $html[] =   '<input type="hidden" id="settings_reserve_id" value="" name="getDate" form="deleteParts">';//作成中 コントローラーに送る用
+      $html[] =   '<input type="hidden" id="settings_reserve_id" value="" name="getDate" form="deleteParts">';//コントローラーに送る用
       $html[] = '</div>';
     $html[] = '</div>';
 
     $html[] = '<div class="text-left">';
     $html[] =   '<div class="mb-2 cancel-font">時間：';
        $html[] =  '<span id="setting_part_id" value =""></span>';//リモ⚪︎部表示用
-       $html[] =  '<input type="hidden" id="settings_part_id" value="" name="getPart" form="deleteParts">';//作成中 コントローラーに送る用
+       $html[] =  '<input type="hidden" id="settings_part_id" value="" name="getPart" form="deleteParts">';//コントローラーに送る用
      $html[] =  '</div> ';
     $html[] = '</div>';
 
