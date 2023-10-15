@@ -62,7 +62,7 @@ Route::group(['middleware' => 'auth'], function(){
                 //予約確認画面を表示(人数を表示する)
                 Route::get('/calendar/{user_id}/admin', 'CalendarsController@show')->name('calendar.admin.show');
 
-                //
+                //スクール予約詳細画面を表示する
                 Route::get('/calendar/{date}/{part}', 'CalendarsController@reserveDetail')->name('calendar.admin.detail');
 
                 //スクール枠登録画面を表示

@@ -76,7 +76,7 @@ class User extends Authenticatable
 
 /////////////////////////////////////////////////////////////////////////////////////
 
-    public function calendars(){ //カレンダーテーブルとの中間テーブルリレーション
+    public function calendars(){ //使わない。
         return $this->belongsToMany('App\Models\Calendars\Calendar', 'calendar_users', 'user_id', 'calendar_id')->withPivot('user_id', 'id');
     }
 
@@ -84,6 +84,13 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Calendars\ReserveSettings', 'reserve_setting_users', 'user_id', 'reserve_setting_id')->withPivot('id');
         //withPivot $user->pivot->idで簡単に中間テーブルのカラムが取得できるようになる
     }
+
+    // 追加  作成中！！ 該当するカレンダーid(reserve_setting_id)を予約しているレコードを全て取得する。
+    public function reserveGetUsers(Int $reserve_setting_id){
+        return (bool) $this->reserveSettings()->where('reserve_setting_id',$reserve_setting_id)->get();
+    }
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //多対多のリレーションの定義(中間テーブル(subject_usersテーブル)の設定)

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-//
+//中間テーブル 予約機能
 class CreateReserveSettingUsersTable extends Migration
 {
     /**

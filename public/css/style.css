@@ -947,3 +947,35 @@ li{
   padding-left: 4%;
   border-radius: 15px;
 }
+
+/* 予約詳細画面 */
+
+.border-b{
+  background-color: #03AAD2;
+  width: 100%;
+  height: auto;
+}
+
+.id_font{
+  display: inline;
+  width: 100%;
+  color: #fff;
+  font-size:18px;
+  font-weight: bold;
+}
+
+.name_font{
+  display: inline;
+  width: 100%;
+  color: #fff;
+  font-size:18px;
+  font-weight: bold;
+}
+
+.place_font{
+  display: inline;
+  width: 100%;
+  color: #fff;
+  font-size:18px;
+  font-weight: bold;
+}

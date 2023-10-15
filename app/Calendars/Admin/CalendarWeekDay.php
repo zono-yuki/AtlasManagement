@@ -56,21 +56,21 @@ class CalendarWeekDay{
 
   $html[] = '<div class="text-left">';
     if ($one_part) {
-      $html[] = '<div class="day_part m-0 pt-1 count_box">';
-        $html[] = '<span style="color:#03AAD2;">1部</span>';
-        $html[] = '<span class="text-right text-muted">'.$day->onePartFrame2($day->everyDay()).'</span>';
-      $html[] = '</div>';
+        $html[] = '<div class="day_part m-0 pt-1 count_box">';
+          $html[] = '<a href="'.route('calendar.admin.detail',['date' => $ymd, 'part' => "1"]).'"style="color:#03AAD2;">1部</a>';
+          $html[] = '<span class="text-right text-muted">'.$day->onePartFrame2($day->everyDay()).'</span>';
+        $html[] = '</div>';
     }
     if ($two_part) {
       $html[] = '<div class="day_part m-0 pt-1 count_box">';
-        $html[] = '<span style="color:#03AAD2;">2部</span>';
-        $html[] = '<span class="text-right text-muted">' . $day->twoPartFrame2($day->everyDay()) . '</span>';
+        $html[] = '<a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => "2"]) . '"style="color:#03AAD2;">2部</a>';
+        $html[] = '<span class="text-right text-muted">' . $day->twoPartFrame2($day->everyDay()) . '</>';
       $html[] = '</div>';
     }
     if ($three_part) {
       $html[] = '<div class="day_part m-0 pt-1 count_box">';
-        $html[] = '<span style="color:#03AAD2;">3部</span>';
-        $html[] = '<span class="text-right text-muted">' . $day->threePartFrame2($day->everyDay()) . '</span>';
+        $html[] = '<a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => "3"]) . '"style="color:#03AAD2;">3部</a>';
+        $html[] = '<span class="text-right text-muted">' . $day->threePartFrame2($day->everyDay()) . '</>';
       $html[] = '</div>';
     }
   $html[] = '</div>';
@@ -180,7 +180,7 @@ class CalendarWeekDay{
   }
 
   //追加（dayNumberAdjustment()の改良）
-  //これ何に使うの？
+  //これ何に使うの？スクール枠登録？
   function dayNumberAdjustment2()
   {
     $html = [];
