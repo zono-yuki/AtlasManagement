@@ -32,15 +32,37 @@ class CalendarsController extends Controller
         //reserve_settingsテーブルから日付$date、部$partからそのレコードを取得する。
         $reservePersons = ReserveSettings::with('users')->where('setting_reserve', $date)->where('setting_part', $part)->first();//getからfirstに変えた。
         $reserve_setting_id = $reservePersons -> id;
-        // dd($reserve_setting_id);
+        // dd($reservePersons);
         //ok
-        // $reserve_users = ;
+        $users = User::get();
+        // dd(users);
+        // $reserve_users = Auth::user()->reserveGetUsers($reserve_setting_id,)
+        $user_id= array();
+        $i = 1;
 
-        //このあとやること
-        //$reservePersonsのidを取得する。それを利用して、reserve_setting_usersテーブル（中間テーブル）からそのidと同じreserve_setting_idを持つレコードを全部取得する。
-        //そして、そのレコードから、user_idを取得する。（これで、その部を予約しているユーザーがわかる。そのuserを全部送る。）
-        //むこうで、foreachで回して名前を表示する。って感じかな。
-        return view('authenticated.calendar.admin.reserve_detail', compact('reservePersons', 'date', 'part'));
+        $hit_id = array();
+        $hit_many = 1;
+
+
+        //////////////////////
+        $ii=User::find(18)->id;
+
+        $iii =User::find(18)->reserveGetUsers2($ii, $reserve_setting_id);
+        /////////////////////
+        // dd($iii);
+        // リレーションのメソッドはできている。
+
+        foreach ($users as $user) {//ここで検索する
+            $user_id = $user->id;
+            // dd($user_id[$i]);
+            if ($user->reserveGetUsers2($user_id, $reserve_setting_id)) {
+                $hit_id[$hit_many] = $user;
+                $hit_many++;
+            }
+        }
+        // dd($hit_id);
+        //hit_id[]にidが入っている。あとはこれを表示する。
+        return view('authenticated.calendar.admin.reserve_detail', compact('reservePersons', 'date', 'part' ,'hit_id'));
     }
 
     //スクール枠登録画面を表示する

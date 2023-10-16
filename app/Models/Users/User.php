@@ -87,7 +87,19 @@ class User extends Authenticatable
 
     // 追加  作成中！！ 該当するカレンダーid(reserve_setting_id)を予約しているレコードを全て取得する。
     public function reserveGetUsers(Int $reserve_setting_id){
-        return (bool) $this->reserveSettings()->where('reserve_setting_id',$reserve_setting_id)->get();
+        // return (bool) $this->reserveSettings()->where('reserve_setting_id',$reserve_setting_id)->get();
+        return $this->reserveSettings()->where('reserve_setting_id', $reserve_setting_id)->get();
+
+    }
+
+    public function reserveGetUsers2(Int $user_id, Int $reserve_setting_id)
+    {
+        // return (bool) $this->reserveSettings()->where('reserve_setting_id',$reserve_setting_id)->get();
+        // return (bool) $this->reserveSettings()->where('reserve_setting_id', $reserve_setting_id)->where('user_id', $user_id)->first();
+        return (bool) $this->reserveSettings()->where([
+            ['user_id', '=' , $user_id],
+            ['reserve_setting_id', '=' , $reserve_setting_id],
+        ])->first();
     }
 
 

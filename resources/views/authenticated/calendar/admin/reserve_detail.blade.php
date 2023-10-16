@@ -11,10 +11,19 @@
           <th class="name_font">名前</th>
           <th class="place_font">場所</th>
         </tr>
+        <!-- 繰り返し -->
+        @foreach($hit_id as $hits_id)
         <tr class="text-center">
-          <td class=""></td>
-          <td class=""></td>
+          <!-- id -->
+          <td class="">{{ $hits_id->id }}</td>
+          <!-- 名前 -->
+          <td class="">{{ $hits_id->over_name }} {{ $hits_id->under_name }}</td>
+          <!-- 場所 -->
+          <td class="">リモート</td>
         </tr>
+        @endforeach
+
+
       </table>
     </div>
   </div>

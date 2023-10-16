@@ -957,25 +957,28 @@ li{
 }
 
 .id_font{
-  display: inline;
-  width: 100%;
+  /* display: inline; */
+  width: 30%;
   color: #fff;
   font-size:18px;
   font-weight: bold;
+  text-align: center;
 }
 
 .name_font{
-  display: inline;
-  width: 100%;
+  /* display: inline; */
+  width: 30%;
   color: #fff;
   font-size:18px;
   font-weight: bold;
+  text-align: center;
 }
 
 .place_font{
-  display: inline;
-  width: 100%;
+  /* display: inline; */
+  width: 30%;
   color: #fff;
   font-size:18px;
   font-weight: bold;
+  text-align:center;
 }
