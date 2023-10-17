@@ -11,6 +11,7 @@ use App\Models\Calendars\Calendar;
 use App\Models\USers\User;
 use Auth;
 use DB;
+use DateTime;
 
 //講師用のカレンダーコントローラー
 
@@ -23,34 +24,22 @@ class CalendarsController extends Controller
         return view('authenticated.calendar.admin.calendar', compact('calendar'));
     }
 
-    //予約詳細画面を表示する(作成中)
+    //予約詳細画面を表示する
     public function reserveDetail($date, $part){
-        // dd($date);
-        //ok
-        // dd($part);
-        // ok
         //reserve_settingsテーブルから日付$date、部$partからそのレコードを取得する。
         $reservePersons = ReserveSettings::with('users')->where('setting_reserve', $date)->where('setting_part', $part)->first();//getからfirstに変えた。
         $reserve_setting_id = $reservePersons -> id;
-        // dd($reservePersons);
-        //ok
         $users = User::get();
-        // dd(users);
-        // $reserve_users = Auth::user()->reserveGetUsers($reserve_setting_id,)
         $user_id= array();
         $i = 1;
 
         $hit_id = array();
         $hit_many = 1;
-
-
         //////////////////////
         $ii=User::find(18)->id;
 
         $iii =User::find(18)->reserveGetUsers2($ii, $reserve_setting_id);
         /////////////////////
-        // dd($iii);
-        // リレーションのメソッドはできている。
 
         foreach ($users as $user) {//ここで検索する
             $user_id = $user->id;
@@ -62,6 +51,9 @@ class CalendarsController extends Controller
         }
         // dd($hit_id);
         //hit_id[]にidが入っている。あとはこれを表示する。
+
+        $date= new DateTime($date);//文字列になっているので、時間表示に一度変換する。
+        $date= $date->format('Y年m月d日');//それを、年月日に変換して送る。
         return view('authenticated.calendar.admin.reserve_detail', compact('reservePersons', 'date', 'part' ,'hit_id'));
     }
 

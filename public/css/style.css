@@ -954,31 +954,68 @@ li{
   background-color: #03AAD2;
   width: 100%;
   height: auto;
+  /* border-radius: 150px; */
 }
+.border-a{
+  border-radius: 7px;
+  box-shadow: 1px 1px 1px 1px #bbb;
+  background-color: #fff;
+}
+
 
 .id_font{
   /* display: inline; */
   width: 30%;
   color: #fff;
-  font-size:18px;
+  font-size:16px;
   font-weight: bold;
-  text-align: center;
+  text-align: left;
+  padding-left: 50px;
+  border-radius: 7px 0 0 0px;
 }
 
 .name_font{
   /* display: inline; */
   width: 30%;
   color: #fff;
-  font-size:18px;
+  font-size:16px;
   font-weight: bold;
-  text-align: center;
+  text-align: left;
+  padding-left: 50px;
 }
 
 .place_font{
   /* display: inline; */
   width: 30%;
   color: #fff;
-  font-size:18px;
+  font-size:16px;
   font-weight: bold;
-  text-align:center;
+  text-align:left;
+  border-radius: 0 7px 0 0 ;
+  padding-left: 50px;
 }
+
+.tr-2{
+  text-align: left;
+  padding-left: 50px;
+}
+
+.tr2:nth-child(even){
+  background: #fff;
+}
+
+.tr2:nth-child(odd){
+  background: #CCFFFF;
+
+}
+/* .tr-1{
+  width: 100%;
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.tr-2{
+  width: 100%;
+  display: inline-block;
+  margin-top: 15px;
+} */

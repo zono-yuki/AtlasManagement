@@ -167,8 +167,11 @@ class CalendarView
     $html[] = '<div class="cancel__box">';
     //閉じるボタン
     $html[] = '<button id="closeModal" class="close__btn">閉じる</button>';
-    //予約をキャンセルするボタン
-    $html[] =  '<input type="submit" class="cancel__btn" value="キャンセル" alt="キャンセル" form="deleteParts">';
+    //予約をキャンセルするボタン//キャンセルモーダルを表示する。onclick="return confirm('削除してもよろしいですか？')"
+    $html[] =  '<input type="submit" class="cancel__btn" value="キャンセル" alt="キャンセル" form="deleteParts" >';
+    // $html[] =  '<input type="submit" class="cancel__btn" value="キャンセル" alt="キャンセル" form="deleteParts" onclick="return confirm('削除してもよろしいですか？')">';
+
+
     $html[] = '</div>';
 
     //削除するボタンを押した時に必要
