@@ -87,7 +87,7 @@
 
           @foreach($post->postComments as $comment)
           <!-- Post.phpのpostCommentsメソッドを使う。コントローラーで、userテーブルとpostCommentsテーブルで一致した'postsテーブル'のレコード（投稿$post）が送られてくるので、'その投稿に紐づくコメント'をある分だけ表示する。Post.phpのpostCommentsメソッドで、postCommentsテーブルと繋がっている。-->
-          <div class="comment_area border-top">
+          <div class="comment_area border-top pt-3">
             <p>
 
               <span>{{ $comment->commentUser($comment->user_id)->over_name }}</span>

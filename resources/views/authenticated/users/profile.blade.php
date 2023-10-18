@@ -5,7 +5,7 @@
   <div class="ml-3 mt-3">
     <span class="text-muted">{{ $user->over_name }}</span><span class="text-muted">{{ $user->under_name }}さんのプロフィール</span>
   </div>
-  <div class="top_area w-75 m-auto pt-5">
+  <div class="top_area w-75 m-auto pt-5 text-muted">
     <div class="user_status p-3 shadow">
       <p class="text-muted">名前 :
         <span class="text-muted">{{ $user->over_name }}</span>
@@ -17,14 +17,14 @@
       </p>
       <p>性別 :
         @if($user->sex == 1)
-        <span>男</span>
+        <span class="text-muted">男</span>
         @else
-        <span>女</span>
+        <span class="text-muted">女</span>
         @endif
       </p>
 
       <p>生年月日 :
-        <span>{{ $user->birth_day }}</span>
+        <span class="text-muted">{{ $user->birth_day }}</span>
       </p>
 
       <div>選択科目 :

@@ -49,6 +49,7 @@ li{
 .background-white{
   background: #fff;
 }
+
 /* エラーメッセージ赤字 */
 .error-message{
   color:red;
@@ -91,6 +92,10 @@ li{
   width: 85px;
   height: auto;
   margin-right: 10px;
+}
+
+.radius_box{
+  border-radius: 14px;
 }
 
 /* サイドバー */

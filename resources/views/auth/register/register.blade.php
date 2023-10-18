@@ -18,20 +18,20 @@
 
   <form action="{{ route('registerPost') }}" method="POST">
     <div class="w-120 vh-100 d-flex all_content" style="align-items:center; justify-content:center;">
-      <div class="w-30 vh-60 shadow pt-5 pr-5 pb-4 pl-5 background-white">
+      <div class="w-30 vh-60 shadow pt-5 pr-5 pb-4 pl-5 background-white radius_box">
         <!-- ----------------------------------------------------------------------------- -->
 
         <!--名前（漢字）のエラーメッセージを表示する-->
         @if ($errors->has('over_name'))
-          @foreach($errors->get('over_name') as $message)
-            <p class="error-message"> {{ $message }} </p>
-          @endforeach
+        @foreach($errors->get('over_name') as $message)
+        <p class="error-message"> {{ $message }} </p>
+        @endforeach
         @endif
 
         @if ($errors->has('under_name'))
-          @foreach($errors->get('under_name') as $message)
-            <p class="error-message"> {{ $message }} </p>
-          @endforeach
+        @foreach($errors->get('under_name') as $message)
+        <p class="error-message"> {{ $message }} </p>
+        @endforeach
         @endif
 
         <div class="register_form">
@@ -60,15 +60,15 @@
 
           <!--名前（フリガナ）のエラーメッセージを表示する-->
           @if ($errors->has('over_name_kana'))
-            @foreach($errors->get('over_name_kana') as $message)
-              <p class="error-message"> {{ $message }} </p>
-            @endforeach
+          @foreach($errors->get('over_name_kana') as $message)
+          <p class="error-message"> {{ $message }} </p>
+          @endforeach
           @endif
 
           @if ($errors->has('under_name_kana'))
-            @foreach($errors->get('under_name_kana') as $message)
-              <p class="error-message"> {{ $message }} </p>
-            @endforeach
+          @foreach($errors->get('under_name_kana') as $message)
+          <p class="error-message"> {{ $message }} </p>
+          @endforeach
           @endif
 
 
@@ -97,9 +97,9 @@
 
             <!--mail_addressのエラーメッセージを表示する-->
             @if ($errors->has('mail_address'))
-              @foreach($errors->get('mail_address') as $message)
-                <p class="error-message"> {{ $message }} </p>
-              @endforeach
+            @foreach($errors->get('mail_address') as $message)
+            <p class="error-message"> {{ $message }} </p>
+            @endforeach
             @endif
 
             <!-- メールアドレス -->
@@ -116,9 +116,9 @@
 
           <!--性別のエラーメッセージを表示する-->
           @if ($errors->has('sex'))
-            @foreach($errors->get('sex') as $message)
-              <p class="error-message"> {{ $message }} </p>
-            @endforeach
+          @foreach($errors->get('sex') as $message)
+          <p class="error-message"> {{ $message }} </p>
+          @endforeach
           @endif
           <!-- 性別 -->
           <div class="mt-4 sex-flex">
@@ -144,9 +144,9 @@
 
           <!--生年月日のエラーメッセージを表示する-->
           @if ($errors->has('datetime_validation'))
-            @foreach($errors->get('datetime_validation') as $message)
-              <p class="error-message"> {{ $message }} </p>
-            @endforeach
+          @foreach($errors->get('datetime_validation') as $message)
+          <p class="error-message"> {{ $message }} </p>
+          @endforeach
           @endif
 
 
@@ -158,7 +158,7 @@
 
 
             <!-- 年 -->
-            <select class="old_year" name="old_year" style="border: none; width:25%; border-bottom: 2px solid #33CCFF;">
+            <select class="old_year" name="old_year" style="border: none; width:25%; border-bottom: 1px solid #6fa9ff;">
               <option value="none">-----</option>
               <option value="1985">1985</option>
               <option value="1986">1986</option>
@@ -205,7 +205,7 @@
 
 
             <!-- 月 -->
-            <select class="old_month" name="old_month" style="border: none; width:25%; border-bottom: 2px solid #33CCFF;">
+            <select class="old_month" name="old_month" style="border: none; width:25%; border-bottom: 1px solid #6fa9ff;">
               <option value="none">-----</option>
               <option value="01">1</option>
               <option value="02">2</option>
@@ -225,7 +225,7 @@
 
 
             <!-- 日 -->
-            <select class="old_day" name="old_day" style="border: none; width: 25%; border-bottom: 2px solid #33CCFF;">
+            <select class="old_day" name="old_day" style="border: none; width: 25%; border-bottom: 1px solid #6fa9ff;">
               <option value="none">-----</option>
               <option value="01">1</option>
               <option value="02">2</option>
@@ -268,9 +268,9 @@
 
           <!--役職のエラーメッセージを表示する-->
           @if ($errors->has('role'))
-            @foreach($errors->get('role') as $message)
-              <p class="error-message"> {{ $message }} </p>
-            @endforeach
+          @foreach($errors->get('role') as $message)
+          <p class="error-message"> {{ $message }} </p>
+          @endforeach
           @endif
 
           <!-- 役職 -->
@@ -320,15 +320,15 @@
 
           <!--パスワードのエラーメッセージを表示する-->
           @if ($errors->has('password'))
-            @foreach($errors->get('password') as $message)
-              <p class="error-message"> {{ $message }} </p>
-            @endforeach
+          @foreach($errors->get('password') as $message)
+          <p class="error-message"> {{ $message }} </p>
+          @endforeach
           @endif
 
           @if ($errors->has('password_confirmation'))
-            @foreach($errors->get('password_confirmation') as $message)
-              <p class="error-message"> {{ $message }} </p>
-            @endforeach
+          @foreach($errors->get('password_confirmation') as $message)
+          <p class="error-message"> {{ $message }} </p>
+          @endforeach
           @endif
 
           <!-- パスワード -->
