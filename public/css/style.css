@@ -102,15 +102,12 @@ li{
 .sidebar{
   font-size: 18px;
   width : 220px;
-  min-height:160vh;
   background-color:#03AAD2;
   font-weight:bold;
 }
 /* ---------------------- */
 .main-container{
   width:100%;
-  height: 100vh;
-
 }
 /* ----------------------- */
 .sidebar p a{
