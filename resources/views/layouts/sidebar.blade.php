@@ -20,7 +20,7 @@
 </head>
 
 <body class="all_content">
-  <div class="d-flex">
+  <div class="d-flex height-1">
     <!-- サイドバー （左側の青い部分）-->
     <div class="sidebar">
       @section('sidebar')
