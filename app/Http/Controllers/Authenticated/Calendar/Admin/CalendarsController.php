@@ -26,32 +26,20 @@ class CalendarsController extends Controller
 
     //予約詳細画面を表示する
     public function reserveDetail($date, $part){
-        //reserve_settingsテーブルから日付$date、部$partからそのレコードを取得する。
+        //reserve_settingsテーブルから日付$date、部$partからそのレコード自体を取得する。
         $reservePersons = ReserveSettings::with('users')->where('setting_reserve', $date)->where('setting_part', $part)->first();//getからfirstに変えた。
-        $reserve_setting_id = $reservePersons -> id;
-        $users = User::get();
-        $user_id= array();
-        $i = 1;
-
-        $hit_id = array();
-        $hit_many = 1;
-        //////////////////////
-        $ii=User::find(18)->id;
-
-        $iii =User::find(18)->reserveGetUsers2($ii, $reserve_setting_id);
-        /////////////////////
-
+        $reserve_setting_id = $reservePersons -> id;//そのレコードのidを取得する。
+        $users = User::get();//usersテーブルから全てのユーザーの情報を取得する。
+        $user_id= array(); //下のforeachで使う全てのユーザーを回して行く際にユーザーidを入れていくので使用するため、配列を用意する。
+        $hit_id = array();//ヒットしたidを入れるために配列を用意する。
+        $hit_many = 1;//trueでヒットした際に必要、配列の要素の数。初期値の1を入れる。(1〜)
         foreach ($users as $user) {//ここで検索する
             $user_id = $user->id;
-            // dd($user_id[$i]);
             if ($user->reserveGetUsers2($user_id, $reserve_setting_id)) {
                 $hit_id[$hit_many] = $user;
                 $hit_many++;
             }
         }
-        // dd($hit_id);
-        //hit_id[]にidが入っている。あとはこれを表示する。
-
         $date= new DateTime($date);//文字列になっているので、時間表示に一度変換する。
         $date= $date->format('Y年m月d日');//それを、年月日に変換して送る。
         return view('authenticated.calendar.admin.reserve_detail', compact('reservePersons', 'date', 'part' ,'hit_id'));
