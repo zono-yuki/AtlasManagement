@@ -149,9 +149,9 @@ class CalendarView
 
     $html[] = '<div class="text-left">';
     $html[] =   '<div class="mb-2 cancel-font">時間：';
-       $html[] =  '<span id="setting_part_id" value =""></span>';//リモ⚪︎部表示用
-       $html[] =  '<input type="hidden" id="settings_part_id" value="" name="getPart" form="deleteParts">';//コントローラーに送る用
-     $html[] =  '</div> ';
+      $html[] =  '<span id="setting_part_id" value =""></span>';//リモ⚪︎部表示用
+      $html[] =  '<input type="hidden" id="settings_part_id" value="" name="getPart" form="deleteParts">';//コントローラーに送る用
+    $html[] =  '</div> ';
     $html[] = '</div>';
 
     // setting_partのwhere文で使うため、コントローラーに送る用
@@ -161,17 +161,14 @@ class CalendarView
     $html[] = '<p class="mb-2 cancel-font">上記の予約をキャンセルしてもよろしいですか？</p>';
     $html[] = '</div>';
 
-    $html[] = '</div>';//追加
+    $html[] = '</div>';
 
     //予約キャンセルボタンと閉じるボタン
     $html[] = '<div class="cancel__box">';
     //閉じるボタン
-    $html[] = '<button id="closeModal" class="close__btn">閉じる</button>';
-    //予約をキャンセルするボタン//キャンセルモーダルを表示する。onclick="return confirm('削除してもよろしいですか？')"
-    $html[] =  '<input type="submit" class="cancel__btn" value="キャンセル" alt="キャンセル" form="deleteParts" >';
-    // $html[] =  '<input type="submit" class="cancel__btn" value="キャンセル" alt="キャンセル" form="deleteParts" onclick="return confirm('削除してもよろしいですか？')">';
-
-
+      $html[] = '<button id="closeModal" class="close__btn">閉じる</button>';
+    //予約をキャンセルするボタン
+      $html[] =  '<input type="submit" class="cancel__btn" value="キャンセル" alt="キャンセル" form="deleteParts" onclick="return confirm(\'削除してもよろしいですか？\')">';
     $html[] = '</div>';
 
     //削除するボタンを押した時に必要
